@@ -1,0 +1,8 @@
+*.pyc
+.pypirc
+.c9/
+build/
+dist/
+*.egg-info
+*.egg
+*.zip
