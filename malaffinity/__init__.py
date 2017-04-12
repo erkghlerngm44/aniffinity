@@ -90,6 +90,14 @@ class MALAffinity:
         scores = []
 
         for anime in all_anime:
+            # See if anime is on their PTW and move on if so.
+            # This makes sure rated anime that the user hasn't
+            # seen does not get added to `scores`.
+            # Why do people even do this?
+            # PTW == status "6"
+            if anime.my_status.string == "6":
+                continue
+
             id = anime.series_animedb_id.string
             id = int(id)
 
