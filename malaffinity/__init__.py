@@ -199,9 +199,9 @@ class MALAffinity:
             scores2.append(arr[1])
 
         pearson = scipy.stats.pearsonr(scores1, scores2)
-        pearson = pearson[0]
-        # Won't round properly if not forced to float
-        pearson = float(pearson * 100)
+        # Convert numpy.float64 to a normal float.
+        pearson = pearson[0].item()
+        pearson *= 100
 
         if self._round is not False:
             pearson = round(pearson, self._round)
