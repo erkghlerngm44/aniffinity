@@ -172,34 +172,37 @@ Three types of exceptions can be raised while calculating affinities:
 Not much you can do about the first two, so you're best off giving up if
 you run into one of those. The third, however, rarely happens if you
 abide by the rate limit, but the following should happen in case it
-does: \* Halt the script for a few seconds. I recommend five. \* Try
-again. \* If you get roadblocked again, just give up. MAL obviously
-hates you.
+does:
+
+-  Halt the script for a few seconds. I recommend five.
+-  Try again.
+-  If you get roadblocked again, just give up. MAL obviously hates you.
 
 This can be achieved via the following example.
 
 ::
 
-    try:
-        affinity = a.calculate_affinity("OTHER_USERNAME")
-
-    except malaffinity.MALRateLimitExceededError:
-        time.sleep(5)
-        
+    # Two attempts, then give up. Max tries can be adjusted here.
+    for _ in range(2):
         try:
-            affinity = a.calculate_affinity("OTHER_USERNAME")
+            affinity, shared = a.calculate_affinity("OTHER_USERNAME")
+
         except malaffinity.MALRateLimitExceededError:
-            # Hop over to next person. The next line depends on what your script is like.
-            # If this is in a loop, use `continue`, if in a function, `return`.
-            continue
+            time.sleep(5)
 
-    # Yes, this is too broad, but there's no point in typing out all of the exceptions.
-    except:
-        print("Can't calculate affinity for some reason.")
-        continue
-        
+        # Yes, this is too broad, but there's no point in typing out all the exceptions.
+        except:
+            # Hop over to the next person.
+            # You'll want to stop doing anything with this person and move onto the next,
+            # so use the statement that'll best accomplish this, given the layout of your script.
+            return
 
-No need to do all this if your script isn't automated.
+        # Success!
+        else:
+            break
+
+Of course, there are better ways of doing this, but this looks the
+nicest.
 
 I'm thinking about hardcoding the rate limit handling in, but I'm
 worried about handling cases where MAL keeps blocking you - I don't want
