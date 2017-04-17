@@ -14,6 +14,9 @@ multiple people, but there's nothing stopping you from using this as a one-off.
 scores will be compared to (and affinities to said scores calculated for). 
 I don't have a better name to describe this, so please bear with me.**
 
+**In most cases, just assume that the "base" user is referring to you, or 
+the person who will be running your script**
+
 
 ## Install
 
@@ -67,53 +70,58 @@ calculate affinity with.
 
 ## Examples
 
-Obviously the module will be imported in all of the examples, but because I'm lazy,
-I won't write that out again and again.
-
 Using `a` as the name of the initialised class, because I can't think of a better name
 that won't shadow anything that already/will exist(s).
 
 #### Example 1
 **Basic usage**
 
-    >>> a = malaffinity.MALAffinity("YOUR_USERNAME")
+    >>> a = MALAffinity("YOUR_USERNAME")
     
-    >>> affinity = a.calculate_affinity("OTHER_USERNAME")
+    >>> affinity, shared = a.calculate_affinity("OTHER_USERNAME")
     
     >>> print(affinity)
-    (79.00545465639877, 82)
-    
+    79.00545465639877
+    >>> print(shared)
+    82
+
 #### Example 2
 **Basic usage, but specifying a "base user" AFTER initialising the class**
 
-    >>> a = malaffinity.MALAffinity()
+    >>> a = MALAffinity()
     
     # This can be done anywhere as long as the place you're doing this from has access to `a`.
     >>> a.init("YOUR_USERNAME")
     
-    >>> affinity = a.calculate_affinity("OTHER_USERNAME")
+    >>> affinity, shared = a.calculate_affinity("OTHER_USERNAME")
     
     >>> print(affinity)
-    (79.00545465639877, 82)
-    
+    79.00545465639877
+    >>> print(shared)
+    82
+
 #### Example 3
 **Round affinities to two decimal places**
 
-    >>> a = malaffinity.MALAffinity("YOUR_USERNAME", round=2)
+    >>> a = MALAffinity("YOUR_USERNAME", round=2)
     
     >>> affinity = a.calculate_affinity("OTHER_USERNAME")
     
     >>> print(affinity)
-    (79.01, 82)
-    
+    79.01
+    >>> print(shared)
+    82
+
 #### Example 4
 **One-off affinity calculations**
 
-    >>> affinity = malaffinity.calculate_affinity("YOUR_USERNAME", "OTHER_USERNAME")
+    >>> affinity = calculate_affinity("YOUR_USERNAME", "OTHER_USERNAME")
     
     >>> print(affinity)
-    (79.00545465639877, 82)
-    
+    79.00545465639877
+    >>> print(shared)
+    82
+
 *Don't use this if you're planning on calculating affinity again with one of the users
 you've specified when doing this. It's better to create an instance of the `MALAffinity`
 class with said user, and calculating affinity with the other user(s) that way. That instance
