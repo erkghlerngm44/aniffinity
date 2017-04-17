@@ -50,8 +50,10 @@ class MALAffinity:
         function inside MUST be invoked before affinity calculations
 
         :param base_user: Base MAL username
-        :param round: Decimal places to round affinity values to.
-                      Specify `false` for no rounding
+        :type base_user: str or None
+        
+        :param round: Decimal places to round affinity values to
+        :type round: int or False
         """
 
         # Will get overridden in `init` function.
@@ -125,7 +127,8 @@ class MALAffinity:
         One may want to check that this is populated after invoking this function
         before running anything else here
 
-        :param base_user: Base username whose list others' lists will be compared to
+        :param str base_user: Base username whose list others' lists will be compared to
+        
         :return: Nothing
         """
 
@@ -151,8 +154,10 @@ class MALAffinity:
         or rounded value, depending on the value of the `self._round` variable set
         at class initialisation
 
-        :param username: The username to compare the base user's scores to
-        :return: Tuple containing affinity and shared count
+        :param str username: The username to compare the base user's scores to
+        
+        :return: (affinity, shared)
+        :rtype: tuple
         """
 
         # Check if there's actually a base user to compare scores with
@@ -216,12 +221,14 @@ def calculate_affinity(user1, user2, round=False):
     Creates an instance of the `MALAffinity` class with `user1`, 
     then calculates affinity with `user2`
     
-    :param user1: First user
-    :param user2: Second user
-    :param round: Decimal places to round affinity values to.
-                  Specify `false` for no rounding
+    :param str user1: First user
+    :param str user2: Second user
+    
+    :param round: Decimal places to round affinity values to
+    :type round: int or False
 
-    :return: Tuple containing affinity and shared count
+    :return: (affinity, shared)
+    :rtype: tuple
     """
 
     return MALAffinity(base_user=user1, round=round).calculate_affinity(user2)
