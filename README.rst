@@ -76,7 +76,7 @@ Usage
       `example 2 <#example-2>`__)*
 
 2. Calculate affinity between the "base user" and another user by
-   calling the ``calculate_affinity`` function with the username of the
+   calling the ``calculate_affinity`` method with the username of the
    person you wish to calculate affinity with.
 
    -  This will return a tuple, containing the affinity, and the number
@@ -146,6 +146,9 @@ Example 4
 ^^^^^^^^^
 
 **One-off affinity calculations**
+
+Note that the ``calculate_affinity`` function is being used here - not
+the method.
 
 ::
 

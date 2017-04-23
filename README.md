@@ -60,7 +60,7 @@ optional `round` to it.
       calculations take place. (See [example 2](#example-2))*
     
 2. Calculate affinity between the "base user" and another user by calling the
-`calculate_affinity` function with the username of the person you wish to
+`calculate_affinity` method with the username of the person you wish to
 calculate affinity with.
     * This will return a tuple, containing the affinity, and the number of shared
       rated anime.
@@ -114,6 +114,8 @@ that won't shadow anything that already/will exist(s).
 
 #### Example 4
 **One-off affinity calculations**
+
+Note that the `calculate_affinity` function is being used here - not the method.
 
     >>> affinity = calculate_affinity("YOUR_USERNAME", "OTHER_USERNAME")
     
