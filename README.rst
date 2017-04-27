@@ -242,9 +242,8 @@ Concerns, problems, fixes, feedback, yada yada
 Contact me on
 `Reddit <https://www.reddit.com/message/compose/?to=erkghlerngm44>`__ or
 by `Email <mailto:erkghlerngm44@protonmail.com>`__, or create an
-`issue <https://github.com/erkghlerngm44/affinity-gatherer/issues>`__ or
-`pull
-request <https://github.com/erkghlerngm44/affinity-gatherer/pulls>`__.
+`issue <https://github.com/erkghlerngm44/malaffinity/issues>`__ or `pull
+request <https://github.com/erkghlerngm44/malaffinity/pulls>`__.
 
 The email I specified isn't my main one, and this isn't my main Github
 account, so if you do use those services, send me a message on Reddit,

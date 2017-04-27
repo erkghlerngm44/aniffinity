@@ -193,8 +193,8 @@ Bullshit.
 Contact me on 
 [Reddit](https://www.reddit.com/message/compose/?to=erkghlerngm44)
 or by [Email](mailto:erkghlerngm44@protonmail.com), or create an 
-[issue](https://github.com/erkghlerngm44/affinity-gatherer/issues) or
-[pull request](https://github.com/erkghlerngm44/affinity-gatherer/pulls).
+[issue](https://github.com/erkghlerngm44/malaffinity/issues) or
+[pull request](https://github.com/erkghlerngm44/malaffinity/pulls).
 
 The email I specified isn't my main one, and this isn't my main Github account, 
 so if you do use those services, send me a message on Reddit, notifying me, 
