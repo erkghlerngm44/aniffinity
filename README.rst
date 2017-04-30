@@ -87,7 +87,7 @@ Usage
 Examples
 --------
 
-Using ``a`` as the name of the initialised class, because I can't think
+Using ``ma`` as the name of the initialised class, because I can't think
 of a better name that won't shadow anything that already/will exist(s).
 
 Example 1
@@ -97,9 +97,9 @@ Example 1
 
 ::
 
-    >>> a = MALAffinity("YOUR_USERNAME")
+    >>> ma = MALAffinity("YOUR_USERNAME")
 
-    >>> affinity, shared = a.calculate_affinity("OTHER_USERNAME")
+    >>> affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
     >>> print(affinity)
     79.00545465639877
@@ -114,12 +114,12 @@ class**
 
 ::
 
-    >>> a = MALAffinity()
+    >>> ma = MALAffinity()
 
-    # This can be done anywhere as long as the place you're doing this from has access to `a`.
-    >>> a.init("YOUR_USERNAME")
+    # This can be done anywhere as long as the place you're doing this from has access to `ma`.
+    >>> ma.init("YOUR_USERNAME")
 
-    >>> affinity, shared = a.calculate_affinity("OTHER_USERNAME")
+    >>> affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
     >>> print(affinity)
     79.00545465639877
@@ -133,9 +133,9 @@ Example 3
 
 ::
 
-    >>> a = MALAffinity("YOUR_USERNAME", round=2)
+    >>> ma = MALAffinity("YOUR_USERNAME", round=2)
 
-    >>> affinity = a.calculate_affinity("OTHER_USERNAME")
+    >>> affinity = ma.calculate_affinity("OTHER_USERNAME")
 
     >>> print(affinity)
     79.01
@@ -196,7 +196,7 @@ This can be achieved via the following example.
     # Two attempts, then give up. Max tries can be adjusted here.
     for _ in range(2):
         try:
-            affinity, shared = a.calculate_affinity("OTHER_USERNAME")
+            affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
         except malaffinity.MALRateLimitExceededError:
             time.sleep(5)
