@@ -160,10 +160,11 @@ class MALAffinity:
         :rtype: tuple
         """
 
-        # Check if there's actually a base user to compare scores with
-        # `init` will assign the username to the `self._base_user` var when
-        # it retrieves the base user's scores, so we can test if the var has been set.
-        if not self._base_user:
+        # Check if there's actually a base user to compare scores with.
+        # `init` will assign the username to the `self._base_user` var and
+        # populate the `self._base_scores` dict when it retrieves the base user's
+        # scores, so we can test if those vars have been set.
+        if not self._base_user or not self._base_scores:
             # Too lazy to make a custom exception for this.
             raise Exception("No base user has been specified. "
                             "Call the `init` function to retrieve a base user's scores.")
