@@ -1,3 +1,5 @@
+|forthebadge| |forthebadge| |forthebadge| |forthebadge|
+
 malaffinity
 ===========
 
@@ -254,3 +256,18 @@ Legal stuff
 -----------
 
 Licensed under MIT. See ```LICENSE`` <LICENSE>`__ for more info.
+
+As promised, one cute cat gif coming up!
+----------------------------------------
+
+.. figure:: https://i.imgur.com/sq42SnU.gif
+   :alt: 
+
+.. |forthebadge| image:: http://forthebadge.com/images/badges/fuck-it-ship-it.svg
+   :target: http://forthebadge.com
+.. |forthebadge| image:: http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg
+   :target: http://forthebadge.com
+.. |forthebadge| image:: http://forthebadge.com/images/badges/contains-cat-gifs.svg
+   :target: http://forthebadge.com
+.. |forthebadge| image:: http://forthebadge.com/images/badges/built-with-love.svg
+   :target: http://forthebadge.com

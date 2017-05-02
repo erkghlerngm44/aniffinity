@@ -1,3 +1,9 @@
+[![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/contains-cat-gifs.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
+
+
 # malaffinity
 
 Calculate affinity between two MyAnimeList users
@@ -204,3 +210,8 @@ otherwise you'll probably receive a reply weeks/months after you contact me.
 ## Legal stuff
 
 Licensed under MIT. See [`LICENSE`](LICENSE) for more info.
+
+
+## As promised, one cute cat gif coming up!
+
+![](https://i.imgur.com/sq42SnU.gif)
