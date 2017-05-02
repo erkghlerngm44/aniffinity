@@ -7,6 +7,7 @@
 * Change 'base user has been set' testing to also check if `self._base_scores`
   has been set as well
 * Use `ma` as opposed to `a` as the `MALAffinity` instance variable name in examples
+* Added badges and Kyubey gif to readme
 * **???**
 
 ## v1.0.2
