@@ -1,4 +1,4 @@
-|forthebadge| |forthebadge| |forthebadge| |forthebadge|
+|forthebadge1| |forthebadge2| |forthebadge3| |forthebadge4|
 
 malaffinity
 ===========
@@ -263,11 +263,11 @@ As promised, one cute cat gif coming up!
 .. figure:: https://i.imgur.com/sq42SnU.gif
    :alt: 
 
-.. |forthebadge| image:: http://forthebadge.com/images/badges/fuck-it-ship-it.svg
+.. |forthebadge1| image:: http://forthebadge.com/images/badges/fuck-it-ship-it.svg
    :target: http://forthebadge.com
-.. |forthebadge| image:: http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg
+.. |forthebadge2| image:: http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg
    :target: http://forthebadge.com
-.. |forthebadge| image:: http://forthebadge.com/images/badges/contains-cat-gifs.svg
+.. |forthebadge3| image:: http://forthebadge.com/images/badges/contains-cat-gifs.svg
    :target: http://forthebadge.com
-.. |forthebadge| image:: http://forthebadge.com/images/badges/built-with-love.svg
+.. |forthebadge4| image:: http://forthebadge.com/images/badges/built-with-love.svg
    :target: http://forthebadge.com
