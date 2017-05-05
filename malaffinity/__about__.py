@@ -8,7 +8,7 @@ __title__ = "malaffinity"
 __summary__ = "Calculate affinity between two MyAnimeList users"
 __uri__ = "https://github.com/erkghlerngm44/malaffinity"
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 __author__ = "erkghlerngm44"
 __email__ = "erkghlerngm44@protonmail.com"
