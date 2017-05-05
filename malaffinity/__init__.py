@@ -195,14 +195,10 @@ class MALAffinity:
                     .format(self._base_user, username)
             )
 
-        scores1 = []
-        scores2 = []
-
-        for key in scores:
-            arr = scores[key]
-
-            scores1.append(arr[0])
-            scores2.append(arr[1])
+        # Sort multiple rows of scores into two arrays for calculations.
+        # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
+        values = scores.values()
+        scores1, scores2 = list(zip(*values))
 
         pearson = scipy.stats.pearsonr(scores1, scores2)
         # Convert numpy.float64 to a normal float.
