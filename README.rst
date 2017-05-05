@@ -93,7 +93,7 @@ Using ``ma`` as the name of the initialised class, because I can't think
 of a better name that won't shadow anything that already/will exist(s).
 
 Example 1
-^^^^^^^^^
+~~~~~~~~~
 
 **Basic usage**
 
@@ -109,7 +109,7 @@ Example 1
     82
 
 Example 2
-^^^^^^^^^
+~~~~~~~~~
 
 **Basic usage, but specifying a "base user" AFTER initialising the
 class**
@@ -129,7 +129,7 @@ class**
     82
 
 Example 3
-^^^^^^^^^
+~~~~~~~~~
 
 **Round affinities to two decimal places**
 
@@ -145,7 +145,7 @@ Example 3
     82
 
 Example 4
-^^^^^^^^^
+~~~~~~~~~
 
 **One-off affinity calculations**
 

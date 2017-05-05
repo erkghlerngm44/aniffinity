@@ -79,7 +79,7 @@ calculate affinity with.
 Using `ma` as the name of the initialised class, because I can't think of a better name
 that won't shadow anything that already/will exist(s).
 
-#### Example 1
+### Example 1
 **Basic usage**
 
     >>> ma = MALAffinity("YOUR_USERNAME")
@@ -91,7 +91,7 @@ that won't shadow anything that already/will exist(s).
     >>> print(shared)
     82
 
-#### Example 2
+### Example 2
 **Basic usage, but specifying a "base user" AFTER initialising the class**
 
     >>> ma = MALAffinity()
@@ -106,7 +106,7 @@ that won't shadow anything that already/will exist(s).
     >>> print(shared)
     82
 
-#### Example 3
+### Example 3
 **Round affinities to two decimal places**
 
     >>> ma = MALAffinity("YOUR_USERNAME", round=2)
@@ -118,7 +118,7 @@ that won't shadow anything that already/will exist(s).
     >>> print(shared)
     82
 
-#### Example 4
+### Example 4
 **One-off affinity calculations**
 
 Note that the `calculate_affinity` function is being used here - not the method.
