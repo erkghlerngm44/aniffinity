@@ -6,6 +6,7 @@ import copy
 
 import bs4
 import requests
+import scipy
 import scipy.stats
 
 
@@ -199,6 +200,12 @@ class MALAffinity:
         # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
         values = scores.values()
         scores1, scores2 = list(zip(*values))
+
+        # Check if standard deviation of scores1 or scores2 is zero. If so, affinity
+        # can't be calculated as dividing by zero gives you NaN. (It's impossible)
+        if not scipy.std(scores1) or not scipy.std(scores2):
+            # TODO: Better message
+            raise NoAffinityError("Standard Deviation of `scores1` or `scores2` is zero.")
 
         pearson = scipy.stats.pearsonr(scores1, scores2)
         # Convert numpy.float64 to a normal float.
