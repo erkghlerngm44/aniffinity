@@ -209,7 +209,7 @@ class MALAffinity:
 
         pearson = scipy.stats.pearsonr(scores1, scores2)
         # Convert numpy.float64 to a normal float.
-        pearson = pearson[0].item()
+        pearson = scipy.asscalar(pearson[0])
         pearson *= 100
 
         if self._round is not False:
