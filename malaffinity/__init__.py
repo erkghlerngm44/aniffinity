@@ -204,8 +204,8 @@ class MALAffinity:
         # Check if standard deviation of scores1 or scores2 is zero. If so, affinity
         # can't be calculated as dividing by zero gives you NaN. (It's impossible)
         if not scipy.std(scores1) or not scipy.std(scores2):
-            # TODO: Better message
-            raise NoAffinityError("Standard Deviation of `scores1` or `scores2` is zero.")
+            # TODO: Message
+            raise NoAffinityError
 
         pearson = scipy.stats.pearsonr(scores1, scores2)
         # Convert numpy.float64 to a normal float.
