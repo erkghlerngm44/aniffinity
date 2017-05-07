@@ -1,7 +1,7 @@
 # Changelog
 
 
-## v1.0.3
+## v1.0.3 (2017-05-05)
 * Change 'base user has been set' testing to also check if `self._base_scores`
   has been set as well
 * Use `zip` to create the `scores1` and `scores2` arrays that calculations are done with
@@ -12,13 +12,13 @@
     if this was the case
 * Use `scipy.asscalar` as opposed to `.item()` for numpy.float64 => float conversion
 
-## v1.0.2
+## v1.0.2 (2017-04-17)
 * Better handling for numpy.float64 => float conversion
 * Update docstrings to include types
 
-## v1.0.1
+## v1.0.1 (2017-04-12)
 * Don't count rated anime on a user's PTW. MAL didn't count this,
   so our affinity values were a bit off when a user did this
 
-## v1.0.0
+## v1.0.0 (2017-04-09)
 * Konnichiwa, sekai!
