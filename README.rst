@@ -191,7 +191,10 @@ does:
 -  Try again.
 -  If you get roadblocked again, just give up. MAL obviously hates you.
 
-This can be achieved via the following example.
+[STRIKEOUT:This can be achieved via the following example.]
+
+**DON'T USE THIS EXAMPLE. I HAVE NO IDEA WHAT I WAS THINKING WHEN I
+WROTE THIS. GIVE ME A FEW DAYS TO COME UP WITH SOMETHING BETTER.**
 
 ::
 

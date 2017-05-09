@@ -154,7 +154,10 @@ should happen in case it does:
 * Try again.
 * If you get roadblocked again, just give up. MAL obviously hates you.
 
-This can be achieved via the following example.
+~~This can be achieved via the following example.~~
+
+**DON'T USE THIS EXAMPLE. I HAVE NO IDEA WHAT I WAS THINKING WHEN I WROTE THIS.
+  GIVE ME A FEW DAYS TO COME UP WITH SOMETHING BETTER.**
 
     # Two attempts, then give up. Max tries can be adjusted here.
     for _ in range(2):
