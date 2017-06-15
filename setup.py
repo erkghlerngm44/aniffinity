@@ -46,7 +46,12 @@ settings = {
         "bs4",
         "lxml",
         "requests"
-    ]
+    ],
+
+    "extras_require": {
+        # `statistics` is only included in Py3. Will need this for Py2
+        ":python_version <= '2.7'": ["statistics"]
+    }
 }
 
 setup( **settings )
