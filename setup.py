@@ -1,6 +1,7 @@
 from setuptools import setup
 from codecs import open
 from os import path
+from sys import version_info
 
 
 # Open up settings
@@ -46,12 +47,15 @@ settings = {
         "bs4",
         "lxml",
         "requests"
-    ],
-
-    "extras_require": {
-        # `statistics` is only included in Py3. Will need this for Py2
-        ":python_version<'2.8'": ["statistics"]
-    }
+    ]
 }
+
+
+# `statistics` is only included in Py3. Will need this for Py2.
+# Tried adding to `extras_require` but that doesn't seem to be working...
+if version_info[0] == 2:
+    # Push the dep
+    settings["install_requires"].append("statistics")
+
 
 setup( **settings )
