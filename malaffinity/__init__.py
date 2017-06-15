@@ -80,7 +80,7 @@ class MALAffinity:
         if resp.status_code == requests.codes.too_many_requests:
             raise MALRateLimitExceededError("MAL rate limit exceeded. Slow down and try again.")
 
-        resp = bs4.BeautifulSoup(resp.content, "html.parser")
+        resp = bs4.BeautifulSoup(resp.content, "xml")
 
         all_anime = resp.findAll("anime")
 
