@@ -6,8 +6,9 @@ import copy
 
 import bs4
 import requests
-import scipy
-import scipy.stats
+import statistics
+
+from . import calcs
 
 
 # Meta stuff
@@ -203,13 +204,11 @@ class MALAffinity:
 
         # Check if standard deviation of scores1 or scores2 is zero. If so, affinity
         # can't be calculated as dividing by zero gives you NaN. (It's impossible)
-        if not scipy.std(scores1) or not scipy.std(scores2):
+        if not statistics.stdev(scores1) or not statistics.stdev(scores2):
             # TODO: Message
             raise NoAffinityError
 
-        pearson = scipy.stats.pearsonr(scores1, scores2)
-        # Convert numpy.float64 to a normal float.
-        pearson = scipy.asscalar(pearson[0])
+        pearson = calcs.pearson(scores1, scores2)
         pearson *= 100
 
         if self._round is not False:
