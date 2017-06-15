@@ -44,9 +44,7 @@ settings = {
 
     "install_requires": [
         "bs4",
-        "numpy",
-        "requests",
-        "scipy"  # I tried getting rid of this, but numpy is shit so [](#yuishrug)
+        "requests"
     ]
 }
 
