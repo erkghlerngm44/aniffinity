@@ -179,35 +179,6 @@ does:
 -  Try again.
 -  If you get roadblocked again, just give up. MAL obviously hates you.
 
-[STRIKEOUT:This can be achieved via the following example.]
-
-**DON'T USE THIS EXAMPLE. I HAVE NO IDEA WHAT I WAS THINKING WHEN I
-WROTE THIS. GIVE ME A FEW DAYS TO COME UP WITH SOMETHING BETTER.**
-
-::
-
-    # Two attempts, then give up. Max tries can be adjusted here.
-    for _ in range(2):
-        try:
-            affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
-
-        except malaffinity.MALRateLimitExceededError:
-            time.sleep(5)
-
-        # Yes, this is too broad, but there's no point in typing out all the exceptions.
-        except:
-            # Hop over to the next person.
-            # You'll want to stop doing anything with this person and move onto the next,
-            # so use the statement that'll best accomplish this, given the layout of your script.
-            return
-
-        # Success!
-        else:
-            break
-
-Of course, there are better ways of doing this, but this looks the
-nicest.
-
 I'm thinking about hardcoding the rate limit handling in, but I'm
 worried about handling cases where MAL keeps blocking you - I don't want
 to run into infinite loops. I'll look into this one day.
