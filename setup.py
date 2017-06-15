@@ -50,7 +50,7 @@ settings = {
 
     "extras_require": {
         # `statistics` is only included in Py3. Will need this for Py2
-        ":python_version<='2.7'": ["statistics"]
+        ":python_version<'2.8'": ["statistics"]
     }
 }
 
