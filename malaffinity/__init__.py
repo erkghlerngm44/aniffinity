@@ -158,7 +158,7 @@ class MALAffinity:
 
         :param str username: The username to compare the base user's scores to
         
-        :return: (affinity, shared)
+        :return: (float affinity, int shared)
         :rtype: tuple
         """
 
@@ -230,7 +230,7 @@ def calculate_affinity(user1, user2, round=False):
     :param round: Decimal places to round affinity values to
     :type round: int or False
 
-    :return: (affinity, shared)
+    :return: (float affinity, int shared)
     :rtype: tuple
     """
 
