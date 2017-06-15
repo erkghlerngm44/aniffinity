@@ -40,17 +40,9 @@ the [dependencies](#dependencies) yourself.
 
 * BeautifulSoup4
 * Requests
-* Numpy (for Scipy) ([Windows Wheel](http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy))
-* Scipy ([Windows Wheel](http://www.lfd.uci.edu/~gohlke/pythonlibs/#scipy))
 
 These should be installed when you install this script, so no need to worry
 about them.
-
-Note that Scipy and Numpy don't play nice with some computers, depending on your
-OS and other stuff. If it won't work with PIP, just open up [Cloud9](https://c9.io/),
-[Codeanywhere](https://codeanywhere.com/) or [Codenvy](https://codenvy.com/) and try
-installing this there. You might need to run `sudo pip install -U pip` before doing
-anything, though.
 
 
 ## Usage
