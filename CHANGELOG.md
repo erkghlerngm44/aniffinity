@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.0 (2017-06-16)
+* Move the MALAffinity class to its own separate file (`malaffinity.malaffinity`)
+  and import that into the `malaffinity` namespace via `__init__`
+* Move exceptions to its own separate file (`malaffinity.exceptions`).
+  * These won't be imported into the `malaffinity` namespace, so all references
+    to them will have to be changed to point to the `exceptions` file.
+* Modify description of the package slightly
+  * "Calculate affinity between **two** MyAnimeList users" =>
+    "Calculate affinity between MyAnimeList users"
+* Add exception message for when the standard deviation of one of the two users'
+  scores is zero, and affinity can't be calculated.
+
 ## v1.1.0 (2017-06-15)
 * Removed scipy (and numpy) as a dependency
   * Pearson's correlation code is now in `malaffinity.calcs` and stdev checking is handled
