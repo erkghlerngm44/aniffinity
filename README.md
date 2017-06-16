@@ -112,7 +112,7 @@ ma = MALAffinity("YOUR_USERNAME", round=2)
 affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
 print(affinity)
-# 79.00545465639877
+# 79.01
 print(shared)
 # 82
 ```

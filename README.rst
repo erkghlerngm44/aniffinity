@@ -129,7 +129,7 @@ Example 3
     affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
     print(affinity)
-    # 79.00545465639877
+    # 79.01
     print(shared)
     # 82
 
