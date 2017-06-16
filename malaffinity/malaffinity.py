@@ -175,7 +175,10 @@ class MALAffinity:
         # can't be calculated as dividing by zero gives you NaN. (It's impossible)
         if not statistics.stdev(scores1) or not statistics.stdev(scores2):
             # TODO: Message
-            raise exceptions.NoAffinityError
+            raise exceptions.NoAffinityError(
+                "Standard deviation of `{}` or `{}`'s scores is zero."
+                    .format(self._base_user, username)
+            )
 
         pearson = calcs.pearson(scores1, scores2)
         pearson *= 100
