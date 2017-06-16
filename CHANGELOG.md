@@ -12,6 +12,7 @@
     "Calculate affinity between MyAnimeList users"
 * Add exception message for when the standard deviation of one of the two users'
   scores is zero, and affinity can't be calculated.
+* **???**
 
 ## v1.1.0 (2017-06-15)
 * Removed scipy (and numpy) as a dependency
