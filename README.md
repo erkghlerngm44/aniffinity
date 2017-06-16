@@ -39,6 +39,7 @@ the [dependencies](#dependencies) yourself.
 ## Dependencies
 
 * BeautifulSoup4
+* lxml
 * Requests
 
 These should be installed when you install this script, so no need to worry
@@ -74,53 +75,61 @@ that won't shadow anything that already/will exist(s).
 ### Example 1
 **Basic usage**
 
-    >>> ma = MALAffinity("YOUR_USERNAME")
-    
-    >>> affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
-    
-    >>> print(affinity)
-    79.00545465639877
-    >>> print(shared)
-    82
+```python
+ma = MALAffinity("YOUR_USERNAME")
+
+affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
+
+print(affinity)
+# 79.00545465639877
+print(shared)
+# 82
+```
 
 ### Example 2
 **Basic usage, but specifying a "base user" AFTER initialising the class**
 
-    >>> ma = MALAffinity()
-    
-    # This can be done anywhere as long as the place you're doing this from has access to `ma`.
-    >>> ma.init("YOUR_USERNAME")
-    
-    >>> affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
-    
-    >>> print(affinity)
-    79.00545465639877
-    >>> print(shared)
-    82
+```python
+ma = MALAffinity()
+
+# This can be done anywhere as long as the place you're doing this from has access to `ma`.
+ma.init("YOUR_USERNAME")
+
+affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
+
+print(affinity)
+# 79.00545465639877
+print(shared)
+# 82
+```
 
 ### Example 3
 **Round affinities to two decimal places**
 
-    >>> ma = MALAffinity("YOUR_USERNAME", round=2)
-    
-    >>> affinity = ma.calculate_affinity("OTHER_USERNAME")
-    
-    >>> print(affinity)
-    79.01
-    >>> print(shared)
-    82
+```python
+ma = MALAffinity("YOUR_USERNAME", round=2)
+
+affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
+
+print(affinity)
+# 79.00545465639877
+print(shared)
+# 82
+```
 
 ### Example 4
 **One-off affinity calculations**
 
 Note that the `calculate_affinity` function is being used here - not the method.
 
-    >>> affinity = calculate_affinity("YOUR_USERNAME", "OTHER_USERNAME")
-    
-    >>> print(affinity)
-    79.00545465639877
-    >>> print(shared)
-    82
+```python
+affinity, shared = calculate_affinity("YOUR_USERNAME", "OTHER_USERNAME")
+
+print(affinity)
+# 79.00545465639877
+print(shared)
+# 82
+```
 
 *Don't use this if you're planning on calculating affinity again with one of the users
 you've specified when doing this. It's better to create an instance of the `MALAffinity`
@@ -129,6 +138,10 @@ will hold said users' scores, so they won't have to be retrieved again. See exam
 
 
 ## Handling exceptions
+
+**NOTE:** As of v2.0.0, these exceptions are now contained in the `exceptions`
+file. Make sure to reference them properly if you'll be going down this path.
+(`malaffinity.exceptions.ExceptionName`).
 
 Three types of exceptions can be raised while calculating affinities:
 
@@ -146,6 +159,36 @@ should happen in case it does:
 * Try again.
 * If you get roadblocked again, just give up. MAL obviously hates you.
 
+This can be achieved something along these lines:
+
+```python
+success = False
+
+# Two attempts, then give up. Max tries can be adjusted here.
+for _ in range(2):
+    try:
+        affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
+
+    except malaffinity.MALRateLimitExceededError:
+        time.sleep(5)
+        
+    # Yes, this is too broad, but there's no point in typing out all the exceptions.
+    except:
+        # Hop over to the next person.
+        # You'll want to stop doing anything with this person and move onto the next,
+        # so use the statement that'll best accomplish this, given the layout of your script.
+        return
+
+    # Success!
+    else:
+    success = True
+        break
+    
+if not success:
+    # See the note under `except:`. Same applies here
+    return
+```
+
 I'm thinking about hardcoding the rate limit handling in, but I'm worried about handling cases
 where MAL keeps blocking you - I don't want to run into infinite loops. I'll look into this one day.
 
@@ -154,20 +197,16 @@ Feel free to use a loop though. Don't blame me if anything bad happens because o
 
 ## FAQ
 
-**Q: Why didn't you use Numpy? You won't need to use Scipy, so there's one less dependency to install...**
+**Q: [A dumb question was here]**
 
-![](https://i.imgur.com/r1o1lS6.jpg)
-
-So the correlation between two *exactly* identical bits of data is 99.999...8%?
-
-Bullshit.
+A: I have a bad memory and forgot floating point arithmetic was a thing.
 
 
 ## Concerns, problems, fixes, feedback, yada yada
 
 Contact me on 
-[Reddit](https://www.reddit.com/message/compose/?to=erkghlerngm44)
-or by [Email](mailto:erkghlerngm44@protonmail.com), or create an 
+[Reddit](https://www.reddit.com/message/compose/?to=erkghlerngm44) or by 
+[Email](mailto:erkghlerngm44@protonmail.com), or create an 
 [issue](https://github.com/erkghlerngm44/malaffinity/issues) or
 [pull request](https://github.com/erkghlerngm44/malaffinity/pulls).
 
