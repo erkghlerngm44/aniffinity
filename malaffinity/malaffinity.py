@@ -5,6 +5,7 @@ import requests
 import statistics
 
 from . import calcs
+from . import exceptions
 
 
 class MALAffinity:
@@ -46,7 +47,7 @@ class MALAffinity:
         # Check if MAL's hitting you with a 429 and raise an exception if so.
         # TODO: Look into using `if not resp.ok:`
         if resp.status_code == requests.codes.too_many_requests:
-            raise MALRateLimitExceededError("MAL rate limit exceeded. Slow down and try again.")
+            raise exceptions.MALRateLimitExceededError("MAL rate limit exceeded. Slow down and try again.")
 
         resp = bs4.BeautifulSoup(resp.content, "xml")
 
@@ -56,7 +57,7 @@ class MALAffinity:
         # If not, user probably doesn't exist.
         # MAL should do a better job of highlighting this, but eh.
         if not len(all_anime):
-            raise InvalidUsernameError("User `{}` does not exist.".format(username))
+            raise exceptions.InvalidUsernameError("User `{}` does not exist.".format(username))
 
         # TODO: Look into confusion with this and 'scores' var in 'calculate_affinity'
         scores = []
@@ -83,7 +84,7 @@ class MALAffinity:
         # Check if there's actually anything in scores.
         # If not, user probably doesn't have any rated anime.
         if not len(scores):
-            raise NoAffinityError("User `{}` hasn't rated any anime.".format(username))
+            raise exceptions.NoAffinityError("User `{}` hasn't rated any anime.".format(username))
 
         return scores
 
@@ -160,7 +161,7 @@ class MALAffinity:
         # Handle cases where the shared scores are <= 10 so
         # affinity can not be accurately calculated.
         if len(scores) <= 10:
-            raise NoAffinityError(
+            raise exceptions.NoAffinityError(
                 "Shared rated anime count between `{}` and `{}` is less than ten."
                     .format(self._base_user, username)
             )
@@ -174,7 +175,7 @@ class MALAffinity:
         # can't be calculated as dividing by zero gives you NaN. (It's impossible)
         if not statistics.stdev(scores1) or not statistics.stdev(scores2):
             # TODO: Message
-            raise NoAffinityError
+            raise exceptions.NoAffinityError
 
         pearson = calcs.pearson(scores1, scores2)
         pearson *= 100
