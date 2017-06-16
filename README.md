@@ -169,7 +169,7 @@ for _ in range(2):
     try:
         affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
-    except malaffinity.MALRateLimitExceededError:
+    except malaffinity.exceptions.MALRateLimitExceededError:
         time.sleep(5)
         
     # Yes, this is too broad, but there's no point in typing out all the exceptions.
@@ -181,7 +181,7 @@ for _ in range(2):
 
     # Success!
     else:
-    success = True
+        success = True
         break
     
 if not success:

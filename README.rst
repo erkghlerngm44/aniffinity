@@ -195,7 +195,7 @@ This can be achieved something along these lines:
         try:
             affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
-        except malaffinity.MALRateLimitExceededError:
+        except malaffinity.exceptions.MALRateLimitExceededError:
             time.sleep(5)
             
         # Yes, this is too broad, but there's no point in typing out all the exceptions.
@@ -207,7 +207,7 @@ This can be achieved something along these lines:
 
         # Success!
         else:
-        success = True
+            success = True
             break
         
     if not success:
