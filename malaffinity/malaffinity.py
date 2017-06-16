@@ -174,7 +174,6 @@ class MALAffinity:
         # Check if standard deviation of scores1 or scores2 is zero. If so, affinity
         # can't be calculated as dividing by zero gives you NaN. (It's impossible)
         if not statistics.stdev(scores1) or not statistics.stdev(scores2):
-            # TODO: Message
             raise exceptions.NoAffinityError(
                 "Standard deviation of `{}` or `{}`'s scores is zero."
                     .format(self._base_user, username)
