@@ -29,8 +29,8 @@ class MALAffinity:
 
         # Will get overridden in `init` function.
         self._base_user = None
-        self._round = round
         self._base_scores = {}
+        self._round = round
 
         if base_user:
             self.init(base_user)
