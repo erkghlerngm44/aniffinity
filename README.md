@@ -6,7 +6,7 @@
 
 # malaffinity
 
-Calculate affinity between two MyAnimeList users
+Calculate affinity between MyAnimeList users
 
 
 ## What is this?
