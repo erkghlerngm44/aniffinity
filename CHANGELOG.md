@@ -4,9 +4,9 @@
 ## v2.0.0 (2017-06-16)
 * Move the MALAffinity class to its own separate file (`malaffinity.malaffinity`)
   and import that into the `malaffinity` namespace via `__init__`
-* Move exceptions to its own separate file (`malaffinity.exceptions`).
+* Move exceptions to its own separate file (`malaffinity.exceptions`)
   * These won't be imported into the `malaffinity` namespace, so all references
-    to them will have to be changed to point to the `exceptions` file.
+    to them will have to be changed to point to the `exceptions` file
 * Modify description of the package slightly
   * "Calculate affinity between **two** MyAnimeList users" =>
     "Calculate affinity between MyAnimeList users"
