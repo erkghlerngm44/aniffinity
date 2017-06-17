@@ -17,10 +17,11 @@
 * **???**
 
 ## v1.1.0 (2017-06-15)
-* Removed scipy (and numpy) as a dependency
+* Remove scipy (and numpy) as a dependency
   * Pearson's correlation code is now in `malaffinity.calcs` and stdev checking is handled
     by the `statistics` module
 * Use `lxml` for XML parsing, instead of the default `html.parser`
+* Add return types for components inside the return tuple into the docstring
 
 ## v1.0.3 (2017-05-05)
 * Change 'base user has been set' testing to also check if `self._base_scores`
