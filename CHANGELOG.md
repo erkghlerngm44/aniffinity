@@ -1,7 +1,7 @@
 # Changelog
 
 
-## v2.0.0 (2017-06-16)
+## v2.0.0 (2017-06-**??**)
 * Move the MALAffinity class to its own separate file (`malaffinity.malaffinity`)
   and import that into the `malaffinity` namespace via `__init__`
 * Move exceptions to its own separate file (`malaffinity.exceptions`)
