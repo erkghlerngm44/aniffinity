@@ -11,7 +11,9 @@
   * "Calculate affinity between **two** MyAnimeList users" =>
     "Calculate affinity between MyAnimeList users"
 * Add exception message for when the standard deviation of one of the two users'
-  scores is zero, and affinity can't be calculated.
+  scores is zero, and affinity can't be calculated
+* Create the base `MALAffinityException` class and derive all existing malaffinity
+  exceptions from that
 * **???**
 
 ## v1.1.0 (2017-06-15)
