@@ -109,7 +109,7 @@ class MALAffinity:
     # TODO: Rename this?
     def init(self, base_user):
         """
-        Get the base users' list and create the `base scores` 
+        Get the base users' list and create the `base scores`
         dict that other people's scores will be compared to
 
         Base scores will be saved to self._base_scores
