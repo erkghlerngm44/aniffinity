@@ -16,13 +16,13 @@ from .__about__ import (
 def calculate_affinity(user1, user2, round=False):
     """
     Quick one-off affinity calculations
-    
-    Creates an instance of the `MALAffinity` class with `user1`, 
+
+    Creates an instance of the `MALAffinity` class with `user1`,
     then calculates affinity with `user2`
-    
+
     :param str user1: First user
     :param str user2: Second user
-    
+
     :param round: Decimal places to round affinity values to
     :type round: int or False
 

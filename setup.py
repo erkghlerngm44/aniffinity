@@ -4,7 +4,6 @@ from os import path
 from sys import version_info
 
 
-# Open up settings
 here = path.abspath(path.dirname(__file__))
 
 about = {}
@@ -58,4 +57,4 @@ if version_info[0] == 2:
     settings["install_requires"].append("statistics")
 
 
-setup( **settings )
+setup(**settings)

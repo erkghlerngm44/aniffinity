@@ -11,7 +11,8 @@ class MALAffinityException(Exception):
 class NoAffinityError(MALAffinityException):
     """
     Raised when either the shared rated anime between the base user
-    and another user is less than 10, or the user does not have any rated anime
+    and another user is less than 10, the user does not have any rated
+    anime, or the standard deviation of either users' scores is zero
     """
     pass
 

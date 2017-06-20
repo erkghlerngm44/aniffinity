@@ -10,11 +10,12 @@ from decimal import Decimal
 # Original code: https://stackoverflow.com/a/17389980
 def pearson(x, y):
     """
-    Pearson's correlation coefficient implementation, without scipy and numpy
+    Pearson's correlation coefficient implementation,
+    without scipy or numpy
 
     :param list x: Dataset x
     :param list y: Dataset y
-    :return: Population orrelation coeffient
+    :return: Population pearson correlation coefficient
     :rtype: bool
     """
 
