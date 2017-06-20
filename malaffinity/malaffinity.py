@@ -121,8 +121,7 @@ class MALAffinity:
 
             self._base_scores[id] = [score]
 
-        # TODO: Return self._base_scores?
-        return
+        return self
 
     def calculate_affinity(self, username):
         """
