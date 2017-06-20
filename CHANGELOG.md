@@ -1,7 +1,7 @@
 # Changelog
 
 
-## v2.0.0 (2017-06-**??**)
+## v2.0.0 (2017-06-20)
 * Move the MALAffinity class to its own separate file (`malaffinity.malaffinity`)
   and import that into the `malaffinity` namespace via `__init__`
 * Move exceptions to its own separate file (`malaffinity.exceptions`)
@@ -12,9 +12,15 @@
     "Calculate affinity between MyAnimeList users"
 * Add exception message for when the standard deviation of one of the two users'
   scores is zero, and affinity can't be calculated
-* Create the base `MALAffinityException` class and derive all existing malaffinity
+* Create the base `MALAffinityException` class and derive all malaffinity
   exceptions from that
-* **???**
+* Add docstrings for `malaffinity.calcs`
+* Modify docstrings to remove typos and unnecessary information, 
+  and reword some sections
+* Reword exception messages to be more useful
+* Have the `init` method return `self`, to allow for 
+  [chaining](https://en.wikipedia.org/wiki/Method_chaining)
+* Make all code PEP8-compliant (ignoring F401 for meta reasons)
 
 ## v1.1.0 (2017-06-15)
 * Remove scipy (and numpy) as a dependency
