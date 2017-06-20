@@ -20,14 +20,22 @@ from .exceptions import (
 
 
 class MALAffinity:
+    """
+    The MALAffinity class
+
+    Stores a `base user`s' scores, to be compared with
+    other users' scores
+    """
+
     _URL = "https://myanimelist.net/malappinfo.php"
 
     def __init__(self, base_user=None, round=False):
         """
-        The MALAffinity class
+        Initialise an instance of `MALAffinity`
 
-        Stores a `base user`s' scores, to be compared with
-        other users' scores
+        If `base_user` is `None`, the `init` function MUST be
+        called sometime after initialisation, with a `base_user`
+        provided, before affinity calculations take place
 
         :param base_user: Base MAL username
         :type base_user: str or None
