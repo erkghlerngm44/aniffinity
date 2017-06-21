@@ -214,6 +214,7 @@ This can be achieved something along these lines:
         # Success!
         else:
             success = True
+            break
 
     # malaffinity failed to calculate affinity. You'll want to stop doing
     # anything with this person and move onto the next, so use the statement
