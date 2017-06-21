@@ -190,28 +190,35 @@ This can be achieved something along these lines:
 
     success = False
 
-    # Two attempts, then give up. Max tries can be adjusted here.
+    # Two attempts, then give up. Max tries can be adjusted here
     for _ in range(2):
         try:
             affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
+        # Rate limit exceeded error. Halt your script and try again
         except malaffinity.exceptions.MALRateLimitExceededError:
             time.sleep(5)
-            
-        # Yes, this is too broad, but there's no point in typing out all the exceptions.
-        except:
-            # Hop over to the next person.
-            # You'll want to stop doing anything with this person and move onto the next,
-            # so use the statement that'll best accomplish this, given the layout of your script.
-            return
+            continue
+
+        # Any other malaffinity exception. No point continuing to do 
+        # anything if this comes up. `MALAffinityException` is the 
+        # base exception class for all malaffinity exceptions
+        except malaffinity.exceptions.MALAffinityException:
+            break
+
+        # General exceptions not covered by malaffinity. Not sure what 
+        # you could do here. Feel free to handle however you like
+        except Exception as e:
+            pass
 
         # Success!
         else:
             success = True
-            break
-        
+
+    # malaffinity failed to calculate affinity. You'll want to stop doing
+    # anything with this person and move onto the next, so use the statement
+    # that will best accomplish this, given the layout of your script
     if not success:
-        # See the note under `except:`. Same applies here
         return
 
 I'm thinking about hardcoding the rate limit handling in, but I'm
