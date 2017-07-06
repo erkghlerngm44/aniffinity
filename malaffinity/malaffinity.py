@@ -67,7 +67,7 @@ class MALAffinity:
 
         resp = bs4.BeautifulSoup(resp.content, "xml")
 
-        all_anime = resp.findAll("anime")
+        all_anime = resp.find_all("anime")
 
         # Check if there's actually any anime being returned to us.
         # If not, user probably doesn't exist.
