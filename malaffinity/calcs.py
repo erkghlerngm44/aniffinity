@@ -16,7 +16,7 @@ def pearson(x, y):
     :param list x: Dataset x
     :param list y: Dataset y
     :return: Population pearson correlation coefficient
-    :rtype: bool
+    :rtype: float
     """
 
     # Fix floating point shit
