@@ -1,6 +1,23 @@
 # Changelog
 
 
+## [UNRELEASED] v2.1.0 (2017-07-**??**)
+* Fix a typo in the `calcs.pearson` docstring, which incorrectly said 
+  the `:rtype` was a bool
+* Use the `find_all` BS4 method instead of `findAll`
+  * No actual changes to the inner workings of the script. It just looks nicer
+* Fix a typo in the "Shared rated anime count is less than required" exception
+  message, which incorrectly stated that the minimum required was ten, when it's
+  actually eleven
+* Add a docstring for `.__about__`
+* Add a docstring for `MALAffinity._retrieve_scores`
+* Remove the useless kwargs from `MALAffinity._retrieve_scores`
+* Make the `statistics` pypi package a requirement for all Python versions
+* Add a `__repr__` to the `MALAffinity` class
+
+**TODO:**
+* Proper Sphinx docstrings
+ 
 ## v2.0.0 (2017-06-20)
 * Move the MALAffinity class to its own separate file (`malaffinity.malaffinity`)
   and import that into the `malaffinity` namespace via `__init__`
