@@ -45,16 +45,12 @@ settings = {
     "install_requires": [
         "bs4",
         "lxml",
-        "requests"
+        "requests",
+        # Meh, fuck it. Should just default to the inbuilt
+        # if it exists, otherwise it'll use this
+        "statistics"
     ]
 }
-
-
-# `statistics` is only included in Py3. Will need this for Py2.
-# Tried adding to `extras_require` but that doesn't seem to be working...
-if version_info[0] == 2:
-    # Push the dep
-    settings["install_requires"].append("statistics")
 
 
 setup(**settings)
