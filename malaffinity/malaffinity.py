@@ -53,6 +53,26 @@ class MALAffinity:
             self.init(base_user)
 
     def _retrieve_scores(self, username, status="all", type="anime"):
+        """
+        Retrieve a users' animelist scores
+
+        Will return an array containing multiple dicts, 
+        in the following format:
+        {"id": 7791, "score": 10}
+
+        Only anime scored > 0 will be returned, and all 
+        PTW entries are ignored, even if they are scored
+
+        NOTE: `status` and `type` params may be deprecated soon(tm)
+
+        :param str username: MAL username
+        :param str status: `my_status` (watching, completed, etc) of 
+            anime to return. Default is `all`. Only `all` works
+        :param str type: `anime` or `manga`
+        :return: Array containing `id`, `score` pairs
+        :rtype: list
+        """
+
         params = {
             "u": username,
             "status": status,
