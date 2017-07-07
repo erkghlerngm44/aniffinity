@@ -62,7 +62,7 @@ class MALAffinity:
         """
         Retrieve a users' animelist scores
 
-        Only anime scored > 0 will be returned, and all 
+        Only anime scored > 0 will be returned, and all
         PTW entries are ignored, even if they are scored
 
         :param str username: MAL username
