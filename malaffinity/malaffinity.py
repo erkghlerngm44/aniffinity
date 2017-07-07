@@ -93,7 +93,6 @@ class MALAffinity:
             raise InvalidUsernameError("User `{}` does not exist"
                                        .format(username))
 
-        # TODO: Generator?
         scores = []
 
         for anime in all_anime:
