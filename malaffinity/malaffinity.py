@@ -66,7 +66,7 @@ class MALAffinity:
         PTW entries are ignored, even if they are scored
 
         :param str username: MAL username
-        :return: `id`, `scores` pairs
+        :return: `id`, `score` pairs
         :rtype: list
         """
 
