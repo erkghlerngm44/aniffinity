@@ -56,15 +56,11 @@ class MALAffinity:
         """
         Retrieve a users' animelist scores
 
-        Will return an array containing multiple dicts, 
-        in the following format:
-        {"id": 7791, "score": 10}
-
         Only anime scored > 0 will be returned, and all 
         PTW entries are ignored, even if they are scored
 
         :param str username: MAL username
-        :return: Array containing `id`, `score` pairs
+        :return: `id`, `scores` pairs
         :rtype: list
         """
 
