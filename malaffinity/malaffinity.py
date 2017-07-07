@@ -52,6 +52,12 @@ class MALAffinity:
         if base_user:
             self.init(base_user)
 
+    def __repr__(self):
+        # TODO: Surely there has to be a better way of doing this...
+        # TODO: Make this look less ugly
+        return 'MALAffinity(base_user={}, round={})' \
+               .format(repr(self._base_user), repr(self._round))
+
     def _retrieve_scores(self, username):
         """
         Retrieve a users' animelist scores
