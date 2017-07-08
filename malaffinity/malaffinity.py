@@ -4,18 +4,15 @@ malaffinity class
 
 
 import copy
-
-import bs4
-import requests
 import statistics
 
 from . import calcs
+from . import endpoints
 
 # Lines are getting too long, best to import the exceptions
 # manually, instead of just importing `exceptions`
 from .exceptions import (
-    InvalidUsernameError, NoAffinityError,
-    MALRateLimitExceededError
+    NoAffinityError,
 )
 
 
@@ -26,8 +23,6 @@ class MALAffinity:
     Stores a `base user`s' scores, to be compared with
     other users' scores
     """
-
-    _URL = "https://myanimelist.net/malappinfo.php"
 
     def __init__(self, base_user=None, round=False):
         """
@@ -58,70 +53,6 @@ class MALAffinity:
         return 'MALAffinity(base_user={}, round={})' \
                .format(repr(self._base_user), repr(self._round))
 
-    def _retrieve_scores(self, username):
-        """
-        Retrieve a users' animelist scores
-
-        Only anime scored > 0 will be returned, and all
-        PTW entries are ignored, even if they are scored
-
-        :param str username: MAL username
-        :return: `id`, `score` pairs
-        :rtype: list
-        """
-
-        params = {
-            "u": username,
-            "status": "all",
-            "type": "anime"
-        }
-
-        resp = requests.request("GET", self._URL, params=params)
-
-        # Check if MAL's hitting you with a 429 and raise an exception if so.
-        if resp.status_code == requests.codes.too_many_requests:
-            raise MALRateLimitExceededError("MAL rate limit exceeded")
-
-        resp = bs4.BeautifulSoup(resp.content, "xml")
-
-        all_anime = resp.find_all("anime")
-
-        # Check if there's actually any anime being returned to us.
-        # If not, user probably doesn't exist.
-        # MAL should do a better job of highlighting this, but eh.
-        if not len(all_anime):
-            raise InvalidUsernameError("User `{}` does not exist"
-                                       .format(username))
-
-        scores = []
-
-        for anime in all_anime:
-            # See if anime is on their PTW and move on if so.
-            # This makes sure rated anime that the user hasn't
-            # seen does not get added to `scores`.
-            # Why do people even do this?
-            # PTW == status "6"
-            if anime.my_status.string == "6":
-                continue
-
-            id = anime.series_animedb_id.string
-            id = int(id)
-
-            score = anime.my_score.string
-            # Might need changing if MAL allows float scores.
-            score = int(score)
-
-            if score > 0:
-                scores.append({"id": id, "score": score})
-
-        # Check if there's actually anything in scores.
-        # If not, user probably doesn't have any rated anime.
-        if not len(scores):
-            raise NoAffinityError("User `{}` hasn't rated any anime"
-                                  .format(username))
-
-        return scores
-
     # TODO: Rename this?
     def init(self, base_user):
         """
@@ -137,7 +68,8 @@ class MALAffinity:
 
         self._base_user = base_user
 
-        base_list = self._retrieve_scores(base_user)
+        # Modify this for multiple services support when the time comes
+        base_list = endpoints.myanimelist(base_user)
 
         for anime in base_list:
             id = anime["id"]
@@ -173,7 +105,7 @@ class MALAffinity:
         # Create a local, deep-copy of the scores
         scores = copy.deepcopy(self._base_scores)
 
-        their_list = self._retrieve_scores(username)
+        their_list = endpoints.myanimelist(username)
 
         for anime in their_list:
             id = anime["id"]
