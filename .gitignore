@@ -2,7 +2,9 @@
 .pypirc
 .c9/
 build/
+env/
 dist/
+venv/
 *.egg-info
 *.egg
 *.zip
