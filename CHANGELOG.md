@@ -4,7 +4,7 @@
 **TODO:**
 * Proper Sphinx docstrings
 
-## [UNRELEASED] v2.1.0 (2017-07-**??**)
+## v2.1.0 (2017-07-08)
 * Fix a typo in the `calcs.pearson` docstring, which incorrectly said 
   the `:rtype` was a bool
 * Use the `find_all` BS4 method instead of `findAll`
