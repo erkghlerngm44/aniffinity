@@ -1,6 +1,9 @@
 # Changelog
 
 
+**TODO:**
+* Proper Sphinx docstrings
+
 ## [UNRELEASED] v2.1.0 (2017-07-**??**)
 * Fix a typo in the `calcs.pearson` docstring, which incorrectly said 
   the `:rtype` was a bool
@@ -14,9 +17,12 @@
 * Remove the useless kwargs from `MALAffinity._retrieve_scores`
 * Make the `statistics` pypi package a requirement for all Python versions
 * Add a `__repr__` to the `MALAffinity` class
-
-**TODO:**
-* Proper Sphinx docstrings
+* Move the `_retrieve_scores` method in the `MALAffinity` class 
+  to its own file (`endpoints.py`)
+  * It was meant to be in its own file since v2.0.0, but I overlooked it
+* Create a `const.py` file for constants
+* Add a `# NOQA` comment to the `.__about__` imports in `__init__`, to suppress
+  the F401 flake8 warnings
  
 ## v2.0.0 (2017-06-20)
 * Move the MALAffinity class to its own separate file (`malaffinity.malaffinity`)
