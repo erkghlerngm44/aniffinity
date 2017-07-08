@@ -1,7 +1,6 @@
 from setuptools import setup
 from codecs import open
 from os import path
-from sys import version_info
 
 
 here = path.abspath(path.dirname(__file__))
