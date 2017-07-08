@@ -9,8 +9,6 @@ import statistics
 from . import calcs
 from . import endpoints
 
-# Lines are getting too long, best to import the exceptions
-# manually, instead of just importing `exceptions`
 from .exceptions import (
     NoAffinityError,
 )
@@ -39,7 +37,6 @@ class MALAffinity:
         :type round: int or False
         """
 
-        # Will get overridden in `init` function.
         self._base_user = None
         self._base_scores = {}
         self._round = round
@@ -53,7 +50,6 @@ class MALAffinity:
         return 'MALAffinity(base_user={}, round={})' \
                .format(repr(self._base_user), repr(self._round))
 
-    # TODO: Rename this?
     def init(self, base_user):
         """
         Get the base users' list and create the `base scores`
@@ -94,15 +90,11 @@ class MALAffinity:
         """
 
         # Check if there's actually a base user to compare scores with.
-        # `init` will assign the username to the `self._base_user` var and
-        # populate the `self._base_scores` dict when it retrieves the
-        # base user's scores, so we can test if those vars have been set.
         if not self._base_user or not self._base_scores:
-            # Too lazy to make a custom exception for this.
             raise Exception("No base user has been specified. Call the `init` "
                             "function to retrieve a base users' scores")
 
-        # Create a local, deep-copy of the scores
+        # Create a local, deep-copy of the scores for modification
         scores = copy.deepcopy(self._base_scores)
 
         their_list = endpoints.myanimelist(username)

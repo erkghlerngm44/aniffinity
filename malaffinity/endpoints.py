@@ -12,6 +12,7 @@ from .exceptions import (
 )
 
 
+# TODO: Make it easier for other services to be added in
 def myanimelist(username):
     """
     Retrieve a users' animelist scores from MAL
