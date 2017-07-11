@@ -1,0 +1,18 @@
+after_success: coveralls
+cache: pip
+install:
+  - pip install --upgrade pip
+  - pip install --upgrade coverage coveralls flake8 pytest sphinx sphinx_rtd_theme
+  - pip install .
+language: python
+python:
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+  - 3.6
+sudo: false
+script:
+  - flake8
+  - sphinx-build -W docs/ /tmp/foo
+  - coverage run --source malaffinity -m py.test -v
