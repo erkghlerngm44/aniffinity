@@ -3,7 +3,7 @@ import sys
 
 sys.path.insert(0, "..")
 
-from malaffinity import __about__
+from malaffinity import __about__  # NOQA
 
 now = datetime.datetime.now()
 
@@ -38,15 +38,6 @@ pygments_style = "sphinx"
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
-# html_sidebars = {
-#     "**": [
-#         "about.html",
-#         "navigation.html",
-#         "relations.html",  # needs 'show_related': True theme option to display
-#         "searchbox.html",
-#         # "donate.html",
-#     ]
-# }
 
 
 htmlhelp_basename = project
@@ -58,6 +49,7 @@ def skip(app, what, name, obj, skip, options):
     if name == "__init__":
         return False
     return skip
+
 
 def setup(app):
     app.connect("autodoc-skip-member", skip)
