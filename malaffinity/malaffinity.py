@@ -31,7 +31,7 @@ class MALAffinity:
 
     The instance, stored in ``ma``, will now hold ``USER_1``'s scores.
 
-    :meth:`.comparsion` and :meth:`.calculate_affinity` can now be called,
+    :meth:`.comparison` and :meth:`.calculate_affinity` can now be called,
     to perform operations on this data.
     """
 
