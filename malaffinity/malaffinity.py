@@ -18,22 +18,49 @@ class MALAffinity:
     """
     The MALAffinity class
 
-    Stores a `base user`s' scores, to be compared with
-    other users' scores
+    The purpose of this class is to store a "base user"'s scores, so
+    affinity with other users can be calculated easily.
+
+    This class can be initialised as follows:
+
+    .. code-block:: python
+
+        from malaffinity import MALAffinity
+
+        ma = MALAffinity("USER_1")
+
+    The instance, stored in ``ma``, will now hold ``USER_1``'s scores.
+
+    :meth:`.comparsion` and :meth:`.calculate_affinity` can now be called,
+    to perform operations on this data.
     """
 
     def __init__(self, base_user=None, round=False):
         """
         Initialise an instance of `MALAffinity`
 
-        If `base_user` is `None`, the `init` function MUST be
-        called sometime after initialisation, with a `base_user`
-        provided, before affinity calculations take place
+        .. note:: To avoid dealing with dodgy globals, this class MAY
+                  be initialised without the ``base_user`` argument,
+                  in the global scope (if you wish), but :meth:`.init`
+                  MUST be called sometime afterwards, with a ``base_user``
+                  passed, before affinity calculations take place.
+
+                  Example:
+
+                  .. code-block:: python
+
+                      from malaffinity import MALAffinity
+
+                      ma = MALAffinity()
+
+                      ma.init("USER_1")
+
+                  The class should then be good to go.
 
         :param base_user: Base MAL username
         :type base_user: str or None
-
-        :param round: Decimal places to round affinity values to
+        :param round: Decimal places to round affinity values to.
+            Specify ``False`` for no rounding
         :type round: int or False
         """
 
@@ -52,12 +79,8 @@ class MALAffinity:
 
     def init(self, base_user):
         """
-        Get the base users' list and create the `base scores`
-        dict that other people's scores will be compared to
-
-        Base scores will be saved to self._base_scores
-        You may want to check that this is populated after
-        running this function, before running anything else
+        The method that gets called to retrieve a "base user"'s list,
+        and store it in :attr:`._base_scores`
 
         :param str base_user: Base users' username
         """
@@ -77,9 +100,37 @@ class MALAffinity:
 
     def comparison(self, username):
         """
-        TODO
-        :param username: 
-        :return: 
+        Get a comparison of scores between the "base user"
+        and another user (``username``)
+
+        A Key-Value returned will typically consist of the following:
+
+        .. code-block:: json
+
+            {
+                ANIME_ID: [BASE_USER_SCORE, OTHER_USER_SCORE],
+                ...
+            }
+
+        Example:
+
+        .. code-block:: json
+
+            {
+                5680: [10, 9],
+                7791: [10, 10],
+                9617: [10, 10],
+                ...
+            }
+
+        .. warning:: The JSON returned isn't valid JSON. The keys are stored
+                     as integers instead of the JSON standard of strings.
+                     You'll want to force the keys to strings if you'll be
+                     using the ids elsewhere.
+
+        :param str username: The username to compare the base users' scores to
+        :return: Key-value pairs as described above
+        :rtype: dict
         """
 
         # Check if there's actually a base user to compare scores with.
@@ -115,14 +166,22 @@ class MALAffinity:
 
     def calculate_affinity(self, username):
         """
-        Get the affinity between the base user and another user
+        Get the affinity between the "base user" and
+        another user (``username``)
 
-        Will either return the unrounded Pearson's correlation
-        coefficient * 100, or rounded value, depending on the
-        value of the `self._round` variable
+        .. note:: The data returned will be a tuple, with the affinity
+                  and shared rated anime. This can easily be separated
+                  as follows:
 
-        :param str username: The username to compare the base users' scores to
+                  .. code-block:: python
 
+                      affinity, shared = ma.calculate_affinity("USER_2")
+
+        .. note:: The final affinity value may or may not be rounded,
+                  depending on the value of :attr:`._round`, set at
+                  class initialisation.
+
+        :param str username: The username to calculate affinity with
         :return: (float affinity, int shared)
         :rtype: tuple
         """

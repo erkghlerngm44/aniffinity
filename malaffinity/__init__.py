@@ -22,10 +22,9 @@ def calculate_affinity(user1, user2, round=False):
 
     :param str user1: First user
     :param str user2: Second user
-
-    :param round: Decimal places to round affinity values to
+    :param round: Decimal places to round affinity values to.
+        Specify ``False`` for no rounding
     :type round: int or False
-
     :return: (float affinity, int shared)
     :rtype: tuple
     """
