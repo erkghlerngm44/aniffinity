@@ -16,3 +16,4 @@ script:
   - flake8
   - sphinx-build -W docs/ /tmp/foo
   - coverage run --source malaffinity -m py.test -v
+
