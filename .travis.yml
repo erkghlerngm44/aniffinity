@@ -7,13 +7,9 @@ install:
 language: python
 python:
   - 2.7
-  - 3.3
-  - 3.4
-  - 3.5
   - 3.6
 sudo: false
 script:
   - flake8
   - sphinx-build -W docs/ /tmp/foo
   - coverage run --source malaffinity -m py.test -v
-
