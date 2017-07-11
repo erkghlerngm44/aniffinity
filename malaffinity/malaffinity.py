@@ -101,9 +101,9 @@ class MALAffinity:
     def comparison(self, username):
         """
         Get a comparison of scores between the "base user"
-        and another user (``username``)
+        and ``username``
 
-        A Key-Value returned will typically consist of the following:
+        A Key-Value returned will consist of the following:
 
         .. code-block:: none
 
@@ -166,8 +166,7 @@ class MALAffinity:
 
     def calculate_affinity(self, username):
         """
-        Get the affinity between the "base user" and
-        another user (``username``)
+        Get the affinity between the "base user" and ``username``
 
         .. note:: The data returned will be a tuple, with the affinity
                   and shared rated anime. This can easily be separated
