@@ -1,6 +1,7 @@
 *.pyc
 .pypirc
 .c9/
+_build/
 build/
 env/
 dist/
