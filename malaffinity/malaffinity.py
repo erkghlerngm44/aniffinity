@@ -71,7 +71,7 @@ class MALAffinity:
         if base_user:
             self.init(base_user)
 
-    def __repr__(self):
+    def __repr__(self):  # pragma: no cover
         # TODO: Surely there has to be a better way of doing this...
         # TODO: Make this look less ugly
         return 'MALAffinity(base_user={}, round={})' \

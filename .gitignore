@@ -1,6 +1,8 @@
 *.pyc
 .pypirc
+.coverage
 .c9/
+.idea/
 _build/
 build/
 env/

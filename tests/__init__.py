@@ -1,0 +1,1 @@
+"""malaffinity test suite"""

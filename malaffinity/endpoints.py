@@ -34,7 +34,7 @@ def myanimelist(username):
     resp = requests.request("GET", ENDPOINT_URLS.MYANIMELIST, params=params)
 
     # Check if MAL's hitting you with a 429 and raise an exception if so.
-    if resp.status_code == requests.codes.too_many_requests:
+    if resp.status_code == 429:  # pragma: no cover
         raise MALRateLimitExceededError("MAL rate limit exceeded")
 
     resp = bs4.BeautifulSoup(resp.content, "xml")
