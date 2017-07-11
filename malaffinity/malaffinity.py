@@ -105,7 +105,7 @@ class MALAffinity:
 
         A Key-Value returned will typically consist of the following:
 
-        .. code-block:: json
+        .. code-block:: none
 
             {
                 ANIME_ID: [BASE_USER_SCORE, OTHER_USER_SCORE],
@@ -114,7 +114,7 @@ class MALAffinity:
 
         Example:
 
-        .. code-block:: json
+        .. code-block:: none
 
             {
                 5680: [10, 9],
