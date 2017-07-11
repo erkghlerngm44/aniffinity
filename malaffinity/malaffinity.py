@@ -75,18 +75,11 @@ class MALAffinity:
 
         return self
 
-    def calculate_affinity(self, username):
+    def comparison(self, username):
         """
-        Get the affinity between the base user and another user
-
-        Will either return the unrounded Pearson's correlation
-        coefficient * 100, or rounded value, depending on the
-        value of the `self._round` variable
-
-        :param str username: The username to compare the base users' scores to
-
-        :return: (float affinity, int shared)
-        :rtype: tuple
+        TODO
+        :param username: 
+        :return: 
         """
 
         # Check if there's actually a base user to compare scores with.
@@ -117,6 +110,24 @@ class MALAffinity:
             raise NoAffinityError("Shared rated anime count between "
                                   "`{}` and `{}` is less than eleven"
                                   .format(self._base_user, username))
+
+        return scores
+
+    def calculate_affinity(self, username):
+        """
+        Get the affinity between the base user and another user
+
+        Will either return the unrounded Pearson's correlation
+        coefficient * 100, or rounded value, depending on the
+        value of the `self._round` variable
+
+        :param str username: The username to compare the base users' scores to
+
+        :return: (float affinity, int shared)
+        :rtype: tuple
+        """
+
+        scores = self.comparison(username)
 
         # Sort multiple rows of scores into two arrays for calculations.
         # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
