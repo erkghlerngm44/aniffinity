@@ -37,24 +37,24 @@ Examples
 
 .. code-block:: python
 
-   from malaffinity import MALAffinity
+    from malaffinity import MALAffinity
 
-   ma = MALAffinity("YOUR_USERNAME")
+    ma = MALAffinity("YOUR_USERNAME")
 
-   affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
+    affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
-   print(affinity)
-   # 79.00545465639877
-   print(shared)
-   # 82
+    print(affinity)
+    # 79.00545465639877
+    print(shared)
+    # 82
 
 .. code-block:: python
 
-   import malaffinity
+    import malaffinity
 
-   affinity, shared = malaffinity.calculate_affinity("YOUR_USERNAME", "OTHER_USERNAME")
+    affinity, shared = malaffinity.calculate_affinity("YOUR_USERNAME", "OTHER_USERNAME")
 
-   # ...
+    # ...
 
 
 Documentation
