@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-v2.2.0 (2017-07-??)
+v2.2.0 (2017-07-12)
 -------------------
 
 * Create the ``comparison`` method, and have ``calculate_affinity`` use that
