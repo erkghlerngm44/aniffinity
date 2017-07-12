@@ -1,10 +1,10 @@
 |forthebadge1| |forthebadge2| |forthebadge3|
 
-|travis| |coveralls| |rtd|
-
 
 malaffinity
 ===========
+
+|travis| |coveralls| |rtd|
 
 Calculate affinity between MyAnimeList users
 
@@ -32,6 +32,31 @@ Dependencies
 * Requests
 
 
+Examples
+--------
+
+.. code-block:: python
+
+   from malaffinity import MALAffinity
+
+   ma = MALAffinity("YOUR_USERNAME")
+
+   affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
+
+   print(affinity)
+   # 79.00545465639877
+   print(shared)
+   # 82
+
+.. code-block:: python
+
+   import malaffinity
+
+   affinity, shared = malaffinity.calculate_affinity("YOUR_USERNAME", "OTHER_USERNAME")
+
+   # ...
+
+
 Documentation
 -------------
 
@@ -44,8 +69,8 @@ Legal Stuff
 Licensed under MIT. See `LICENSE <LICENSE>`__ for more info.
 
 
-Cute Cat Gif
-------------
+Cat Gif
+-------
 
 .. figure:: https://i.imgur.com/sq42SnU.gif
    :alt:
