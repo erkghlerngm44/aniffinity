@@ -47,4 +47,3 @@ def dummy_list_to_base_scores():
         scores[entry["id"]] = [entry["score"]]
 
     return scores
-
