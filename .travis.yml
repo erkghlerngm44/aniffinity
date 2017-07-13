@@ -1,6 +1,7 @@
 after_success: coveralls
 cache: pip
 install:
+  - yes | pip uninstall py pytest mock
   - pip install --upgrade pip
   - pip install --upgrade coverage coveralls flake8 sphinx sphinx_rtd_theme
   - pip install .
