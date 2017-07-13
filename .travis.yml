@@ -2,7 +2,7 @@ after_success: coveralls
 cache: pip
 install:
   - pip install --upgrade pip
-  - pip install --upgrade coverage coveralls flake8 pytest sphinx sphinx_rtd_theme
+  - pip install --upgrade coverage coveralls flake8 mock pytest sphinx sphinx_rtd_theme
   - pip install .
 language: python
 python:
