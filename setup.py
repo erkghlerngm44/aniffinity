@@ -55,7 +55,7 @@ settings = {
     "test_suite": "tests",
 
     "tests_require": [
-        "mock >=2.0, <3",
+        "mock >=1.0, <3",
         "pytest >=3.1, <4",
     ]
 }
