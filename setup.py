@@ -48,6 +48,15 @@ settings = {
         # Meh, fuck it. Should just default to the inbuilt
         # if it exists, otherwise it'll use this
         "statistics"
+    ],
+
+    "setup_requires": ["pytest-runner"],
+
+    "test_suite": "tests",
+
+    "tests_require": [
+        "mock",
+        "pytest",
     ]
 }
 

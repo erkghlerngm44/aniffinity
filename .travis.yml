@@ -2,7 +2,7 @@ after_success: coveralls
 cache: pip
 install:
   - pip install --upgrade pip
-  - pip install --upgrade coverage coveralls flake8 mock pytest sphinx sphinx_rtd_theme
+  - pip install --upgrade coverage coveralls flake8 sphinx sphinx_rtd_theme
   - pip install .
 language: python
 python:
@@ -12,4 +12,4 @@ sudo: false
 script:
   - flake8
   - sphinx-build -W docs/ /tmp/foo
-  - coverage run --source malaffinity -m py.test -v
+  - coverage run --source malaffinity setup.py test
