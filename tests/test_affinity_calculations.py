@@ -1,10 +1,11 @@
 import time
 
+import mock
+
 import malaffinity
 
 from . import const
 from . import mocks
-from .mocks import hook_mock_endpoint_and_run_function
 
 
 def test_unrounded_affinity_with_dummy():
@@ -17,13 +18,13 @@ def test_unrounded_affinity_with_dummy():
     # Get the test list
     ma = malaffinity.MALAffinity(const.TEST_USERNAME, round=False)
 
-    def funct():
+    with mock.patch("malaffinity.endpoints.myanimelist") as MockClass:
+        MockClass.return_value = mocks.mock_myanimelist_endpoint()
+
         affinity, shared = ma.calculate_affinity("DUMMY_USER")
 
         assert affinity == const.AFFINITY_WITH_DUMMY
         assert shared == const.SHARED_WITH_DUMMY
-
-    hook_mock_endpoint_and_run_function(funct, mocks.mock_myanimelist_endpoint)
 
 
 def test_rounded_affinity_with_dummy():
@@ -35,27 +36,27 @@ def test_rounded_affinity_with_dummy():
 
     ma = malaffinity.MALAffinity(const.TEST_USERNAME, round=2)
 
-    def funct():
+    with mock.patch("malaffinity.endpoints.myanimelist") as MockClass:
+        MockClass.return_value = mocks.mock_myanimelist_endpoint()
+
         affinity, shared = ma.calculate_affinity("DUMMY_USER")
 
         assert affinity == round(const.AFFINITY_WITH_DUMMY, 2)
         assert shared == const.SHARED_WITH_DUMMY
 
-    hook_mock_endpoint_and_run_function(funct, mocks.mock_myanimelist_endpoint)
 
-
-def test_affinity_with_self():
+@mock.patch("malaffinity.endpoints.myanimelist")
+def test_affinity_with_self(mock_class):
     """
     Test affinity with self, by calling `malaffinity.calculate_affinity`
     with the same username twice. Simulate this with a dummy
     to avoid repeated MAL requests
     """
 
-    def funct():
-        affinity, shared = \
-            malaffinity.calculate_affinity("DUMMY_USER", "DUMMY_USER")
+    mock_class.return_value = mocks.mock_myanimelist_endpoint()
 
-        assert affinity == 100.0
-        assert shared == len(mocks.DUMMY_LIST)
+    affinity, shared = \
+        malaffinity.calculate_affinity("DUMMY_USER", "DUMMY_USER")
 
-    hook_mock_endpoint_and_run_function(funct, mocks.mock_myanimelist_endpoint)
+    assert affinity == 100.0
+    assert shared == len(mocks.DUMMY_LIST)

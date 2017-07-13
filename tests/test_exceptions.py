@@ -1,12 +1,12 @@
 import time
 
+import mock
 import pytest
 
 import malaffinity
 
 # from . import const
 from . import mocks
-from .mocks import hook_mock_endpoint_and_run_function
 
 
 exceptions = malaffinity.exceptions
@@ -46,15 +46,13 @@ def test_exception__not_enough_shared():
     ma._base_user = "DUMMY_USER"
     ma._base_scores = mocks.dummy_list_to_base_scores()
 
-    def funct():
+    with mock.patch("malaffinity.endpoints.myanimelist") as MockClass:
+        MockClass.return_value = mocks.mock_mini_myanimelist_endpoint()
+
         with pytest.raises(exceptions.NoAffinityError) as excinfo:
             ma.calculate_affinity("DUMMY_USER_2")
 
         assert "shared rated anime count" in str(excinfo.value).lower()
-
-    hook_mock_endpoint_and_run_function(
-        funct, mocks.mock_mini_myanimelist_endpoint
-    )
 
 
 def test_exception__no_rated_anime():
@@ -89,12 +87,10 @@ def test_exception__zero_stdev():
     ma._base_user = "DUMMY_USER"
     ma._base_scores = mocks.dummy_list_to_base_scores()
 
-    def funct():
+    with mock.patch("malaffinity.endpoints.myanimelist") as MockClass:
+        MockClass.return_value = mocks.mock_stdev_zero_myanimelist_endpoint()
+
         with pytest.raises(exceptions.NoAffinityError) as excinfo:
             ma.calculate_affinity("DUMMY_USER_2")
 
         assert "standard deviation of" in str(excinfo.value).lower()
-
-    hook_mock_endpoint_and_run_function(
-        funct, mocks.mock_stdev_zero_myanimelist_endpoint
-    )

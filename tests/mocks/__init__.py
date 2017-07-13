@@ -1,5 +1,4 @@
 import copy
-import malaffinity
 
 
 # dummy user's list
@@ -23,21 +22,15 @@ DUMMY_LIST = [
 ]
 
 
-def mock_myanimelist_endpoint(mock_username):
-    assert mock_username
-
+def mock_myanimelist_endpoint():
     return DUMMY_LIST
 
 
-def mock_mini_myanimelist_endpoint(mock_username):
-    assert mock_username
-
+def mock_mini_myanimelist_endpoint():
     return DUMMY_LIST[:5]
 
 
-def mock_stdev_zero_myanimelist_endpoint(mock_username):
-    assert mock_username
-
+def mock_stdev_zero_myanimelist_endpoint():
     # Avoid messing up the dummylist
     new_dummy = copy.deepcopy(DUMMY_LIST)
 
@@ -55,32 +48,3 @@ def dummy_list_to_base_scores():
 
     return scores
 
-
-def hook_mock_endpoint_and_run_function(function, mock_endpoint):
-    """
-    Override `malaffinity.endpoints.myanimelist` with `mock_endpoint`
-    and execute `function`, which makes use of the endpoint
-
-    Note: If `function` fails here, any other tests succeeding it,
-    that are using this endpoint will also fail, as the endpoint
-    won't revert back from `mock_endpoint` to the original
-
-    :param function: Function to run after `mock_endpoint` hooked up
-    :param mock_endpoint: Mock endpoint to override the actual endpoint with
-    :return: whatever `function` returns
-    """
-
-    # Create a backup of the endpoint to revert to
-    _myanimelist_endpoint = malaffinity.endpoints.myanimelist
-
-    # Override the endpoint with the mock
-    malaffinity.endpoints.myanimelist = mock_endpoint
-
-    # Run funct
-    ret = function()
-
-    # Reset
-    malaffinity.endpoints.myanimelist = _myanimelist_endpoint
-
-    # Bleh
-    return ret
