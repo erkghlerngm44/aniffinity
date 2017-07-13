@@ -42,21 +42,21 @@ settings = {
     "packages": ["malaffinity"],
 
     "install_requires": [
-        "bs4",
-        "lxml",
-        "requests",
+        "beautifulsoup4 >=4.6, <5",
+        "lxml >=3.8, <4",
+        "requests >=2.18, <3",
         # Meh, fuck it. Should just default to the inbuilt
         # if it exists, otherwise it'll use this
-        "statistics"
+        "statistics >=1.0, <2"
     ],
 
-    "setup_requires": ["pytest-runner"],
+    "setup_requires": ["pytest-runner >=2.11, <3"],
 
     "test_suite": "tests",
 
     "tests_require": [
-        "mock",
-        "pytest",
+        "mock >=2.0, <3",
+        "pytest >=3.1, <4",
     ]
 }
 
