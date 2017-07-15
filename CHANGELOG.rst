@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+[UNRELEASED] v2.2.1 (2017-07-??)
+--------------------------------
+
+* Fix tests up to use the ``mock`` module, and be less hacky
+* Hook tests up to ``setup.py``, so ``python setup.py test`` can be called,
+  for the test suite to run
+* Add version constraints in for dependencies
+
+
 v2.2.0 (2017-07-12)
 -------------------
 
