@@ -41,6 +41,8 @@ settings = {
 
     "packages": ["malaffinity"],
 
+    "setup_requires": ["pytest-runner >=2.11, <3"],
+
     "install_requires": [
         "beautifulsoup4 >=4.6, <5",
         "lxml >=3.8, <4",
@@ -61,8 +63,6 @@ settings = {
             "pytest >=3.1, <4",
         ]
     },
-
-    "setup_requires": ["pytest-runner >=2.11, <3"],
 
     "test_suite": "tests",
 
