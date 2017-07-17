@@ -2,6 +2,7 @@
 .pypirc
 .coverage
 .c9/
+.eggs/
 .idea/
 _build/
 build/
