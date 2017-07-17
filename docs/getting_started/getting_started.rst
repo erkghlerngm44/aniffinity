@@ -7,19 +7,19 @@ Install
 
 .. code-block:: bash
 
-    pip install malaffinity
+    $ pip install malaffinity
 
 Alternatively, download this repo and run:
 
 .. code-block:: bash
 
-    python setup.py install
+    $ python setup.py install
 
 To use the development version (please don't), run:
 
 .. code-block:: bash
 
-    pip install --upgrade https://github.com/erkghlerngm44/malaffinity/archive/master.zip
+    $ pip install --upgrade https://github.com/erkghlerngm44/malaffinity/archive/master.zip
 
 
 Dependencies
@@ -35,8 +35,8 @@ These should be installed when you install this package, so no need to worry abo
 
 .. code-block:: bash
 
-    pip install --upgrade pip
-    pip install --upgrade lxml
+    $ pip install --upgrade pip
+    $ pip install --upgrade lxml
 
 If all else fails and you're on Windows, download the
 `wheel <http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml>`__
@@ -44,4 +44,4 @@ yourself and:
 
 .. code-block:: bash
 
-    pip install /path/to/wheel.whl
+    $ pip install /path/to/wheel.whl
