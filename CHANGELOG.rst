@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-[UNRELEASED] v2.2.1 (2017-07-??)
---------------------------------
+v2.2.1 (2017-07-17)
+-------------------
 
 * Fix tests up to use the ``mock`` module, and be less hacky
 * Hook tests up to ``setup.py``, so ``python setup.py test`` can be called,
@@ -92,11 +92,13 @@ v1.0.2 (2017-04-17)
 * Better handling for numpy.float64 => float conversion
 * Update docstrings to include types
 
+
 v1.0.1 (2017-04-12)
 -------------------
 
 * Don't count rated anime on a user's PTW. MAL didn't count this,
   so our affinity values were a bit off when a user did this
+
 
 v1.0.0 (2017-04-09)
 -------------------
