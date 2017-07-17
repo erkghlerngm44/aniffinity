@@ -45,3 +45,26 @@ yourself and:
 .. code-block:: bash
 
     $ pip install /path/to/wheel.whl
+
+
+Test Suite
+----------
+
+To install the dependencies needed for the test suite, run:
+
+.. code-block:: bash
+
+    $ pip install .[test]
+
+It is advised to run the test suite through ``coverage``, so a
+coverage report can be generated as well. To do this, run:
+
+.. code-block:: bash
+
+    $ coverage run --source malaffinity setup.py test
+
+The tests should then run. You can view the coverage report by running:
+
+.. code-block:: bash
+
+    $ coverage report
