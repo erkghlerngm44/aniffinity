@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+[UNRELEASED] v2.2.3 (2017-07-??)
+--------------------------------
+
+* Move test dependencies to ``extras_require`` in setup.py, and have
+  ``tests_require`` mirror that
+* Add documentation dependencies to ``extras_require`` in setup.py
+* **???**
+
+
 v2.2.2 (2017-07-17)
 -------------------
 
