@@ -51,6 +51,10 @@ settings = {
     ],
 
     "extras_require": {
+        "doc": [
+            "sphinx >=1.6, <2",
+            "sphinx_rtd_theme",
+        ],
         "test": [
             "coverage >=4.4, <5",
             "mock >=2.0, <3",
