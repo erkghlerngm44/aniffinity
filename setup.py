@@ -50,15 +50,23 @@ settings = {
         "statistics >=1.0, <2"
     ],
 
+    "extras_require": {
+        "test": [
+            "coverage >=4.4, <5",
+            "mock >=2.0, <3",
+            "pytest >=3.1, <4",
+        ]
+    },
+
     "setup_requires": ["pytest-runner >=2.11, <3"],
 
     "test_suite": "tests",
 
-    "tests_require": [
-        "mock >=2.0, <3",
-        "pytest >=3.1, <4",
-    ]
+    "tests_require": []
 }
+
+# Mirror the extras_require.test in tests_require
+settings["tests_require"].extend(settings["extras_require"]["test"])
 
 
 setup(**settings)
