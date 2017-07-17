@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+v2.2.2 (2017-07-17)
+-------------------
+
+* Have Travis deploy the package to PyPI when a release is drafted
+
+This release exists solely to test that the above is working.
+No code changes have been made.
+
+
 v2.2.1 (2017-07-17)
 -------------------
 
