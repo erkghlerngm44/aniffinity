@@ -5,7 +5,7 @@ import malaffinity
 from . import const
 
 
-def test_normal_population():
+def test_population__normal():
     """
     Population via normal methods (passing `base_user`
     to `malaffinity.MALAffinity.__init__`
@@ -19,7 +19,7 @@ def test_normal_population():
     assert len(ma._base_scores) == const.TEST_LIST_LENGTH
 
 
-def test_population_via_init():
+def test_population__init():
     """
     Population via the `init` method in `malaffinity.MALAffinity`
     """
