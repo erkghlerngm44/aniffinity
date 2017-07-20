@@ -2,13 +2,14 @@ Changelog
 =========
 
 
-[UNRELEASED] v2.2.3 (2017-07-??)
---------------------------------
+v2.2.3 (2017-07-20)
+-------------------
 
 * Move test dependencies to ``extras_require`` in setup.py, and have
   ``tests_require`` mirror that
 * Add documentation dependencies to ``extras_require`` in setup.py
-* **???**
+* Make all docstrings PEP 257 compliant
+* Add more classifiers to ``setup.py``
 
 
 v2.2.2 (2017-07-17)
