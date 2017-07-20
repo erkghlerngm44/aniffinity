@@ -1,6 +1,4 @@
-"""
-malaffinity class
-"""
+"""malaffinity class."""
 
 
 import copy
@@ -16,7 +14,7 @@ from .exceptions import (
 
 class MALAffinity:
     """
-    The MALAffinity class
+    The MALAffinity class.
 
     The purpose of this class is to store a "base user"'s scores, so
     affinity with other users can be calculated easily.
@@ -37,7 +35,7 @@ class MALAffinity:
 
     def __init__(self, base_user=None, round=False):
         """
-        Initialise an instance of `MALAffinity`
+        Initialise an instance of `MALAffinity`.
 
         .. note:: To avoid dealing with dodgy globals, this class MAY
                   be initialised without the ``base_user`` argument,
@@ -63,7 +61,6 @@ class MALAffinity:
             Specify ``False`` for no rounding
         :type round: int or False
         """
-
         self._base_user = None
         self._base_scores = {}
         self._round = round
@@ -71,7 +68,7 @@ class MALAffinity:
         if base_user:
             self.init(base_user)
 
-    def __repr__(self):  # pragma: no cover
+    def __repr__(self):  # noqa  # pragma: no cover
         # TODO: Surely there has to be a better way of doing this...
         # TODO: Make this look less ugly
         return 'MALAffinity(base_user={}, round={})' \
@@ -79,12 +76,10 @@ class MALAffinity:
 
     def init(self, base_user):
         """
-        The method that gets called to retrieve a "base user"'s list,
-        and store it in :attr:`._base_scores`
+        Retrieve a "base user"'s list, and store it in :attr:`._base_scores`.
 
         :param str base_user: Base users' username
         """
-
         self._base_user = base_user
 
         # Modify this for multiple services support when the time comes
@@ -100,8 +95,7 @@ class MALAffinity:
 
     def comparison(self, username):
         """
-        Get a comparison of scores between the "base user"
-        and ``username``
+        Get a comparison of scores between the "base user" and ``username``.
 
         A Key-Value returned will consist of the following:
 
@@ -132,7 +126,6 @@ class MALAffinity:
         :return: Key-value pairs as described above
         :rtype: dict
         """
-
         # Check if there's actually a base user to compare scores with.
         if not self._base_user or not self._base_scores:
             raise Exception("No base user has been specified. Call the `init` "
@@ -166,7 +159,7 @@ class MALAffinity:
 
     def calculate_affinity(self, username):
         """
-        Get the affinity between the "base user" and ``username``
+        Get the affinity between the "base user" and ``username``.
 
         .. note:: The data returned will be a tuple, with the affinity
                   and shared rated anime. This can easily be separated
@@ -184,7 +177,6 @@ class MALAffinity:
         :return: (float affinity, int shared)
         :rtype: tuple
         """
-
         scores = self.comparison(username)
 
         # Sort multiple rows of scores into two arrays for calculations.

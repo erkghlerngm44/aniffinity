@@ -1,6 +1,4 @@
-"""
-malaffinity calcs
-"""
+"""malaffinity calcs."""
 
 
 from statistics import pstdev, mean
@@ -10,15 +8,13 @@ from decimal import Decimal
 # Original code: https://stackoverflow.com/a/17389980
 def pearson(x, y):
     """
-    Pearson's correlation coefficient implementation,
-    without scipy or numpy
+    Pearson's correlation implementation without scipy or numpy.
 
     :param list x: Dataset x
     :param list y: Dataset y
     :return: Population pearson correlation coefficient
     :rtype: float
     """
-
     # Fix floating point shit
     x = [Decimal(i) for i in x]
     y = [Decimal(j) for j in y]

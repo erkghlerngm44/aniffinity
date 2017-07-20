@@ -1,6 +1,4 @@
-"""
-malaffinity animelist endpoints
-"""
+"""malaffinity animelist endpoints."""
 
 import bs4
 import requests
@@ -15,16 +13,15 @@ from .exceptions import (
 # TODO: Make it easier for other services to be added in
 def myanimelist(username):
     """
-    Retrieve a users' animelist scores from MAL
+    Retrieve a users' animelist scores from MAL.
 
     Only anime scored > 0 will be returned, and all
-    PTW entries are ignored, even if they are scored
+    PTW entries are ignored, even if they are scored.
 
     :param str username: MAL username
     :return: `id`, `score` pairs
     :rtype: list
     """
-
     params = {
         "u": username,
         "status": "all",

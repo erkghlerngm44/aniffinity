@@ -1,6 +1,4 @@
-"""
-malaffinity config
-"""
+"""malaffinity config."""
 
 
 __all__ = [
