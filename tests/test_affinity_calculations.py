@@ -8,7 +8,7 @@ from . import const
 from . import mocks
 
 
-def test_unrounded_affinity_with_dummy():
+def test_affinity__unrounded_with_dummy():
     """
     Test affinity with DUMMY_LIST
     """
@@ -27,7 +27,7 @@ def test_unrounded_affinity_with_dummy():
         assert shared == const.SHARED_WITH_DUMMY
 
 
-def test_rounded_affinity_with_dummy():
+def test_affinity__rounded_with_dummy():
     """
     Test affinity with DUMMY_LIST, but rounded
     """
@@ -46,7 +46,7 @@ def test_rounded_affinity_with_dummy():
 
 
 @mock.patch("malaffinity.endpoints.myanimelist")
-def test_affinity_with_self(mock_class):
+def test_affinity__with_self(mock_class):
     """
     Test affinity with self, by calling `malaffinity.calculate_affinity`
     with the same username twice. Simulate this with a dummy
