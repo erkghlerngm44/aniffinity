@@ -12,7 +12,7 @@ sudo: false
 script:
   - flake8
   - pydocstyle malaffinity
-  - sphinx-build -W docs/ /tmp/foo
+  - sphinx-build -W docs/ /tmp/build
   - coverage run --source malaffinity setup.py test
 deploy:
   provider: pypi
