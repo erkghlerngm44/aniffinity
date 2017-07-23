@@ -12,3 +12,4 @@ venv/
 *.egg-info
 *.egg
 *.zip
+.coverage
