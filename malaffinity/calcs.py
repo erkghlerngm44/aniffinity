@@ -26,7 +26,7 @@ def pearson(x, y):
     sx = [i ** 2 for i in xm]
     sy = [j ** 2 for j in ym]
 
-    num = sum([a * b for a, b in list(zip(xm, ym))])
+    num = sum([a * b for a, b in zip(xm, ym)])
     den = Decimal(sum(sx) * sum(sy)).sqrt()
 
     return float(num / den)
