@@ -1,11 +1,13 @@
 """malaffinity calcs."""
 
 
-from statistics import pstdev, mean
 from decimal import Decimal
+from statistics import mean
 
 
-# Original code: https://stackoverflow.com/a/17389980
+# Original code:
+# https://github.com/scipy/scipy/blob/v0.19.1/scipy/stats/stats.py#L2975-L3021
+# (Translated into normal python)
 def pearson(x, y):
     """
     Pearson's correlation implementation without scipy or numpy.
@@ -15,28 +17,16 @@ def pearson(x, y):
     :return: Population pearson correlation coefficient
     :rtype: float
     """
-    # Fix floating point shit
-    x = [Decimal(i) for i in x]
-    y = [Decimal(j) for j in y]
-
-    sx = []
-    sy = []
-
-    # Calculate mean and stdev now so we don't have to calculate
-    # it every time we come across another value.
-    # Size and content of `x` and `y` shouldn't change so this should be fine.
     mx = Decimal(mean(x))
     my = Decimal(mean(y))
 
-    stdx = Decimal(pstdev(x))
-    stdy = Decimal(pstdev(y))
+    xm = [Decimal(i) - mx for i in x]
+    ym = [Decimal(j) - my for j in y]
 
-    for i in x:
-        sx.append((i - mx) / stdx)
+    sx = [i ** 2 for i in xm]
+    sy = [j ** 2 for j in ym]
 
-    for j in y:
-        sy.append((j - my) / stdy)
+    num = sum([a * b for a, b in zip(xm, ym)])
+    den = Decimal(sum(sx) * sum(sy)).sqrt()
 
-    r = sum([i * j for i, j in zip(sx, sy)]) / len(x)
-
-    return float(r)
+    return float(num / den)

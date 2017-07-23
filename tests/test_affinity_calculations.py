@@ -23,7 +23,11 @@ def test_affinity__unrounded_with_dummy():
 
         affinity, shared = ma.calculate_affinity("DUMMY_USER")
 
-        assert affinity == const.AFFINITY_WITH_DUMMY
+        # Technically, we're supposed to test the *unrounded* affinity,
+        # but because floating point shit is a thing, we'll just have
+        # to make do with 10dp. It's not like anyone'll need
+        # anything more accurate.
+        assert round(affinity, 10) == round(const.AFFINITY_WITH_DUMMY, 10)
         assert shared == const.SHARED_WITH_DUMMY
 
 
