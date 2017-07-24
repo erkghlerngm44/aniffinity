@@ -2,7 +2,6 @@
 
 
 import copy
-import statistics
 
 from . import calcs
 from . import endpoints
@@ -183,13 +182,6 @@ class MALAffinity:
         # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
         values = scores.values()
         scores1, scores2 = list(zip(*values))
-
-        # Check if standard deviation of scores1 or scores2 is zero. If so,
-        # affinity can't be calculated as dividing by zero is impossible
-        if not statistics.stdev(scores1) or not statistics.stdev(scores2):
-            raise NoAffinityError("Standard deviation of `{}` "
-                                  "or `{}`'s scores is zero"
-                                  .format(self._base_user, username))
 
         pearson = calcs.pearson(scores1, scores2)
         pearson *= 100
