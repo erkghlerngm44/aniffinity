@@ -4,6 +4,8 @@
 from decimal import Decimal
 from statistics import mean
 
+from .exceptions import NoAffinityError
+
 
 # Original code:
 # https://github.com/scipy/scipy/blob/v0.19.1/scipy/stats/stats.py#L2975-L3021
@@ -28,5 +30,13 @@ def pearson(x, y):
 
     num = sum([a * b for a, b in zip(xm, ym)])
     den = Decimal(sum(sx) * sum(sy)).sqrt()
+
+    # Stdev of one (or both) of the scores is zero if the
+    # denominator is zero. Dividing by zero is impossible, so
+    # just check if it is zero before we tell it to divide.
+    if den == 0.0:
+        # TODO: Better message
+        raise NoAffinityError("Standard deviation of either "
+                              "users' scores is zero")
 
     return float(num / den)
