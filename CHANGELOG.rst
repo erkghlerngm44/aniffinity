@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-UNRELEASED v2.3.0 (2017-07-??)
-------------------------------
+v2.3.0 (2017-07-25)
+-------------------
 
 * Rewrite ``calcs.pearson`` to make it 5x faster
 * Do the "standard deviation is zero" checking in ``calcs.pearson``,
