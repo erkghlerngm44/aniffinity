@@ -2,6 +2,16 @@ Changelog
 =========
 
 
+UNRELEASED v2.3.0 (2017-07-??)
+------------------------------
+
+* Rewrite ``calcs.pearson`` to make it 5x faster
+* Do the "standard deviation is zero" checking in ``calcs.pearson``,
+  so the standard deviation doesn't actually have to be calculated
+* Don't make ``MALRateLimitExceededError`` a descendant of
+  ``MALAffinityException``
+
+
 v2.2.3 (2017-07-20)
 -------------------
 
