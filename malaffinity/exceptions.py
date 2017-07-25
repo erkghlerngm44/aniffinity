@@ -1,6 +1,14 @@
 """malaffinity exceptions."""
 
 
+class MALRateLimitExceededError:  # noqa
+    """
+    Raised when MAL's blocking your request, because you're going over their
+    rate limit of one request every two seconds. Slow down and try again.
+    """
+    pass
+
+
 class MALAffinityException(Exception):  # noqa
     """Base class for MALAffinity exceptions."""
     pass
@@ -17,12 +25,4 @@ class NoAffinityError(MALAffinityException):  # noqa
 
 class InvalidUsernameError(MALAffinityException):  # noqa
     """Raised when username specified does not exist."""
-    pass
-
-
-class MALRateLimitExceededError(MALAffinityException):  # noqa
-    """
-    Raised when MAL's blocking your request, because you're going over their
-    rate limit of one request every two seconds. Slow down and try again.
-    """
     pass
