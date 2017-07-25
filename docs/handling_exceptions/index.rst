@@ -2,20 +2,34 @@ Handling Exceptions
 ===================
 
 
-.. note:: As of v2.0.0, these exceptions are now contained in the ``exceptions`` file.
-          Make sure to reference them properly if you'll be going down this path.
+The types of exceptions that can be raised when calculating affinities are:
 
-Three types of exceptions can be raised while calculating affinities:
+.. autoclass:: malaffinity.exceptions.NoAffinityError
 
-* ``NoAffinityError``: Raised when either the shared rated anime between the base user
-  and another user is less than 10, or the other user does not have any rated anime.
-* ``InvalidUsernameError``: Raised when username specified does not exist.
-* ``MALRateLimitExceededError``: Raised when MAL's blocking your request, because you're
-  going over their rate limit of one request every two seconds. Slow down and try again.
+.. autoclass:: malaffinity.exceptions.InvalidUsernameError
 
-Not much you can do about the first two, so you're best off giving up if you
-run into one of those. The third, however, rarely happens if you abide by the
-rate limit, but the following should happen in case it does:
+.. autoclass:: malaffinity.exceptions.MALRateLimitExceededError
+
+
+----
+
+
+:class:`.exceptions.NoAffinityError` and :class:`.exceptions.InvalidUsernameError`
+are descendants of:
+
+.. autoclass:: malaffinity.exceptions.MALAffinityException
+
+which means if that base exception gets raised, you know you won't be able to
+calculate affinity with that person for some reason, so your script should
+just move on.
+
+
+----
+
+
+:class:`.exceptions.MALRateLimitExceededError` rarely gets raised if you abide
+by the rate limit of one request every two seconds. If it does get raised,
+the following should happen:
 
 * Halt the script for a few seconds. I recommend five.
 * Try again.
