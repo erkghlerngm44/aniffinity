@@ -1,7 +1,7 @@
 """malaffinity exceptions."""
 
 
-class MALRateLimitExceededError:  # noqa
+class MALRateLimitExceededError(Exception):  # noqa
     """
     Raised when MAL's blocking your request, because you're going over their
     rate limit of one request every two seconds. Slow down and try again.
