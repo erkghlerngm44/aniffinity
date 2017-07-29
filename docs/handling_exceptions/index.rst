@@ -35,7 +35,11 @@ the following should happen:
 * Try again.
 * If you get roadblocked again, just give up. MAL obviously hates you.
 
-This can be achieved via something along these lines:
+
+----
+
+
+These can be achieved via something like this:
 
 .. code-block:: python
 

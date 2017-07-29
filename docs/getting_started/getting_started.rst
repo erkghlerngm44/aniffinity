@@ -68,3 +68,7 @@ The tests should then run. You can view the coverage report by running:
 .. code-block:: bash
 
     $ coverage report
+
+Though, you might want to consider letting Travis and Coveralls handle
+all that. Just send over a PR and let it do its thing. That's what they're
+there for, right?
