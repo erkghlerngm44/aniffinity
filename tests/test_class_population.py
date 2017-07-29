@@ -11,7 +11,7 @@ def test_population__normal():
     to `malaffinity.MALAffinity.__init__`
     """
 
-    time.sleep(5)
+    time.sleep(const.WAIT_BETWEEN_REQUESTS)
 
     ma = malaffinity.MALAffinity(const.TEST_USERNAME)
 
@@ -24,7 +24,7 @@ def test_population__init():
     Population via the `init` method in `malaffinity.MALAffinity`
     """
 
-    time.sleep(5)
+    time.sleep(const.WAIT_BETWEEN_REQUESTS)
 
     ma = malaffinity.MALAffinity()
 

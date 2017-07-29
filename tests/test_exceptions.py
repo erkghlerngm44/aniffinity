@@ -5,7 +5,7 @@ import pytest
 
 import malaffinity
 
-# from . import const
+from . import const
 from . import mocks
 
 
@@ -65,7 +65,7 @@ def test_exception__no_rated_anime():
 
     TODO: Make account with no rated anime
     """
-    time.sleep(5)
+    time.sleep(const.WAIT_BETWEEN_REQUESTS)
 
     # Hm, if this fails, it's probably because the user
     # specified here actually decided to rate some anime

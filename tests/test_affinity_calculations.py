@@ -13,7 +13,7 @@ def test_affinity__unrounded_with_dummy():
     Test affinity with DUMMY_LIST
     """
 
-    time.sleep(5)
+    time.sleep(const.WAIT_BETWEEN_REQUESTS)
 
     # Get the test list
     ma = malaffinity.MALAffinity(const.TEST_USERNAME, round=False)
@@ -36,7 +36,7 @@ def test_affinity__rounded_with_dummy():
     Test affinity with DUMMY_LIST, but rounded
     """
 
-    time.sleep(5)
+    time.sleep(const.WAIT_BETWEEN_REQUESTS)
 
     ma = malaffinity.MALAffinity(const.TEST_USERNAME, round=2)
 
