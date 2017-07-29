@@ -31,6 +31,8 @@ def test_exception__invalid_username():
     Test if `InvalidUsernameError` gets raised if passing
     an invalid username
     """
+    time.sleep(const.WAIT_BETWEEN_REQUESTS)
+
     with pytest.raises(exceptions.InvalidUsernameError):
         malaffinity.MALAffinity("ALDDJFfnjegenfmekfmejfefep9re9444")
 
