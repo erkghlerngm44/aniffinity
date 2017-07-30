@@ -39,7 +39,7 @@ Example 3: Round affinities to two decimal places
 
 .. code-block:: python
 
-    ma = MALAffinity("YOUR_USERNAME")
+    ma = MALAffinity("YOUR_USERNAME", round=2)
 
     affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
 
