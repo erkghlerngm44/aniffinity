@@ -5,22 +5,18 @@ sys.path.insert(0, "..")
 
 from malaffinity import __about__  # NOQA
 
-now = datetime.datetime.now()
+year = datetime.datetime.now().year
 
 
-# Common stuff
-_author = __about__.__author__
-_title = __about__.__title__
-_version = __about__.__version__
+author = __about__.__author__
+project = __about__.__title__
+release = __about__.__version__
 
 
-project = _title
-copyright = "{}, {}".format(now.year, _author)
-author = _author
+copyright = "{}, {}".format(year, author)
 
 
-version = ".".join(_version.split(".")[:2])
-release = _version
+version = ".".join(release.split(".")[:2])
 
 
 extensions = ["sphinx.ext.autodoc"]
