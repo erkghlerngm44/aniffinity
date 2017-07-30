@@ -24,6 +24,9 @@ Example 2: Basic Usage, but specifying a "base user" after class initialisation
 
     ma = MALAffinity()
 
+    # This can be done anywhere, as long as it has access to ``ma``,
+    # but MUST be done before ``calculate_affinity`` or ``comparison``
+    # are called
     ma.init("YOUR_USERNAME")
 
     affinity, shared = ma.calculate_affinity("OTHER_USERNAME")
