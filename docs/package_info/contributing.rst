@@ -70,6 +70,8 @@ To run tests, see :ref:`run-tests`.
   so any constants that can be extracted from the list and be tested against should
   be added to
   `tests/const.py <https://github.com/erkghlerngm44/malaffinity/blob/master/tests/const.py>`__.
+* A wait of ``const.WAIT_BETWEEN_REQUESTS`` must be added before any request to
+  MAL, to abide by its rate limit.
 * A mock ``malaffinity.endpoints.myanimelist`` function may be added to
   ``tests/mocks/__init__.py``, if the ``DUMMY_LIST`` needs to be modified
   in any way for a test. If this is not the case, the endpoint should be patched
