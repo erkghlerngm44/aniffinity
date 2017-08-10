@@ -103,4 +103,4 @@ The tests should then run. You can view the coverage report by running:
 
     $ coverage report
 
-You should be aiming for 100% coverage when running the tests.
+You should be aiming for 100% coverage in the tests.
