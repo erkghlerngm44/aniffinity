@@ -7,7 +7,7 @@ event that someone wants to contribute,
 send me a `pull request <https://github.com/erkghlerngm44/malaffinity/pulls>`__
 or create an `issue <https://github.com/erkghlerngm44/malaffinity/issues>`__.
 
-.. note:: This isn't my main GitHub account, so `contact <contact>`__ me on Reddit if you do
+.. note:: This isn't my main GitHub account, so :doc:`contact` me on Reddit if you do
           use those services, otherwise I probably won't see it for weeks/months.
 
 
