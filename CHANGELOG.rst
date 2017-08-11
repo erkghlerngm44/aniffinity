@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+UNRELEASED v2.3.1 (2017-08-??)
+------------------------------
+
+* Use ``Xinil`` and ``Luna``'s usernames to demonstrate how MALAffinity
+  can be used, in the docstring examples
+
+
 v2.3.0 (2017-07-25)
 -------------------
 
