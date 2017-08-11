@@ -3,8 +3,8 @@ Examples
 
 
 This section will show the various ways the ``MALAffinity`` class can be
-initialised with ``Xinil`` (MAL creator)'s list, saved to the variable ``ma``,
-and used to calculate affinity with ``Luna`` (MAL database admin).
+initialised with the user ``Xinil`` (MAL creator), and used to calculate
+affinity with the user ``Luna`` (MAL database admin).
 
 
 Example 1: Basic Usage
