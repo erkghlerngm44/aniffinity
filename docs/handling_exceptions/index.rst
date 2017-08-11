@@ -61,10 +61,16 @@ These can be achieved via something like this:
         except malaffinity.exceptions.MALAffinityException:
             break
 
-        # General exceptions not covered by malaffinity. Not sure what
+        # Exceptions not covered by malaffinity. Not sure what
         # you could do here. Feel free to handle however you like
         except Exception as e:
-            # ...
+            print("Something went wrong. Please contact Xinil for further assistance:")
+            print("* https://myanimelist.net/profile/Xinil")
+            print("* https://www.reddit.com/user/Xinil")
+            print("Please also nag him to create a half-decent MAL API for gods sake.")
+            print("")
+            print("Exception: `{}`".format(e))
+            break
 
         # Success!
         else:
