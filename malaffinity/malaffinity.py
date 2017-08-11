@@ -18,15 +18,15 @@ class MALAffinity:
     The purpose of this class is to store a "base user"'s scores, so
     affinity with other users can be calculated easily.
 
-    This class can be initialised as follows:
+    For the user ``Xinil``, the class can be initialised as follows:
 
     .. code-block:: python
 
         from malaffinity import MALAffinity
 
-        ma = MALAffinity("USER_1")
+        ma = MALAffinity("Xinil")
 
-    The instance, stored in ``ma``, will now hold ``USER_1``'s scores.
+    The instance, stored in ``ma``, will now hold ``Xinil``'s scores.
 
     :meth:`.comparison` and :meth:`.calculate_affinity` can now be called,
     to perform operations on this data.
@@ -42,7 +42,7 @@ class MALAffinity:
                   MUST be called sometime afterwards, with a ``base_user``
                   passed, before affinity calculations take place.
 
-                  Example:
+                  Example (for the user ``Xinil``):
 
                   .. code-block:: python
 
@@ -50,7 +50,7 @@ class MALAffinity:
 
                       ma = MALAffinity()
 
-                      ma.init("USER_1")
+                      ma.init("Xinil")
 
                   The class should then be good to go.
 
@@ -162,11 +162,11 @@ class MALAffinity:
 
         .. note:: The data returned will be a tuple, with the affinity
                   and shared rated anime. This can easily be separated
-                  as follows:
+                  as follows (using the user ``Luna`` as ``username``):
 
                   .. code-block:: python
 
-                      affinity, shared = ma.calculate_affinity("USER_2")
+                      affinity, shared = ma.calculate_affinity("Luna")
 
         .. note:: The final affinity value may or may not be rounded,
                   depending on the value of :attr:`._round`, set at

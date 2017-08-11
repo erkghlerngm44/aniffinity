@@ -45,21 +45,22 @@ and a good estimation as to whether it's "accurate" or not:
 Congrats, you've just wasted a few hours of your life, and you're probably a bit stressed
 right now. HTML parsing does that to you.
 
-Let's see how you could handle all this with ``malaffinity``:
+Let's see how you could handle all this with ``malaffinity``, assuming your
+username is ``Xinil`` and you want to calculate affinity with ``Luna``:
 
 .. code-block:: python
 
     from malaffinity import MALAffinity
 
-    ma = MALAffinity("YOUR_MAL_USERNAME")
+    ma = MALAffinity("Xinil")
 
-    affinity, shared = ma.calculate_affinity("THEIR_MAL_USERNAME")
+    affinity, shared = ma.calculate_affinity("Luna")
 
     # Do whatever you like with ``affinity`` and ``shared``
     print(affinity)
-    # 79.00545465639877
+    # 37.06659111674594
     print(shared)  # Note: Is referring to shared, rated anime
-    # 82
+    # 171
 
 .. note:: ``ma`` now holds your scores. You can easily call ``ma.calculate_affinity``
           on anyone, and you'd get your affinity with them.
@@ -70,7 +71,7 @@ If you don't want your scores to be stored, an option exists for quick, one-off 
 
     import malaffinity
 
-    affinity, shared = malaffinity.calculate_affinity("YOUR_USERNAME", "THEIR_USERNAME")
+    affinity, shared = malaffinity.calculate_affinity("Xinil", "Luna")
 
     # ...
 
