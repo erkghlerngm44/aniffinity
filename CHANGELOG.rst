@@ -2,11 +2,13 @@ Changelog
 =========
 
 
-UNRELEASED v2.3.1 (2017-08-??)
-------------------------------
+v2.3.1 (2017-08-12)
+-------------------
 
 * Use ``Xinil`` and ``Luna``'s usernames to demonstrate how MALAffinity
   can be used, in the docstring examples
+* Use different anime in the ``comparison`` method's key:value example
+  (in the docstring), so a wider range of ratings can be shown
 
 
 v2.3.0 (2017-07-25)
