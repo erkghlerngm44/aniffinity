@@ -68,10 +68,8 @@ class MALAffinity:
             self.init(base_user)
 
     def __repr__(self):  # noqa  # pragma: no cover
-        # TODO: Surely there has to be a better way of doing this...
-        # TODO: Make this look less ugly
-        return 'MALAffinity(base_user={}, round={})' \
-               .format(repr(self._base_user), repr(self._round))
+        return "{}(base_user={!r}, round={!r})" \
+            .format(self.__class__.__name__, self._base_user, self._round)
 
     def init(self, base_user):
         """
