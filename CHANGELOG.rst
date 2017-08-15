@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+UNRELEASED v2.3.2 (2017-08-??)
+------------------------------
+
+* Tidy up the MALAffinity ``__repr__``, and dynamically specify the class
+  name, in case the class needs to be renamed (which it probably won't)
+
+
 v2.3.1 (2017-08-12)
 -------------------
 
