@@ -4,7 +4,7 @@
 malaffinity
 ===========
 
-|pypi| |travis| |coveralls| |rtd|
+|pypi| |travis| |codecov| |rtd|
 
 Calculate affinity between MyAnimeList users
 
@@ -87,7 +87,7 @@ Cat Gif
    :target: https://pypi.org/project/malaffinity/
 .. |travis| image:: https://travis-ci.org/erkghlerngm44/malaffinity.svg?branch=master
    :target: https://travis-ci.org/erkghlerngm44/malaffinity?branch=master
-.. |coveralls| image:: https://coveralls.io/repos/github/erkghlerngm44/malaffinity/badge.svg?branch=master
-   :target: https://coveralls.io/github/erkghlerngm44/malaffinity?branch=master
+.. |codecov| image:: https://codecov.io/gh/erkghlerngm44/malaffinity/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/erkghlerngm44/malaffinity
 .. |rtd| image:: https://readthedocs.org/projects/malaffinity/badge/?version=latest
    :target: http://malaffinity.readthedocs.io/en/latest/
