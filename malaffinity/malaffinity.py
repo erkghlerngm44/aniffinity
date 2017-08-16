@@ -67,7 +67,7 @@ class MALAffinity:
         if base_user:
             self.init(base_user)
 
-    def __repr__(self):  # noqa  # pragma: no cover
+    def __repr__(self):  # noqa: D105  # pragma: no cover
         return "{}(base_user={!r}, round={!r})" \
             .format(self.__class__.__name__, self._base_user, self._round)
 

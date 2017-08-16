@@ -3,7 +3,7 @@ import sys
 
 sys.path.insert(0, "..")
 
-from malaffinity import __about__  # NOQA
+from malaffinity import __about__  # noqa: E402
 
 year = datetime.datetime.now().year
 
