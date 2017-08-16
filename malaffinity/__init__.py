@@ -26,7 +26,7 @@ def comparison(user1, user2):  # pragma: no cover
     return MALAffinity(base_user=user1).comparison(user2)
 
 
-def calculate_affinity(user1, user2, round=False):
+def calculate_affinity(user1, user2, round=False):  # pragma: no cover
     """
     Quick one-off affinity calculations.
 
