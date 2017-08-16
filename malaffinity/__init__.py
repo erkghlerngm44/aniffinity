@@ -11,7 +11,7 @@ from .__about__ import (  # NOQA
 )
 
 
-def comparison(user1, user2):
+def comparison(user1, user2):  # pragma: no cover
     """
     Quick one-off scores comparison between two users.
 
