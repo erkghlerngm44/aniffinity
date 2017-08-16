@@ -2,11 +2,16 @@ Changelog
 =========
 
 
-UNRELEASED v2.3.2 (2017-08-??)
+UNRELEASED v2.4.0 (2017-08-19)
 ------------------------------
 
 * Tidy up the MALAffinity ``__repr__``, and dynamically specify the class
   name, in case the class needs to be renamed (which it probably won't)
+* Use double backticks instead of a single backtick in the ``calculate_affinity``
+  function's docstring
+* Add a one-off comparison function (+ docs)
+* Move the "shared rated anime threshold" check to the ``calculate_affinity`` method,
+  as a comparison can be done no matter how many shared rated anime two users share
 
 
 v2.3.1 (2017-08-12)
