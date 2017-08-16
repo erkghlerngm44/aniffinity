@@ -145,13 +145,6 @@ class MALAffinity:
             if not len(scores[key]) == 2:
                 del scores[key]
 
-        # Handle cases where the shared scores are <= 10 so
-        # affinity can not be accurately calculated.
-        if len(scores) <= 10:
-            raise NoAffinityError("Shared rated anime count between "
-                                  "`{}` and `{}` is less than eleven"
-                                  .format(self._base_user, username))
-
         return scores
 
     def calculate_affinity(self, username):
@@ -175,6 +168,13 @@ class MALAffinity:
         :rtype: tuple
         """
         scores = self.comparison(username)
+
+        # Handle cases where the shared scores are <= 10 so
+        # affinity can not be accurately calculated.
+        if len(scores) <= 10:
+            raise NoAffinityError("Shared rated anime count between "
+                                  "`{}` and `{}` is less than eleven"
+                                  .format(self._base_user, username))
 
         # Sort multiple rows of scores into two arrays for calculations.
         # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
