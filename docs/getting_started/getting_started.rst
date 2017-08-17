@@ -50,8 +50,34 @@ yourself and:
 Development
 -----------
 
-This section demonstrates how documentation can be built and tests run.
+This section demonstrates how documentation can be built, tests run,
+and how to check if you're adhering to PEP8 and PEP257.
 These should not be used unless you're contributing to the package.
+
+.. _conventions:
+
+Conventions
+~~~~~~~~~~~
+
+The ``flake8`` (PEP8) and ``pydocstyle`` (PEP257) packages can be run
+to check that PEP8 and PEP257 are being followed.
+
+These can be installed as follows:
+
+.. code-block:: bash
+
+    $ pip install flake8 pydocstyle
+
+The following commands can then be run:
+
+.. code-block:: bash
+
+    $ flake8
+    $ pydocstyle malaffinity
+
+which will print any warnings/errors/other stuff. These should ideally
+be fixed, but in the event that they can't, place a ``# noqa: ERROR_CODE``
+comment on the offending line(s).
 
 .. _build-docs:
 
@@ -102,5 +128,3 @@ The tests should then run. You can view the coverage report by running:
 .. code-block:: bash
 
     $ coverage report
-
-You should be aiming for 100% coverage in the tests.

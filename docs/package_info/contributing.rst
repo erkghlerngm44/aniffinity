@@ -7,8 +7,8 @@ event that someone wants to contribute,
 send me a `pull request <https://github.com/erkghlerngm44/malaffinity/pulls>`__
 or create an `issue <https://github.com/erkghlerngm44/malaffinity/issues>`__.
 
-.. note:: This isn't my main GitHub account, so :doc:`contact` me on Reddit if you do
-          use those services, otherwise I probably won't see it for weeks/months.
+Feel free to use those for anything regarding the package, they're there to be used,
+I guess.
 
 
 How to Contribute
@@ -25,60 +25,36 @@ How to Contribute
 * Create a pull request.
 
 
-Conventions
------------
+Notes and Stuff
+---------------
 
-This package aims to follow `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__
-and `PEP257 <https://www.python.org/dev/peps/pep-0257/>`__, and also aims to
-have 100% coverage in its tests. The ``flake8``, ``pydocstyle`` and ``coverage``
-packages are used to make sure these are being adhered to.
+I had a whole section on conventions to follow and other stuff, but that
+seemed a bit weird, so I just scratched it. If someone out there wants to
+contribute to this package in any way, shape or form, have at it. I'd prefer
+the changes to be non-breaking (i.e. existing functionality is not affected),
+but breaking changes are still welcome.
 
-The ``# noqa`` (for PEP8, PEP257) and ``# pragma: no cover`` (for coverage)
-comments may be added in to sections of code where these guidelines can't be
-adhered to, for some reason.
+I only ask that you try to adhere to `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__
+and `PEP257 <https://www.python.org/dev/peps/pep-0257/>`__ (if you can), and
+try to achieve 100% coverage in tests (again, if you can). For information on how
+to check if you're adhering to those conventions, see :ref:`conventions`.
 
-Please note the following additional conventions, which can be found in the code:
+For information on how to build docs and run tests, see :ref:`build-docs` and
+:ref:`run-tests` respectively.
 
-Code Layout
-~~~~~~~~~~~
+This package is based off a
+`class <https://github.com/erkghlerngm44/r-anime-soulmate-finder/blob/v1.0.0/affinity_gatherer.py#L25-L112>`__
+I wrote for ``erkghlerngm44/r-anime-soulmate-finder``, and while I have tried to
+modify it for general uses (and tried to clean the bad code up a bit), there are
+still a few iffy bits around. I'd appreciate any PRs to fix this up.
 
-* Two blank lines between the top-level docstring and the imports.
-* Two blank lines between the imports and the code itself.
-
-Documentation and Docstrings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-See :ref:`build-docs` for info on how to build the docs.
-
-* Both are written in reST, using `Sphinx <http://www.sphinx-doc.org/>`__.
-
-Tests
-~~~~~
-
-Tests should ideally cover all code in the package (giving 100% coverage),
-unless told not to test specific sections (in which case the offending parts
-should have the appropriate "ignore" comments next to them).
-To run tests, see :ref:`run-tests`.
-
-* Tests use the ``DUMMY_LIST`` (found in
-  `tests/mocks/__init__.py <https://github.com/erkghlerngm44/malaffinity/blob/master/tests/mocks/__init__.py>`__)
-  where possible, to reduce the number of requests sent over to MAL. This should
-  ideally be used anywhere where the aim of the test is NOT to test that a users'
-  list can be retrieved from the site.
-* The user ``testmalacct0000`` has been created to be used by tests that check
-  if a users' list can be retrieved from MAL. The list and scores should not change,
-  so any constants that can be extracted from the list and be tested against should
-  be added to
-  `tests/const.py <https://github.com/erkghlerngm44/malaffinity/blob/master/tests/const.py>`__.
-* A wait of ``const.WAIT_BETWEEN_REQUESTS`` must be added before any request to
-  MAL, to abide by its rate limit.
-* A mock ``malaffinity.endpoints.myanimelist`` function may be added to
-  ``tests/mocks/__init__.py``, if the ``DUMMY_LIST`` needs to be modified
-  in any way for a test. If this is not the case, the endpoint should be patched
-  with ``mocks.mock_myanimelist_endpoint``, which will just return the list.
+I think the package is mostly complete, so my main focus right now is making it
+as fast as can-be, as every fraction of a second counts when you're using this
+to calculate affinity with tens of thousands of people. PRs regarding this are
+especially welcome.
 
 
-That's it, I guess. :doc:`contact` me if you need anything.
+That's it, I guess. :doc:`contact` me if you need help or anything.
 
 .. figure:: https://i.imgur.com/gEOKk0P.jpg
    :alt:
