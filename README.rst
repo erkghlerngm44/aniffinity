@@ -1,7 +1,7 @@
 |forthebadge1| |forthebadge2| |forthebadge3|
 
 
-MALAFFINITY
+malaffinity
 ===========
 
 |pypi| |travis| |codecov| |rtd|
