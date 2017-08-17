@@ -2,8 +2,8 @@ CHANGELOG
 =========
 
 
-UNRELEASED v2.4.0 (2017-08-19)
-------------------------------
+v2.4.0 (2017-08-17)
+-------------------
 
 * Tidy up the MALAffinity ``__repr__``, and dynamically specify the class
   name, in case the class needs to be renamed (which it probably won't)
@@ -12,6 +12,9 @@ UNRELEASED v2.4.0 (2017-08-19)
 * Add a one-off comparison function (+ docs)
 * Move the "shared rated anime threshold" check to the ``calculate_affinity`` method,
   as a comparison can be done no matter how many shared rated anime two users share
+* Add the error/warning codes to ignore next to the ``# noqa`` comments
+* Rewrite the contributing page in the docs, and create ``CONTRIBUTING.rst``
+  to link to it
 
 
 v2.3.1 (2017-08-12)
