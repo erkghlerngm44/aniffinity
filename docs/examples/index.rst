@@ -79,9 +79,9 @@ Calculate affinity with a user
 .. code-block:: python
 
     print(ma.calculate_affinity("Luna"))
-    # (37.06659111674594, 171)
+    # Affinity(affinity=37.06659111674594, shared=171)
 
-Note that what is being returned is a tuple, containing the affinity and shared
+Note that what is being returned is a namedtuple, containing the affinity and shared
 rated anime. This can be separated into different variables as follows:
 
 .. code-block:: python
@@ -91,6 +91,17 @@ rated anime. This can be separated into different variables as follows:
     print(affinity)
     # 37.06659111674594
     print(shared)
+    # 171
+
+Alternatively, the following also works (as this is a namedtuple):
+
+.. code-block:: python
+
+    affinity = ma.calculate_affinity("Luna")
+
+    print(affinity.affinity)
+    # 37.06659111674594
+    print(affinity.shared)
     # 171
 
 Comparing scores with a user
@@ -138,6 +149,15 @@ and you're only interested in the affinity with one person.
     print(affinity)
     # 37.06659111674594
     print(shared)
+    # 171
+
+
+    # Alternatively...
+    affinity = calculate_affinity("Xinil", "Luna")
+
+    print(affinity.affinity)
+    # 37.06659111674594
+    print(affinity.shared)
     # 171
 
 .. note:: Don't use this if you're planning on calculating affinity again with one of
