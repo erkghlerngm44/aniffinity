@@ -7,6 +7,10 @@ event that someone wants to contribute,
 send me a `pull request <https://github.com/erkghlerngm44/malaffinity/pulls>`__
 or create an `issue <https://github.com/erkghlerngm44/malaffinity/issues>`__.
 
+.. note:: Please :doc:`contact` and notify me if you use the above, as this isn't my
+          main GitHub account, so I won't be checking it that much. I'll probably see
+          it weeks/months later if you don't.
+
 Feel free to use those for anything regarding the package, they're there to be used,
 I guess.
 
