@@ -1,5 +1,5 @@
-The MALAffinity class
-=====================
+API
+===
 
 
 .. autoclass:: malaffinity.MALAffinity

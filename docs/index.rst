@@ -8,7 +8,7 @@ Contents:
 
 * :ref:`getting_started`
 * :ref:`examples`
-* :ref:`malaffinity_class`
+* :ref:`api`
 * :ref:`handling_exceptions`
 
 
@@ -30,12 +30,12 @@ Contents:
 
    examples/index
 
-.. _malaffinity_class:
+.. _api:
 .. toctree::
    :maxdepth: 1
-   :caption: The MALAffinity class
+   :caption: API
 
-   malaffinity_class/index
+   api/index
 
 .. _handling_exceptions:
 .. toctree::
