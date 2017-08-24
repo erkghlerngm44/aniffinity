@@ -66,6 +66,7 @@ settings = {
             "coverage >=4.4, <5",
             "mock >=2.0, <3",
             "pytest >=3.1, <4",
+            "vcrpy >=1.11, <2"
         ]
     },
 

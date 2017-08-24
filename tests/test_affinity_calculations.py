@@ -1,20 +1,17 @@
-import time
-
 import mock
 
 import malaffinity
 
 from . import const
 from . import mocks
+from . import vcr
 
 
+@vcr.use_cassette("test-user.yaml")
 def test_affinity__unrounded_with_dummy():
     """
     Test affinity with DUMMY_LIST
     """
-
-    time.sleep(const.WAIT_BETWEEN_REQUESTS)
-
     # Get the test list
     ma = malaffinity.MALAffinity(const.TEST_USERNAME, round=False)
 
@@ -31,13 +28,11 @@ def test_affinity__unrounded_with_dummy():
         assert shared == const.SHARED_WITH_DUMMY
 
 
+@vcr.use_cassette("test-user.yaml")
 def test_affinity__rounded_with_dummy():
     """
     Test affinity with DUMMY_LIST, but rounded
     """
-
-    time.sleep(const.WAIT_BETWEEN_REQUESTS)
-
     ma = malaffinity.MALAffinity(const.TEST_USERNAME, round=2)
 
     with mock.patch("malaffinity.endpoints.myanimelist") as MockClass:
