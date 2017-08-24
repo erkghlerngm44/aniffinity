@@ -1,0 +1,24 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.4]
+    method: GET
+    uri: https://myanimelist.net/malappinfo.php?u=ALDDJFfnjegenfmekfmejfefep9re9444&status=all&type=anime
+  response:
+    body: {string: '<?xml version="1.0" encoding="UTF-8" ?><myanimelist></myanimelist>'}
+    headers:
+      Cache-Control: [no-cache]
+      Connection: [keep-alive]
+      Content-Type: [application/xml; charset=UTF-8]
+      Date: ['Thu, 24 Aug 2017 15:03:05 GMT']
+      Server: [Apache]
+      Strict-Transport-Security: [max-age=63072000; includeSubDomains; preload]
+      Transfer-Encoding: [chunked]
+      Vary: [Accept-Encoding]
+      content-length: ['66']
+    status: {code: 200, message: OK}
+version: 1

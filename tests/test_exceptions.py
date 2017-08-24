@@ -1,5 +1,3 @@
-import time
-
 import mock
 import pytest
 
@@ -7,6 +5,7 @@ import malaffinity
 
 from . import const
 from . import mocks
+from . import vcr
 
 
 exceptions = malaffinity.exceptions
@@ -26,13 +25,12 @@ def test_exception__calculate_affinity_without_init():
     assert "no base user has been specified" in str(excinfo.value).lower()
 
 
+@vcr.use_cassette("test-invalid-user.yaml")
 def test_exception__invalid_username():
     """
     Test if `InvalidUsernameError` gets raised if passing
     an invalid username
     """
-    time.sleep(const.WAIT_BETWEEN_REQUESTS)
-
     with pytest.raises(exceptions.InvalidUsernameError):
         malaffinity.MALAffinity("ALDDJFfnjegenfmekfmejfefep9re9444")
 
@@ -57,24 +55,18 @@ def test_exception__not_enough_shared():
         assert "shared rated anime count" in str(excinfo.value).lower()
 
 
+@vcr.use_cassette("test-no-rated-user.yaml")
 def test_exception__no_rated_anime():
     """
     Test if `NoAffinityError` gets raised on a user
     that hasn't rated any anime
-
-    Note: User here may rate anime one day.
-    If this test fails, that's probably why
-
-    TODO: Make account with no rated anime
     """
-    time.sleep(const.WAIT_BETWEEN_REQUESTS)
-
     # Hm, if this fails, it's probably because the user
     # specified here actually decided to rate some anime
     # TODO: Make account with anime in it, but not rated, so we don't
     # have to rely on another account we have no control over
     with pytest.raises(exceptions.NoAffinityError) as excinfo:
-        malaffinity.MALAffinity("TheGreatAtario")
+        malaffinity.MALAffinity(const.TEST_NO_RATED_USERNAME)
 
     assert "hasn't rated any anime" in str(excinfo.value).lower()
 
