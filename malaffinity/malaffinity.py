@@ -5,6 +5,7 @@ import copy
 
 from . import calcs
 from . import endpoints
+from . import models
 
 from .exceptions import (
     NoAffinityError,
@@ -151,13 +152,22 @@ class MALAffinity:
         """
         Get the affinity between the "base user" and ``username``.
 
-        .. note:: The data returned will be a tuple, with the affinity
+        .. note:: The data returned will be a namedtuple, with the affinity
                   and shared rated anime. This can easily be separated
                   as follows (using the user ``Luna`` as ``username``):
 
                   .. code-block:: python
 
                       affinity, shared = ma.calculate_affinity("Luna")
+
+                  Alternatively, the following also works:
+
+                  .. code-block:: python
+
+                      affinity = ma.calculate_affinity("Luna")
+
+                  with the affinity and shared available as
+                  ``affinity.affinity`` and ``affinity.shared`` respectively.
 
         .. note:: The final affinity value may or may not be rounded,
                   depending on the value of :attr:`._round`, set at
@@ -187,4 +197,4 @@ class MALAffinity:
         if self._round is not False:
             pearson = round(pearson, self._round)
 
-        return pearson, len(scores)
+        return models.Affinity(pearson, len(scores))
