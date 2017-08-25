@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+v2.5.0 (2017-08-??)
+-------------------
+
+* Create the ``Affinity`` namedtuple, and return that instead of a normal tuple
+  when calculating affinity
+
+
 v2.4.0 (2017-08-17)
 -------------------
 
