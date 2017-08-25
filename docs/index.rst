@@ -49,6 +49,7 @@ Contents:
    :maxdepth: 1
    :caption: Package info
 
+   package_info/changelog
    package_info/contributing
    package_info/contact
    package_info/license
