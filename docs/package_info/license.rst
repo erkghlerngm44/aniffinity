@@ -2,9 +2,10 @@ License
 =======
 
 
-Licensed under `MIT <https://choosealicense.com/licenses/mit/>`__.
+Licensed under MIT.
 
-See ``LICENSE`` in the GitHub repo for the boring text.
+.. include:: ../../LICENSE
+   :literal:
 
 
 .. figure:: https://i.imgur.com/45faiA0.gif
