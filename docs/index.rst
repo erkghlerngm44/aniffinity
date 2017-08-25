@@ -10,6 +10,7 @@ Contents:
 * :ref:`examples`
 * :ref:`api`
 * :ref:`handling_exceptions`
+* :ref:`package_info`
 
 
 ----
