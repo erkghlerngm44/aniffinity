@@ -2,7 +2,7 @@ Examples
 ========
 
 
-This section will show the various ways the ``MALAffinity`` class can be
+This section will show the various ways the :class:`.MALAffinity` class can be
 initialised with the user ``Xinil`` (MAL creator), and used to calculate
 affinity or get a comparison with the user ``Luna`` (MAL database admin).
 
@@ -18,7 +18,8 @@ The class can be initialised in either one of two ways:
 Method 1: Normal initialisation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The class is initialised, with a "base user" passed as an argument to ``MALAffinity``.
+The class is initialised, with a "base user" passed as an argument to
+:class:`.MALAffinity`.
 
 .. code-block:: python
 
@@ -62,7 +63,7 @@ A value for this can be passed as follows:
     ma.init("Xinil")
 
 
------
+----
 
 
 Doing Things with the Initialised Class
@@ -127,6 +128,9 @@ This can now be manipulated in whatever way you like, to suit your needs.
 I like to just get the arrays on their own, zip them and plot a graph with it.
 
 
+----
+
+
 Extras
 ------
 
@@ -139,7 +143,8 @@ and you're only interested in the affinity with one person.
 .. warning:: This sends two GET requests over to MAL in a short amount of time,
              with no wait inbetween them. If you're getting in trouble with them
              for breaking their rate limit, you might have a few problems getting
-             this to work without ``MALRateLimitExceededError`` getting raised.
+             this to work without :class:`.exceptions.MALRateLimitExceededError`
+             getting raised.
 
 .. code-block:: python
 
@@ -163,8 +168,8 @@ and you're only interested in the affinity with one person.
 .. note:: Don't use this if you're planning on calculating affinity again with one of
           the users you've specified when using this.
 
-          It's better to create an instance of the ``MALAffinity`` class with said user,
-          and calculating affinity with the other user(s) that way.
+          It's better to create an instance of the :class:`.MALAffinity` class with
+          said user, and calculating affinity with the other user(s) that way.
 
           That instance will hold said users' scores, so they won't have to be retrieved
           again. See the other examples.
@@ -178,7 +183,8 @@ and you're only interested in getting a comparison of scores with another user.
 .. warning:: This sends two GET requests over to MAL in a short amount of time,
              with no wait inbetween them. If you're getting in trouble with them
              for breaking their rate limit, you might have a few problems getting
-             this to work without ``MALRateLimitExceededError`` getting raised.
+             this to work without :class:`.exceptions.MALRateLimitExceededError`
+             getting raised.
 
 .. code-block:: python
 

@@ -2,6 +2,9 @@ Handling Exceptions
 ===================
 
 
+Which exceptions can be raised?
+-------------------------------
+
 The types of exceptions that can be raised when calculating affinities are:
 
 .. autoclass:: malaffinity.exceptions.NoAffinityError
@@ -10,9 +13,19 @@ The types of exceptions that can be raised when calculating affinities are:
 
 .. autoclass:: malaffinity.exceptions.MALRateLimitExceededError
 
+If you're planning on using this package in an automated or unsupervised script,
+you'll want to make sure you account for these getting raised, as not doing so
+will mean you'll be bumping into a lot of exceptions, unless you can guarantee
+none of the above will get raised. For an example snippet of code that can
+demonstrate this, see :ref:`exception-handling-snippet`.
+
+
 
 ----
 
+
+MALAffinityException
+--------------------
 
 :class:`.exceptions.NoAffinityError` and :class:`.exceptions.InvalidUsernameError`
 are descendants of:
@@ -27,6 +40,9 @@ just move on.
 ----
 
 
+What to do if MALRateLimitExceededError gets raised
+---------------------------------------------------
+
 :class:`.exceptions.MALRateLimitExceededError` rarely gets raised if you abide
 by the rate limit of one request every two seconds. If it does get raised,
 the following should happen:
@@ -39,9 +55,23 @@ the following should happen:
 ----
 
 
-These can be achieved via something like this:
+.. _exception-handling-snippet:
+
+Exception Handling Snippet
+--------------------------
+
+The above can be demonstrated via something along these lines. Do note that
+this probably isn't the best method, but it works.
+
+This should be placed in the section where you are attempting to calculate
+affinity with another user. Because I wrote this before
+:meth:`.MALAffinity.comparison` was created, the snippet only shows
+how you can apply this to calculating affinities, but it can easily be
+modified, should you wish, to get a comparison of scores.
 
 .. code-block:: python
+
+    time.sleep(2)
 
     success = False
 
@@ -90,3 +120,6 @@ These can be achieved via something like this:
 
 Feel free to use a ``while`` loop instead of the above. I'm just a bit wary of them,
 in case something happens and the script gets stuck in an infinite loop. Your choice.
+
+To see the above snippet in action, visit
+`erkghlerngm44/r-anime-soulmate-finder <https://github.com/erkghlerngm44/r-anime-soulmate-finder/blob/v3.0.0/soulmate_finder/__main__.py#L74-L107>`__.
