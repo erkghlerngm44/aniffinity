@@ -7,11 +7,11 @@ Which exceptions can be raised?
 
 The types of exceptions that can be raised when calculating affinities are:
 
-.. autoclass:: malaffinity.exceptions.NoAffinityError
+.. autoexception:: malaffinity.exceptions.NoAffinityError
 
-.. autoclass:: malaffinity.exceptions.InvalidUsernameError
+.. autoexception:: malaffinity.exceptions.InvalidUsernameError
 
-.. autoclass:: malaffinity.exceptions.MALRateLimitExceededError
+.. autoexception:: malaffinity.exceptions.MALRateLimitExceededError
 
 If you're planning on using this package in an automated or unsupervised script,
 you'll want to make sure you account for these getting raised, as not doing so
@@ -27,10 +27,10 @@ demonstrate this, see :ref:`exception-handling-snippet`.
 MALAffinityException
 --------------------
 
-:class:`.exceptions.NoAffinityError` and :class:`.exceptions.InvalidUsernameError`
+:exc:`.exceptions.NoAffinityError` and :exc:`.exceptions.InvalidUsernameError`
 are descendants of:
 
-.. autoclass:: malaffinity.exceptions.MALAffinityException
+.. autoexception:: malaffinity.exceptions.MALAffinityException
 
 which means if that base exception gets raised, you know you won't be able to
 calculate affinity with that person for some reason, so your script should
@@ -43,7 +43,7 @@ just move on.
 What to do if MALRateLimitExceededError gets raised
 ---------------------------------------------------
 
-:class:`.exceptions.MALRateLimitExceededError` rarely gets raised if you abide
+:exc:`.exceptions.MALRateLimitExceededError` rarely gets raised if you abide
 by the rate limit of one request every two seconds. If it does get raised,
 the following should happen:
 

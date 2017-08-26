@@ -143,7 +143,7 @@ and you're only interested in the affinity with one person.
 .. warning:: This sends two GET requests over to MAL in a short amount of time,
              with no wait inbetween them. If you're getting in trouble with them
              for breaking their rate limit, you might have a few problems getting
-             this to work without :class:`.exceptions.MALRateLimitExceededError`
+             this to work without :exc:`.exceptions.MALRateLimitExceededError`
              getting raised.
 
 .. code-block:: python
@@ -183,7 +183,7 @@ and you're only interested in getting a comparison of scores with another user.
 .. warning:: This sends two GET requests over to MAL in a short amount of time,
              with no wait inbetween them. If you're getting in trouble with them
              for breaking their rate limit, you might have a few problems getting
-             this to work without :class:`.exceptions.MALRateLimitExceededError`
+             this to work without :exc:`.exceptions.MALRateLimitExceededError`
              getting raised.
 
 .. code-block:: python
