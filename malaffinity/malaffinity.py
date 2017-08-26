@@ -132,9 +132,9 @@ class MALAffinity:
         # Create a local, deep-copy of the scores for modification
         scores = copy.deepcopy(self._base_scores)
 
-        their_list = endpoints.myanimelist(username)
+        user_list = endpoints.myanimelist(username)
 
-        for anime in their_list:
+        for anime in user_list:
             id = anime["id"]
             score = anime["score"]
 
