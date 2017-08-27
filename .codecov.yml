@@ -1,0 +1,4 @@
+comment:
+  layout: "sunburst, diff, flags, files, footer"
+  behavior: default
+  require_changes: no
