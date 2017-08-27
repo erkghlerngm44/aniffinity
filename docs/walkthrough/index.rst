@@ -1,5 +1,5 @@
-Examples
-========
+Walkthrough
+===========
 
 
 This section will show the various ways the :class:`.MALAffinity` class can be
