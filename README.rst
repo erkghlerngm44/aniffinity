@@ -48,6 +48,8 @@ Examples
     print(shared)
     # 82
 
+or
+
 .. code-block:: python
 
     import malaffinity
