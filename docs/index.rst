@@ -1,13 +1,17 @@
 malaffinity
 ===========
-Calculate affinity between MyAnimeList users
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Calculate affinity between MyAnimeList users**
+
+
+----
 
 
 Contents:
+~~~~~~~~~
 
 * :ref:`getting_started`
-* :ref:`examples`
+* :ref:`walkthrough`
 * :ref:`api`
 * :ref:`handling_exceptions`
 * :ref:`package_info`
@@ -24,12 +28,12 @@ Contents:
    getting_started/introduction
    getting_started/getting_started
 
-.. _examples:
+.. _walkthrough:
 .. toctree::
    :maxdepth: 1
-   :caption: Examples
+   :caption: Walkthrough
 
-   examples/index
+   walkthrough/index
 
 .. _api:
 .. toctree::
