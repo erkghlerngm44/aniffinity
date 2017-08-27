@@ -1,10 +1,14 @@
 malaffinity
 ===========
-Calculate affinity between MyAnimeList users
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Calculate affinity between MyAnimeList users**
+
+
+----
 
 
 Contents:
+~~~~~~~~~
 
 * :ref:`getting_started`
 * :ref:`examples`
