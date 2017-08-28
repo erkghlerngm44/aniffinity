@@ -51,7 +51,7 @@ Development
 -----------
 
 This section demonstrates how documentation can be built, tests run,
-and how to check if you're adhering to PEP8 and PEP257.
+and how to check if you're adhering to :pep:`8` and :pep:`257`.
 These should not be used unless you're contributing to the package.
 
 .. _conventions:
@@ -59,8 +59,8 @@ These should not be used unless you're contributing to the package.
 Conventions
 ~~~~~~~~~~~
 
-The ``flake8`` (PEP8) and ``pydocstyle`` (PEP257) packages can be run
-to check that PEP8 and PEP257 are being followed.
+The ``flake8`` and ``pydocstyle`` packages can be used to check that
+PEP 8 and PEP 257 are being followed respectively.
 
 These can be installed as follows:
 

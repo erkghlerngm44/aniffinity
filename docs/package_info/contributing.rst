@@ -38,8 +38,7 @@ contribute to this package in any way, shape or form, have at it. I'd prefer
 the changes to be non-breaking (i.e. existing functionality is not affected),
 but breaking changes are still welcome.
 
-I only ask that you try to adhere to `PEP8 <https://www.python.org/dev/peps/pep-0008/>`__
-and `PEP257 <https://www.python.org/dev/peps/pep-0257/>`__ (if you can), and
+I only ask that you try to adhere to :pep:`8` and :pep:`257` (if you can), and
 try to achieve 100% coverage in tests (again, if you can). For information on how
 to check if you're adhering to those conventions, see :ref:`conventions`.
 
