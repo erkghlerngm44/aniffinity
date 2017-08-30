@@ -28,3 +28,7 @@ deploy:
   on:
     tags: true
     python: 3.6
+
+notifications:
+  webhooks:
+    - https://erkghlerngm44-travis-webhook.herokuapp.com/discord
