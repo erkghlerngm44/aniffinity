@@ -61,10 +61,6 @@ def test_exception__no_rated_anime():
     Test if `NoAffinityError` gets raised on a user
     that hasn't rated any anime
     """
-    # Hm, if this fails, it's probably because the user
-    # specified here actually decided to rate some anime
-    # TODO: Make account with anime in it, but not rated, so we don't
-    # have to rely on another account we have no control over
     with pytest.raises(exceptions.NoAffinityError) as excinfo:
         malaffinity.MALAffinity(const.TEST_NO_RATED_USERNAME)
 
