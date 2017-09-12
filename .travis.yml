@@ -8,7 +8,7 @@ python:
 
 install:
   - pip install --upgrade pip
-  - pip install --upgrade . .[conventions,doc,test,travis]
+  - pip install --upgrade . .[conventions,docs,tests,travis]
 
 script:
   - flake8

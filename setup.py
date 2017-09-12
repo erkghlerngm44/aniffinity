@@ -62,11 +62,11 @@ settings = {
             "flake8 >=3.4, <4",
             "pydocstyle >=2.0, <3",
         ],
-        "doc": [
+        "docs": [
             "sphinx >=1.6, <2",
             "sphinx_rtd_theme",
         ],
-        "test": [
+        "tests": [
             "coverage >=4.4, <5",
             "mock >=2.0, <3",
             "pytest >=3.1, <4",
@@ -83,7 +83,7 @@ settings = {
 }
 
 # Mirror the extras_require.test in tests_require
-settings["tests_require"].extend(settings["extras_require"]["test"])
+settings["tests_require"].extend(settings["extras_require"]["tests"])
 
 
 setup(**settings)

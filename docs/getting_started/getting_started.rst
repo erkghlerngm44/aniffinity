@@ -88,7 +88,7 @@ To install the dependencies needed to build the docs, run:
 
 .. code-block:: bash
 
-    $ pip install .[doc]
+    $ pip install .[docs]
 
 The docs can then be built by navigating to the ``docs``
 directory, and running:
@@ -114,7 +114,7 @@ To install the dependencies needed for the test suite, run:
 
 .. code-block:: bash
 
-    $ pip install .[test]
+    $ pip install .[tests]
 
 It is advised to run the test suite through ``coverage``, so a
 coverage report can be generated as well. To do this, run:
