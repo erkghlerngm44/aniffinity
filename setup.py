@@ -59,8 +59,8 @@ settings = {
 
     "extras_require": {
         "conventions": [
-            "flake8",
-            "pydocstyle"
+            "flake8 >=3.4, <4",
+            "pydocstyle >=2.0, <3",
         ],
         "doc": [
             "sphinx >=1.6, <2",
@@ -70,8 +70,11 @@ settings = {
             "coverage >=4.4, <5",
             "mock >=2.0, <3",
             "pytest >=3.1, <4",
-            "vcrpy >=1.11, <2"
-        ]
+            "vcrpy >=1.11, <2",
+        ],
+        "travis": [
+            "codecov >=2.0, <3",
+        ],
     },
 
     "test_suite": "tests",

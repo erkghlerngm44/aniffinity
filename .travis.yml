@@ -8,8 +8,7 @@ python:
 
 install:
   - pip install --upgrade pip
-  - pip install --upgrade . .[conventions,doc,test]
-  - pip install --upgrade codecov
+  - pip install --upgrade . .[conventions,doc,test,travis]
 
 script:
   - flake8
