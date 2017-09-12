@@ -66,7 +66,7 @@ These can be installed as follows:
 
 .. code-block:: bash
 
-    $ pip install flake8 pydocstyle
+    $ pip install .[conventions]
 
 The following commands can then be run:
 

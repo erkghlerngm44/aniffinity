@@ -8,8 +8,8 @@ python:
 
 install:
   - pip install --upgrade pip
-  - pip install --upgrade . .[doc,test]
-  - pip install --upgrade codecov flake8 pydocstyle
+  - pip install --upgrade . .[conventions,doc,test]
+  - pip install --upgrade codecov
 
 script:
   - flake8

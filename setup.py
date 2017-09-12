@@ -58,6 +58,10 @@ settings = {
     ],
 
     "extras_require": {
+        "conventions": [
+            "flake8",
+            "pydocstyle"
+        ],
         "doc": [
             "sphinx >=1.6, <2",
             "sphinx_rtd_theme",
