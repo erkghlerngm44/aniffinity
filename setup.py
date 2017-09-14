@@ -42,7 +42,7 @@ settings = {
         "Programming Language :: Python :: 3.6"
     ],
 
-    "keywords": "affinity mal myanimelist",
+    "keywords": "myanimelist affinity mal",
 
     "packages": ["malaffinity"],
 
