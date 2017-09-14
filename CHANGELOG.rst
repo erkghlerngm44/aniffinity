@@ -2,6 +2,17 @@ Changelog
 =========
 
 
+v2.5.1 (2017-09-14)
+-------------------
+
+* Add the ``conventions`` section to ``extras_require``, so conventions
+  dependencies can easily be installed if needed.
+* Add the ``travis`` section to ``extras_require``, so Travis can easily
+  install any additional dependencies it needs.
+* Rename the ``doc`` and ``test`` sections in ``extras_require`` to ``docs``
+  and ``tests`` respectively.
+
+
 v2.5.0 (2017-08-26)
 -------------------
 
