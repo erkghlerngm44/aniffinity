@@ -17,7 +17,7 @@ class MALAffinityException(Exception):  # noqa: D204
 class NoAffinityError(MALAffinityException):  # noqa: D204, D205, D400
     """
     Raised when either the shared rated anime between the base user
-    and another user is less than 10, the user does not have any rated
+    and another user is less than 11, the user does not have any rated
     anime, or the standard deviation of either users' scores is zero.
     """
     pass
