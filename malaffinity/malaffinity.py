@@ -197,4 +197,4 @@ class MALAffinity:
         if self._round is not False:
             pearson = round(pearson, self._round)
 
-        return models.Affinity(pearson, len(scores))
+        return models.Affinity(affinity=pearson, shared=len(scores))
