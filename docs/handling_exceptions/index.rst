@@ -122,4 +122,4 @@ Feel free to use a ``while`` loop instead of the above. I'm just a bit wary of t
 in case something happens and the script gets stuck in an infinite loop. Your choice.
 
 To see the above snippet in action, visit
-`erkghlerngm44/r-anime-soulmate-finder <https://github.com/erkghlerngm44/r-anime-soulmate-finder/blob/v3.0.0/soulmate_finder/__main__.py#L74-L107>`__.
+`erkghlerngm44/r-anime-soulmate-finder <https://github.com/erkghlerngm44/r-anime-soulmate-finder/blob/v4.2.0/soulmate_finder/__main__.py#L80-L113>`__.
