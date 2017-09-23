@@ -134,17 +134,27 @@ I like to just get the arrays on their own, zip them and plot a graph with it.
 Extras
 ------
 
+.. warning:: These send two GET requests over to MAL in a short amount of time,
+             with no wait inbetween them. If you're getting in trouble with them
+             for breaking their rate limit, you might have a few problems getting
+             these to work without :exc:`.exceptions.MALRateLimitExceededError`
+             getting raised.
+
+.. note:: Don't use these if you're planning on calculating affinity or getting a comparison
+          again with one of the users you've specified when using these.
+
+          It's better to create an instance of the :class:`.MALAffinity` class with
+          said user, and using that with the other user(s) that way.
+
+          That instance will hold said users' scores, so they won't have to be retrieved
+          again. See the other examples.
+
 One-off affinity calculations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is mainly used if you don't want the "base user"'s scores saved to a variable,
 and you're only interested in the affinity with one person.
 
-.. warning:: This sends two GET requests over to MAL in a short amount of time,
-             with no wait inbetween them. If you're getting in trouble with them
-             for breaking their rate limit, you might have a few problems getting
-             this to work without :exc:`.exceptions.MALRateLimitExceededError`
-             getting raised.
 
 .. code-block:: python
 
@@ -165,26 +175,11 @@ and you're only interested in the affinity with one person.
     print(affinity.shared)
     # 171
 
-.. note:: Don't use this if you're planning on calculating affinity again with one of
-          the users you've specified when using this.
-
-          It's better to create an instance of the :class:`.MALAffinity` class with
-          said user, and calculating affinity with the other user(s) that way.
-
-          That instance will hold said users' scores, so they won't have to be retrieved
-          again. See the other examples.
-
 One-off comparison of scores
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is mainly used if you don't want the "base user"'s scores saved to a variable,
 and you're only interested in getting a comparison of scores with another user.
-
-.. warning:: This sends two GET requests over to MAL in a short amount of time,
-             with no wait inbetween them. If you're getting in trouble with them
-             for breaking their rate limit, you might have a few problems getting
-             this to work without :exc:`.exceptions.MALRateLimitExceededError`
-             getting raised.
 
 .. code-block:: python
 
