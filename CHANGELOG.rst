@@ -2,6 +2,15 @@ Changelog
 =========
 
 
+v2.5.2 (2017-10-06)
+-------------------
+
+* ~~Happy Birthday to me.~~
+* Correct incorrect information in the ``NoAffinityError`` docstring, which
+  stated that the minimum shared rated anime threshold for calculating affinity
+  was ten, when it's actually eleven.
+
+
 v2.5.1 (2017-09-14)
 -------------------
 
