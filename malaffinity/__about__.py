@@ -11,7 +11,7 @@ __title__ = "malaffinity"
 __summary__ = "Calculate affinity between MyAnimeList users"
 __uri__ = "https://github.com/erkghlerngm44/malaffinity"
 
-__version__ = "2.5.2.dev0"
+__version__ = "2.5.2"
 
 __author__ = "erkghlerngm44"
 __email__ = "erkghlerngm44@protonmail.com"
