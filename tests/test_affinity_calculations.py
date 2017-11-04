@@ -12,7 +12,6 @@ def test_affinity__unrounded_with_dummy():
     """
     Test affinity with DUMMY_LIST
     """
-    # Get the test list
     ma = malaffinity.MALAffinity(const.TEST_USERNAME, round=False)
 
     with mock.patch("malaffinity.endpoints.myanimelist") as MockClass:

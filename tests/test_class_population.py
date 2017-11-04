@@ -23,7 +23,6 @@ def test_population__init():
     """
     ma = malaffinity.MALAffinity()
 
-    # init it
     ma.init(const.TEST_USERNAME)
 
     assert len(ma._base_scores) == const.TEST_LIST_LENGTH
