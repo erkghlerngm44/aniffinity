@@ -42,7 +42,6 @@ def test_exception__not_enough_shared():
     """
     ma = malaffinity.MALAffinity()
 
-    # Enough MAL requests, we don't want them killing us
     ma._base_user = "DUMMY_USER"
     ma._base_scores = mocks.dummy_list_to_base_scores()
 
