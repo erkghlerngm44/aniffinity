@@ -4,7 +4,7 @@
 import bs4
 import requests
 
-from .const import ENDPOINT_URLS
+from .const import ENDPOINT_URLS, GRAPHQL_QUERY
 from .exceptions import (
     InvalidUsernameError, NoAffinityError,
     MALRateLimitExceededError
@@ -69,6 +69,43 @@ def myanimelist(username):
 
     # Check if there's actually anything in scores.
     # If not, user probably doesn't have any rated anime.
+    if not len(scores):
+        raise NoAffinityError("User `{}` hasn't rated any anime"
+                              .format(username))
+
+    return scores
+
+
+def anilist(username):
+    params = {
+        "query": GRAPHQL_QUERY,
+        "variables": {"userName": username}
+    }
+
+    resp = requests.request("POST", ENDPOINT_URLS.ANILIST, json=params)
+
+    # TODO: Rate limit handling, invalid username handling, yada yada
+    # TODO: Consistency vars and stuff
+
+    lists = resp.json()["data"]["MediaListCollection"]["lists"]
+
+    scores = []
+
+    for lst in lists:
+        # FIXME: Surely there's a better way to do this
+        # (Can't figure out how to GraphQL...)
+        if lst["name"] == "Planning":
+            continue
+
+        entries = lst["entries"]
+
+        for entry in entries:
+            id = entry["media"]["idMal"]  # Use MAL ids becs AL's are diff
+            score = entry["score"]
+
+            if score > 0:
+                scores.append({"id": id, "score": score})
+
     if not len(scores):
         raise NoAffinityError("User `{}` hasn't rated any anime"
                               .format(username))
