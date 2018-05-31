@@ -87,14 +87,19 @@ def anilist(username):
     if resp.status_code == 429:  # pragma: no cover
         raise RateLimitExceededError("AniList rate limit exceeded")
 
-    # TODO: Invalid username handling, yada yada
+    # TODO: Handling for stuff
     # TODO: Consistency vars and stuff
 
-    lists = resp.json()["data"]["MediaListCollection"]["lists"]
+    mlc = resp.json()["data"]["MediaListCollection"]
+
+    if not mlc:
+        # Is this the only reason for not having anything in the MLC?
+        raise InvalidUsernameError("User `{}` does not exist"
+                                   .format(username))
 
     scores = []
 
-    for lst in lists:
+    for lst in mlc["lists"]:
         # FIXME: Surely there's a better way to do this
         # (Can't figure out how to GraphQL...)
         if lst["name"] == "Planning":
