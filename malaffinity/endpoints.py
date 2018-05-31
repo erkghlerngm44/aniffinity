@@ -7,7 +7,7 @@ import requests
 from .const import ENDPOINT_URLS, GRAPHQL_QUERY
 from .exceptions import (
     InvalidUsernameError, NoAffinityError,
-    MALRateLimitExceededError
+    RateLimitExceededError
 )
 
 
@@ -33,7 +33,7 @@ def myanimelist(username):
 
     # Check if MAL's hitting you with a 429 and raise an exception if so.
     if resp.status_code == 429:  # pragma: no cover
-        raise MALRateLimitExceededError("MAL rate limit exceeded")
+        raise RateLimitExceededError("MAL rate limit exceeded")
 
     resp = bs4.BeautifulSoup(resp.content, "xml")
 
@@ -84,7 +84,10 @@ def anilist(username):
 
     resp = requests.request("POST", ENDPOINT_URLS.ANILIST, json=params)
 
-    # TODO: Rate limit handling, invalid username handling, yada yada
+    if resp.status_code == 429:  # pragma: no cover
+        raise RateLimitExceededError("AniList rate limit exceeded")
+
+    # TODO: Invalid username handling, yada yada
     # TODO: Consistency vars and stuff
 
     lists = resp.json()["data"]["MediaListCollection"]["lists"]
