@@ -11,7 +11,6 @@ from .exceptions import (
 )
 
 
-# TODO: Make it easier for other services to be added in
 def myanimelist(username):
     """
     Retrieve a users' animelist scores from MAL.
@@ -77,6 +76,16 @@ def myanimelist(username):
 
 
 def anilist(username):
+    """
+    Retrieve a users' animelist scores from AniList.
+
+    Only anime scored > 0 will be returned, and all
+    PTW entries are ignored, even if they are scored.
+
+    :param str username: AniList username
+    :return: `id`, `score` pairs
+    :rtype: list
+    """
     params = {
         "query": GRAPHQL_QUERY,
         "variables": {"userName": username}
