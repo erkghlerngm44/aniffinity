@@ -12,7 +12,7 @@ query ($userName: String) {
         lists {
             name
             entries {
-                id  # Useless to us
+                # id  # Useless to us
                 score (format: POINT_10_DECIMAL)  # POINT_10 ?
                 media {
                     idMal
