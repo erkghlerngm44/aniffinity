@@ -13,6 +13,8 @@ from .exceptions import (
 
 def main(user):
     """
+    Determine which service to use and return a users' scores from it.
+
     Determine whether or not to use AniList or MyAnimeList to get
     a users' list, and return their list using said service.
 
