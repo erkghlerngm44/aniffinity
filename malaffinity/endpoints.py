@@ -20,7 +20,7 @@ def main(user):
     :return: `id`, `score` pairs
     :rtype: list
     """
-    if tuple(user):
+    if type(user) is tuple:
         username, service = user
     else:
         # TODO: Make this better as well idk
