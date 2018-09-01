@@ -4,11 +4,49 @@
 import bs4
 import requests
 
-from .const import ENDPOINT_URLS, GRAPHQL_QUERY
+from .const import ENDPOINT_URLS, ALIASES, GRAPHQL_QUERY
 from .exceptions import (
     InvalidUsernameError, NoAffinityError,
     RateLimitExceededError
 )
+
+
+def main(username, service=None):
+    """
+    Determine whether or not to use AniList or MyAnimeList to get
+    a users' list, and return their list using said service.
+
+    :param username: Username of user. Can be provided as a str
+                     or as a tuple with the service to use
+    :param service: Service to use. Can be specified here or in `username`
+    :return: `id`, `score` pairs
+    :rtype: list
+    """
+    if type(username) is tuple:
+        # Assume tuple is (username, service)
+        # `service` variable reassigning shouldn't pose a problem for
+        # first `elif` as it'll just skip over that section...
+        username, service = username
+    elif service:
+        # TODO: Is this needed?
+        pass
+    else:
+        # TODO: Should we assume MAL?
+        raise Exception("No service specified.")
+
+    # TODO: Make this better idk
+    # TODO: What if it's not a funct or str?
+    # Allow `service` to be a function to use
+    if callable(service):
+        service_function = service
+    elif service.upper() in ALIASES.MYANIMELIST:
+        service_function = myanimelist
+    elif service.upper() in ALIASES.ANILIST:
+        service_function = anilist
+    else:
+        raise Exception("Unrecognised service.")
+
+    return service_function(username)
 
 
 def myanimelist(username):

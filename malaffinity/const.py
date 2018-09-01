@@ -6,6 +6,11 @@ class ENDPOINT_URLS:  # noqa: D101
     MYANIMELIST = "https://myanimelist.net/malappinfo.php"
 
 
+class ALIASES:
+    ANILIST = ["ANILIST", "AL", "A"]
+    MYANIMELIST = ["MYANIMELIST", "MAL", "M"]
+
+
 GRAPHQL_QUERY = """
 query ($userName: String) {
     MediaListCollection (userName: $userName, type: ANIME) {
