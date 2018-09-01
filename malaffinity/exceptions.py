@@ -3,8 +3,8 @@
 
 class RateLimitExceededError(Exception):  # noqa: D204, D205, D400
     """
-    Raised when MAL's blocking your request, because you're going over their
-    rate limit of one request every two seconds. Slow down and try again.
+    Raised when the service is blocking your request, because you're going
+    over their rate limit. Slow down and try again.
     """
     pass
 
