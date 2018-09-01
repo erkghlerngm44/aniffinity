@@ -11,28 +11,21 @@ from .exceptions import (
 )
 
 
-def main(username, service=None):
+def main(user):
     """
     Determine whether or not to use AniList or MyAnimeList to get
     a users' list, and return their list using said service.
 
-    :param username: Username of user. Can be provided as a str
-                     or as a tuple with the service to use
-    :param service: Service to use. Can be specified here or in `username`
+    :param user: A tuple containing the username and service to use
     :return: `id`, `score` pairs
     :rtype: list
     """
-    if type(username) is tuple:
-        # Assume tuple is (username, service)
-        # `service` variable reassigning shouldn't pose a problem for
-        # first `elif` as it'll just skip over that section...
-        username, service = username
-    elif service:
-        # TODO: Is this needed?
-        pass
+    if tuple(user):
+        username, service = user
     else:
-        # TODO: Should we assume MAL?
-        raise Exception("No service specified.")
+        # TODO: Make this better as well idk
+        username = user
+        service = "MYANIMELIST"
 
     # TODO: Make this better idk
     # TODO: What if it's not a funct or str?

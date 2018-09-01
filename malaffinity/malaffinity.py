@@ -55,8 +55,8 @@ class MALAffinity:
 
                   The class should then be good to go.
 
-        :param base_user: Base MAL username
-        :type base_user: str or None
+        :param tuple base_user: Base user. Specify as a tuple containing the
+            username and service to use
         :param round: Decimal places to round affinity values to.
             Specify ``False`` for no rounding
         :type round: int or False
@@ -76,12 +76,12 @@ class MALAffinity:
         """
         Retrieve a "base user"'s list, and store it in :attr:`._base_scores`.
 
-        :param str base_user: Base users' username
+        :param tuple base_user: Base user. Specify as a tuple containing the
+            username and service to use
         """
         self._base_user = base_user
 
-        # Modify this for multiple services support when the time comes
-        base_list = endpoints.myanimelist(base_user)
+        base_list = endpoints.main(base_user)
 
         for anime in base_list:
             id = anime["id"]
@@ -91,9 +91,9 @@ class MALAffinity:
 
         return self
 
-    def comparison(self, username):
+    def comparison(self, user):
         """
-        Get a comparison of scores between the "base user" and ``username``.
+        Get a comparison of scores between the "base user" and ``user``.
 
         A Key-Value returned will consist of the following:
 
@@ -120,7 +120,8 @@ class MALAffinity:
                      You'll want to force the keys to strings if you'll be
                      using the ids elsewhere.
 
-        :param str username: The username to compare the base users' scores to
+        :param tuple user: The user to compare the base users' scores to.
+            Specify as a tuple containing the username and service to use
         :return: Key-value pairs as described above
         :rtype: dict
         """
@@ -132,7 +133,7 @@ class MALAffinity:
         # Create a local, deep-copy of the scores for modification
         scores = copy.deepcopy(self._base_scores)
 
-        user_list = endpoints.myanimelist(username)
+        user_list = endpoints.main(user)
 
         for anime in user_list:
             id = anime["id"]
@@ -148,13 +149,13 @@ class MALAffinity:
 
         return scores
 
-    def calculate_affinity(self, username):
+    def calculate_affinity(self, user):
         """
-        Get the affinity between the "base user" and ``username``.
+        Get the affinity between the "base user" and ``user``.
 
         .. note:: The data returned will be a namedtuple, with the affinity
                   and shared rated anime. This can easily be separated
-                  as follows (using the user ``Luna`` as ``username``):
+                  as follows (using the user ``Luna`` as ``user``):
 
                   .. code-block:: python
 
@@ -173,18 +174,19 @@ class MALAffinity:
                   depending on the value of :attr:`._round`, set at
                   class initialisation.
 
-        :param str username: The username to calculate affinity with
+        :param tuple user: The user to calculate affinity with.
+            Specify as a tuple containing the username and service to use
         :return: (float affinity, int shared)
         :rtype: tuple
         """
-        scores = self.comparison(username)
+        scores = self.comparison(user)
 
         # Handle cases where the shared scores are <= 10 so
         # affinity can not be accurately calculated.
         if len(scores) <= 10:
             raise NoAffinityError("Shared rated anime count between "
                                   "`{}` and `{}` is less than eleven"
-                                  .format(self._base_user, username))
+                                  .format(self._base_user, user[0]))
 
         # Sort multiple rows of scores into two arrays for calculations.
         # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
