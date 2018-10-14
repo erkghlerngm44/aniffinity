@@ -15,33 +15,13 @@ def main(user):
     """
     Determine which service to use and return a users' scores from it.
 
-    Determine whether or not to use AniList or MyAnimeList to get
-    a users' list, and return their list using said service.
+    For now this'll just default to AniList.
 
-    :param user: A tuple containing the username and service to use
+    :param user: A username
     :return: `id`, `score` pairs
     :rtype: list
     """
-    if type(user) is tuple:
-        username, service = user
-    else:
-        # TODO: Make this better as well idk
-        username = user
-        service = "MYANIMELIST"
-
-    # TODO: Make this better idk
-    # TODO: What if it's not a funct or str?
-    # Allow `service` to be a function to use
-    if callable(service):
-        service_function = service
-    elif service.upper() in ALIASES.MYANIMELIST:
-        service_function = myanimelist
-    elif service.upper() in ALIASES.ANILIST:
-        service_function = anilist
-    else:
-        raise Exception("Unrecognised service.")
-
-    return service_function(username)
+    return anilist(user)
 
 
 def myanimelist(username):
