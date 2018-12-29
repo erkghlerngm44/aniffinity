@@ -7,7 +7,7 @@ __all__ = [
 ]
 
 
-__title__ = "malaffinity"
+__title__ = "aniffinity"
 __summary__ = "Calculate affinity between MyAnimeList users"
 __uri__ = "https://github.com/erkghlerngm44/malaffinity"
 
