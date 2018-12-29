@@ -4,7 +4,6 @@
 import re
 import warnings
 
-import bs4
 import requests
 
 from .const import DEFAULT_SERVICE, ENDPOINT_URLS, GRAPHQL_QUERY

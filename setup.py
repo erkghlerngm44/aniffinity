@@ -49,8 +49,6 @@ settings = {
     "setup_requires": ["pytest-runner >=2.11, <3"],
 
     "install_requires": [
-        "beautifulsoup4 >=4.6, <5",
-        "lxml >=3.8, <4",
         "requests >=2.18, <3"
     ],
 
