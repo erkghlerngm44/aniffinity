@@ -10,7 +10,7 @@ about = {}
 with open(path.join(here, "README.rst"), encoding="utf-8") as file:
     long_description = file.read()
 
-with open(path.join(here, "malaffinity", "__about__.py")) as file:
+with open(path.join(here, "aniffinity", "__about__.py")) as file:
     exec(file.read(), about)
 
 
@@ -44,7 +44,7 @@ settings = {
 
     "keywords": "myanimelist affinity mal",
 
-    "packages": ["malaffinity"],
+    "packages": ["aniffinity"],
 
     "setup_requires": ["pytest-runner >=2.11, <3"],
 
