@@ -29,20 +29,20 @@ settings = {
     "license": about["__license__"],
 
     "classifiers": [
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 2 - Pre-Alpha",
+        # "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Topic :: Software Development",
         "Operating System :: OS Independent",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6"
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7"
     ],
 
-    "keywords": "myanimelist affinity mal",
+    "keywords": "anilist affinity mal myanimelist pearson",
 
     "packages": ["aniffinity"],
 
@@ -51,10 +51,7 @@ settings = {
     "install_requires": [
         "beautifulsoup4 >=4.6, <5",
         "lxml >=3.8, <4",
-        "requests >=2.18, <3",
-        # Meh, fuck it. Should just default to the inbuilt
-        # if it exists, otherwise it'll use this
-        "statistics >=1.0, <2"
+        "requests >=2.18, <3"
     ],
 
     "extras_require": {
