@@ -6,9 +6,7 @@ class ENDPOINT_URLS:  # noqa: D101
     MYANIMELIST = "https://myanimelist.net/malappinfo.php"
 
 
-class ALIASES:  # noqa: D101
-    ANILIST = ["ANILIST", "AL", "A"]
-    MYANIMELIST = ["MYANIMELIST", "MAL", "M"]
+DEFAULT_SERVICE = "ANILIST"
 
 
 GRAPHQL_QUERY = """
