@@ -1,7 +1,7 @@
 """Calculate affinity between MyAnimeList users."""
 
 
-from .malaffinity import MALAffinity
+from .aniffinity import MALAffinity
 
 
 # Meta stuff
