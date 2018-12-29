@@ -9,7 +9,7 @@ from . import models
 from .exceptions import NoAffinityError
 
 
-class MALAffinity:
+class Aniffinity:
     """
     The MALAffinity class.
 

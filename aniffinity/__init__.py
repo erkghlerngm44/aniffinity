@@ -1,7 +1,7 @@
 """Calculate affinity between MyAnimeList users."""
 
 
-from .aniffinity import MALAffinity
+from .aniffinity import Aniffinity
 
 
 # Meta stuff
@@ -27,7 +27,7 @@ def comparison(user1, user2):  # pragma: no cover
     :return: Key-value pairs as described in ``MALAffinity.comparison``
     :rtype: dict
     """
-    return MALAffinity(base_user=user1).comparison(user2)
+    return Aniffinity(base_user=user1).comparison(user2)
 
 
 def calculate_affinity(user1, user2, round=False):  # pragma: no cover
@@ -49,4 +49,4 @@ def calculate_affinity(user1, user2, round=False):  # pragma: no cover
     :return: (float affinity, int shared)
     :rtype: tuple
     """
-    return MALAffinity(base_user=user1, round=round).calculate_affinity(user2)
+    return Aniffinity(base_user=user1, round=round).calculate_affinity(user2)
