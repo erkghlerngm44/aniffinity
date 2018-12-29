@@ -192,7 +192,7 @@ class MALAffinity:
         if len(scores) <= 10:
             raise NoAffinityError("Shared rated anime count between "
                                   "`{}` and `{}` is less than eleven"
-                                  .format(self._base_username, user[0]))
+                                  .format(self._base_username, user))
 
         # Sort multiple rows of scores into two arrays for calculations.
         # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
