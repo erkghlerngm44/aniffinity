@@ -1,12 +1,12 @@
 """malaffinity constants."""
 
 
+DEFAULT_SERVICE = "ANILIST"
+
+
 class ENDPOINT_URLS:  # noqa: D101
     ANILIST = "https://graphql.anilist.co"
     MYANIMELIST = "https://myanimelist.net/malappinfo.php"
-
-
-DEFAULT_SERVICE = "ANILIST"
 
 
 GRAPHQL_QUERY = """
