@@ -4,5 +4,5 @@
 from collections import namedtuple
 
 
-Affinity = namedtuple("Affinity", ["affinity", "shared"])
+Affinity = namedtuple("Affinity", ["value", "shared"])
 User = namedtuple("User", ["username", "service"])
