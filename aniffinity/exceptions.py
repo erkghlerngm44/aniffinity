@@ -1,4 +1,4 @@
-"""malaffinity exceptions."""
+"""aniffinity exceptions."""
 
 
 class RateLimitExceededError(Exception):  # noqa: D204, D205, D400
@@ -10,7 +10,7 @@ class RateLimitExceededError(Exception):  # noqa: D204, D205, D400
 
 
 class MALAffinityException(Exception):  # noqa: D204
-    """Base class for MALAffinity exceptions."""
+    """Base class for Aniffinity exceptions."""
     pass
 
 
@@ -23,6 +23,9 @@ class NoAffinityError(MALAffinityException):  # noqa: D204, D205, D400
     pass
 
 
-class InvalidUsernameError(MALAffinityException):  # noqa: D204
-    """Raised when username specified does not exist."""
+class InvalidUsernameError(MALAffinityException):  # noqa: D204, D205, D400
+    """
+    Raised when username specified does not exist in the service,
+    or the service does not exist.
+    """
     pass

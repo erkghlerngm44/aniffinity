@@ -1,4 +1,4 @@
-"""malaffinity calcs."""
+"""aniffinity calcs."""
 
 
 from decimal import Decimal

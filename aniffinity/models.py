@@ -1,4 +1,4 @@
-"""malaffinity models."""
+"""aniffinity models."""
 
 
 from collections import namedtuple

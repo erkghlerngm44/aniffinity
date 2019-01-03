@@ -1,4 +1,4 @@
-"""Calculate affinity between MyAnimeList users."""
+"""Calculate affinity between anime list users."""
 
 
 from .aniffinity import Aniffinity
@@ -15,16 +15,16 @@ def comparison(user1, user2):  # pragma: no cover
     """
     Quick one-off scores comparison between two users.
 
-    Creates an instance of the ``MALAffinity`` class with ``user1``,
+    Creates an instance of the ``Aniffinity`` class with ``user1``,
     then returns a comparison of scores with ``user2``.
 
     As there are no params to specify which service to use for each user,
-    specify this information for ``user1`` and ``user2`` by passing a tuple
-    to each of these, containing: (username, service).
+    specify this information for both ``user1`` and ``user2`` by passing
+    a tuple for each of these, containing (username, service).
 
     :param tuple user1: First user
     :param tuple user2: Second user
-    :return: Key-value pairs as described in ``MALAffinity.comparison``
+    :return: Key-value pairs as described in ``Aniffinity.comparison``
     :rtype: dict
     """
     return Aniffinity(base_user=user1).comparison(user2)
@@ -34,17 +34,17 @@ def calculate_affinity(user1, user2, round=False):  # pragma: no cover
     """
     Quick one-off affinity calculations.
 
-    Creates an instance of the ``MALAffinity`` class with ``user1``,
+    Creates an instance of the ``Aniffinity`` class with ``user1``,
     then calculates affinity with ``user2``.
 
     As there are no params to specify which service to use for each user,
-    specify this information for ``user1`` and ``user2`` by passing a tuple
-    to each of these, containing: (username, service).
+    specify this information for both ``user1`` and ``user2`` by passing
+    a tuple for each of these, containing (username, service).
 
     :param tuple user1: First user
     :param tuple user2: Second user
     :param round: Decimal places to round affinity values to.
-        Specify ``False`` for no rounding
+        Specify ``False`` for no rounding.
     :type round: int or False
     :return: (float affinity, int shared)
     :rtype: tuple

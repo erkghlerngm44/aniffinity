@@ -1,4 +1,4 @@
-"""malaffinity animelist endpoints."""
+"""aniffinity animelist endpoints."""
 
 
 import re
@@ -22,11 +22,13 @@ def _figure_out_service(user, service=None):
     full name of the service to use.
 
     :param user: A user
-    :param str service: The service to use. If no value is specified
-                        for this param, specify the service in the
-                        `user` param, either as part of a url regex, or
-                        in a tuple
-    :return: Tuple containing username and service name
+    :type user: str or tuple
+    :param service: The service to use. If no value is specified
+        for this param, specify the service in the ``user`` param,
+        either as part of a url regex, or in a tuple
+    :type service: str or None
+    :return: (username, service)
+    :rtype: tuple
     """
     username = None
     service_name_resolved = None
@@ -93,10 +95,11 @@ def _main(user, service=None):
     Determine which endpoint to use and return a users' scores from that.
 
     :param user: A user
-    :param str service: The service to use. If no value is specified
-                        for this param, specify the service in the
-                        `user` param, either as part of a url regex, or
-                        in a tuple
+    :type user: str or tuple
+    :param service: The service to use. If no value is specified
+        for this param, specify the service in the ``user`` param,
+        either as part of a url regex, or in a tuple
+    :type service: str or None
     :return: `id`, `score` pairs
     :rtype: list
     """

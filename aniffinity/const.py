@@ -1,4 +1,4 @@
-"""malaffinity constants."""
+"""aniffinity constants."""
 
 
 DEFAULT_SERVICE = "ANILIST"

@@ -1,4 +1,4 @@
-"""malaffinity class."""
+"""aniffinity class."""
 
 
 import copy
@@ -11,20 +11,24 @@ from .exceptions import NoAffinityError
 
 class Aniffinity:
     """
-    The MALAffinity class.
+    The Aniffinity class.
 
     The purpose of this class is to store a "base user"'s scores, so
     affinity with other users can be calculated easily.
 
-    For the user ``Xinil``, the class can be initialised as follows:
+    For the username ``Josh`` on the service ``AniList``, the class can
+    be initialised as follows:
 
-    .. code-block:: python
+    ..  code-block:: python
 
-        from malaffinity import MALAffinity
+        from aniffinity import Aniffinity
 
-        ma = MALAffinity("Xinil")
+        af = Aniffinity("Josh", base_service="AniList")
 
-    The instance, stored in ``ma``, will now hold ``Xinil``'s scores.
+    There are multiple ways of specifying this information, and multiple
+    ways to initialise this class. For more info, read the documentation.
+
+    The instance, stored in ``af``, will now hold ``Josh``'s scores.
 
     :meth:`.comparison` and :meth:`.calculate_affinity` can now be called,
     to perform operations on this data.
@@ -32,28 +36,48 @@ class Aniffinity:
 
     def __init__(self, base_user=None, base_service=None, round=False):
         """
-        Initialise an instance of `MALAffinity`.
+        Initialise an instance of ``Aniffinity``.
 
-        .. note:: To avoid dealing with dodgy globals, this class MAY
-                  be initialised without the ``base_user`` argument,
-                  in the global scope (if you wish), but :meth:`.init`
-                  MUST be called sometime afterwards, with a ``base_user``
-                  passed, before affinity calculations take place.
+        The information required to retrieve a users' score from a service
+        are their "username" and "service". For a list of "service"s,
+        read the documentation.
 
-                  Example (for the user ``Xinil``):
+        ..  note::
+            As this applies to the "base" user, the params used are
+            ``base_user`` and ``base_service`` respectively.
 
-                  .. code-block:: python
+        There are multiple ways of specifying the above information,
+        and multiple aliases for services that can be used as shorthand.
+        As docstrings are annoying to write, please refer to the
+        documentation for a list of these. For an example of the simplest
+        method to use, refer to the docstring for the :class:`Aniffinity`
+        class.
 
-                      from malaffinity import MALAffinity
+        ..  note::
+            To avoid dealing with dodgy globals, this class MAY be
+            initialised without the ``base_user`` argument, in the global
+            scope (if you wish), but :meth:`.init` MUST be called sometime
+            afterwards, with a ``base_user`` and ``base_service`` passed,
+            before affinity calculations take place.
 
-                      ma = MALAffinity()
+            Example (for the username ``Josh`` on the service ``AniList``):
 
-                      ma.init("Xinil")
+            ..  code-block:: python
 
-                  The class should then be good to go.
+                from aniffinity import Aniffinity
 
-        :param base_user: Base user. Specify as a tuple containing the
-            username and service to use
+                af = Aniffinity()
+
+                ma.init("Josh", base_service="AniList")
+
+            The class should then be good to go.
+
+        :param base_user: Base user
+        :type base_user: str or tuple
+        :param base_service: The service to use. If no value is specified
+            for this param, specify the service in the ``base_user`` param,
+            either as part of a url regex, or in a tuple
+        :type base_service: str or None
         :param round: Decimal places to round affinity values to.
             Specify ``False`` for no rounding
         :type round: int or False
@@ -75,8 +99,12 @@ class Aniffinity:
         """
         Retrieve a "base user"'s list, and store it in :attr:`._base_scores`.
 
-        :param base_user: Base user. Specify as a tuple containing the
-            username and service to use
+        :param base_user: Base user
+        :type base_user: str or tuple
+        :param base_service: The service to use. If no value is specified
+            for this param, specify the service in the ``base_user`` param,
+            either as part of a url regex, or in a tuple
+        :type base_service: str or None
         """
         # Figure out the service ourselves, instead of just passing this to
         # `endpoints.main` (and letting it handle everything), as we want
@@ -103,7 +131,7 @@ class Aniffinity:
 
         A Key-Value returned will consist of the following:
 
-        .. code-block:: none
+        ..  code-block:: none
 
             {
                 ANIME_ID: [BASE_USER_SCORE, OTHER_USER_SCORE],
@@ -112,7 +140,7 @@ class Aniffinity:
 
         Example:
 
-        .. code-block:: none
+        ..  code-block:: none
 
             {
                 30831: [3, 8],
@@ -121,13 +149,25 @@ class Aniffinity:
                 ...
             }
 
-        .. warning:: The JSON returned isn't valid JSON. The keys are stored
-                     as integers instead of the JSON standard of strings.
-                     You'll want to force the keys to strings if you'll be
-                     using the ids elsewhere.
+        ..  note::
+            The ``ANIME_ID`` s will be the MyAnimeList anime ids. As annoying
+            as it is, cross-compatibility is needed between services to get
+            this module to work, and MAL ids are the best ones to use as other
+            APIs are able to specify it. If you wish to use the anime ids for
+            the service you specified, set the param
+            ``<TO BE IMPLEMENTED>`` to ``<TO BE IMPLEMENTED>``.
+
+        ..  warning::
+            The JSON returned isn't valid JSON. The keys are stored as
+            integers instead of the JSON standard of strings. You'll want to
+            force the keys to strings if you'll be using the ids elsewhere.
 
         :param user: The user to compare the base users' scores to.
-            Specify as a tuple containing the username and service to use
+        :type user: str or tuple
+        :param service: The service to use. If no value is specified
+            for this param, specify the service in the ``user`` param,
+            either as part of a url regex, or in a tuple
+        :type service: str or None
         :return: Key-value pairs as described above
         :rtype: dict
         """
@@ -159,29 +199,34 @@ class Aniffinity:
         """
         Get the affinity between the "base user" and ``user``.
 
-        .. note:: The data returned will be a namedtuple, with the affinity
-                  and shared rated anime. This can easily be separated
-                  as follows (using the user ``Luna`` as ``user``):
+        ..  note::
+            The data returned will be a namedtuple, with the affinity
+            and shared rated anime. This can easily be separated
+            as follows:
 
-                  .. code-block:: python
+            ..  code-block:: python
 
-                      affinity, shared = ma.calculate_affinity("Luna")
+                affinity, shared = af.calculate_affinity(...)
 
-                  Alternatively, the following also works:
+            Alternatively, the following also works:
 
-                  .. code-block:: python
+            ..  code-block:: python
 
-                      affinity = ma.calculate_affinity("Luna")
+                affinity = af.calculate_affinity(...)
 
-                  with the affinity and shared available as
-                  ``affinity.affinity`` and ``affinity.shared`` respectively.
+            with the affinity and shared available as ``affinity.value`` and
+            ``affinity.shared`` respectively.
 
-        .. note:: The final affinity value may or may not be rounded,
-                  depending on the value of :attr:`._round`, set at
-                  class initialisation.
+        ..  note::
+            The final affinity value may or may not be rounded, depending on
+            the value of :attr:`._round`, set at class initialisation.
 
         :param user: The user to calculate affinity with.
-            Specify as a tuple containing the username and service to use
+        :type user: str or tuple
+        :param service: The service to use. If no value is specified
+            for this param, specify the service in the ``user`` param,
+            either as part of a url regex, or in a tuple
+        :type service: str or None
         :return: (float affinity, int shared)
         :rtype: tuple
         """

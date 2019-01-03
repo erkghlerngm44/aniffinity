@@ -1,4 +1,4 @@
-"""malaffinity config."""
+"""aniffinity config."""
 
 
 __all__ = [
@@ -8,8 +8,8 @@ __all__ = [
 
 
 __title__ = "aniffinity"
-__summary__ = "Calculate affinity between MyAnimeList users"
-__uri__ = "https://github.com/erkghlerngm44/malaffinity"
+__summary__ = "Calculate affinity between anime list users"
+__uri__ = "https://github.com/erkghlerngm44/aniffinity"
 
 __version__ = "0.1.0.dev0"
 
@@ -17,4 +17,4 @@ __author__ = "erkghlerngm44"
 __email__ = "erkghlerngm44@protonmail.com"
 
 __license__ = "MIT"
-__copyright__ = "Copyright (C) 2017, erkghlerngm44"
+__copyright__ = "Copyright (C) 2017-2019, erkghlerngm44"
