@@ -250,4 +250,4 @@ class Aniffinity:
         if self._round is not False:
             pearson = round(pearson, self._round)
 
-        return models.Affinity(affinity=pearson, shared=len(scores))
+        return models.Affinity(value=pearson, shared=len(scores))
