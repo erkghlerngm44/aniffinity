@@ -173,7 +173,7 @@ def anilist(username):
 # TODO: Move the `ENDPOINT_URLS here as well???
 services = {
     "ANILIST": {
-        "aliases": {"ANILIST", "AL", "A"},
+        "aliases": {"AL", "A"},
         "url_regex": r"^https?://anilist\.co/user/([a-z0-9_-]+)(?:\/(?:animelist)?)?$",  # noqa: E501
         "endpoint": anilist
     }
