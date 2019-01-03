@@ -23,7 +23,7 @@ class NoAffinityError(MALAffinityException):  # noqa: D204, D205, D400
     pass
 
 
-class InvalidUsernameError(MALAffinityException):  # noqa: D204, D205, D400
+class InvalidUserError(MALAffinityException):  # noqa: D204, D205, D400
     """
     Raised when username specified does not exist in the service,
     or the service does not exist.

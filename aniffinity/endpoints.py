@@ -8,7 +8,7 @@ import requests
 
 from .const import DEFAULT_SERVICE, ENDPOINT_URLS, GRAPHQL_QUERY
 from .exceptions import (
-    InvalidUsernameError, NoAffinityError,
+    InvalidUserError, NoAffinityError,
     RateLimitExceededError
 )
 
@@ -49,7 +49,7 @@ def _figure_out_service(user, service=None):
                     service_name_resolved = service_name
                     break
             else:
-                raise InvalidUsernameError("Invalid service name")
+                raise InvalidUserError("Invalid service name")
 
     elif type(user) is str:
         # `user` should be a url regex then, we just need to figure out
@@ -65,7 +65,7 @@ def _figure_out_service(user, service=None):
             # Maybe it's just a URL and we don't have an endpoint for that
             # particular service. Check this before assuming anything else.
             if user.startswith("http"):
-                raise InvalidUsernameError("Invalid service URL")
+                raise InvalidUserError("Invalid service URL")
 
             # `user` may just be the username, so let's assume that and
             # use the default service. We really shouldn't, but hey...
@@ -84,7 +84,7 @@ def _figure_out_service(user, service=None):
 
     # Incorrect usage
     else:
-        raise InvalidUsernameError("Invalid usage - check your `user`"
+        raise InvalidUserError("Invalid usage - check your `user`"
                                    "and `service` values")
 
     return username, service_name_resolved
@@ -142,8 +142,7 @@ def anilist(username):
 
     if not mlc:
         # Is this the only reason for not having anything in the MLC?
-        raise InvalidUsernameError("User `{}` does not exist"
-                                   .format(username))
+        raise InvalidUserError("User `{}` does not exist".format(username))
 
     scores = []
 
