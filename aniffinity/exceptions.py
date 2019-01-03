@@ -9,12 +9,12 @@ class RateLimitExceededError(Exception):  # noqa: D204, D205, D400
     pass
 
 
-class MALAffinityException(Exception):  # noqa: D204
+class AniffinityException(Exception):  # noqa: D204
     """Base class for Aniffinity exceptions."""
     pass
 
 
-class NoAffinityError(MALAffinityException):  # noqa: D204, D205, D400
+class NoAffinityError(AniffinityException):  # noqa: D204, D205, D400
     """
     Raised when either the shared rated anime between the base user
     and another user is less than 11, the user does not have any rated
@@ -23,7 +23,7 @@ class NoAffinityError(MALAffinityException):  # noqa: D204, D205, D400
     pass
 
 
-class InvalidUsernameError(MALAffinityException):  # noqa: D204, D205, D400
+class InvalidUserError(AniffinityException):  # noqa: D204, D205, D400
     """
     Raised when username specified does not exist in the service,
     or the service does not exist.
