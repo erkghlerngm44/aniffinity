@@ -4,6 +4,8 @@
 aniffinity
 ==========
 
+"An-knee-fin-knee-tea".
+
 Calculate affinity between anime list users.
 
 
