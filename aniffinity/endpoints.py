@@ -147,11 +147,6 @@ def anilist(username):
     scores = []
 
     for lst in mlc["lists"]:
-        # FIXME: Surely there's a better way to do this
-        # (Can't figure out how to GraphQL...)
-        if lst["name"] == "Planning":
-            continue
-
         entries = lst["entries"]
 
         for entry in entries:
