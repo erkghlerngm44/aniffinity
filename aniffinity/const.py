@@ -11,7 +11,8 @@ class ENDPOINT_URLS:  # noqa: D101
 
 GRAPHQL_QUERY = """
 query ($userName: String) {
-    MediaListCollection (userName: $userName, type: ANIME) {
+    MediaListCollection (userName: $userName, status_not: PLANNING,
+                         type: ANIME, forceSingleCompletedList: true) {
         lists {
             name
             entries {
