@@ -246,6 +246,62 @@ def kitsu(username):
     return scores
 
 
+def myanimelist(username):
+    """
+    Retrieve a users' animelist scores from MyAnimeList.
+
+    Only anime scored > 0 will be returned, and all
+    PTW entries are ignored, even if they are scored.
+
+    :param str username: MyAnimeList username
+    :return: Mapping of `id` to `score`
+    :rtype: dict
+    """
+    params = {
+        "status": "7",  # all entries
+        "offset": 0
+    }
+
+    scores = {}
+
+    # This endpoint only returns 300 items at a time :( #BringBackMalAppInfo
+    list_entries = 1
+    while list_entries > 0:
+        resp = requests.request(
+            "GET",
+            ENDPOINT_URLS.MYANIMELIST.format(username=username),
+            params=params
+        )
+
+        if resp.status_code == TOO_MANY_REQUESTS:  # pragma: no cover
+            raise RateLimitExceededError("MyAnimeList rate limit exceeded")
+
+        json = resp.json()
+        if "errors" in json:
+            # TODO: Better error handling
+            raise InvalidUserError("User `{}` does not exist".format(username))
+
+        for entry in json:
+            if entry["status"] == 6:
+                # Entry in PTW, skip
+                continue
+
+            id = str(entry["anime_id"])
+            score = entry["score"]
+
+            if score > 0:
+                scores[id] = score
+
+        list_entries = len(json)
+        params["offset"] += 300
+
+    if not len(scores):
+        raise NoAffinityError("User `{}` hasn't rated any anime"
+                              .format(username))
+
+    return scores
+
+
 # We can't move this to `.const` as referencing the endpoints from there
 # will get pretty messy...
 # TODO: Move the `ENDPOINT_URLS here as well???
@@ -259,5 +315,10 @@ _services = {
         "aliases": {"K"},
         "url_regex": r"^https?://kitsu\.io/users/([a-z0-9_-]+)(?:/(?:library(?:\?media=anime)?)?)?$",  # noqa: E501
         "endpoint": kitsu
+    },
+    "MYANIMELIST": {
+        "aliases": {"MAL", "M"},
+        "url_regex": r"^https?://myanimelist\.net/(?:profile|animelist)/([a-z0-9_-]+)/?(?:\?status=\d)?",  # noqa: E501
+        "endpoint": myanimelist
     }
 }
