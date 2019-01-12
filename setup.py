@@ -46,7 +46,7 @@ settings = {
 
     "packages": ["aniffinity"],
 
-    "setup_requires": ["pytest-runner >=2.11, <3", "setuptools >=35.0, <40"],
+    "setup_requires": ["pytest-runner >=2.11, <3"],
 
     "install_requires": [
         "json-api-doc >=0.4, <0.5"
