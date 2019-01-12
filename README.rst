@@ -30,6 +30,7 @@ When the package is deployed to PyPI...,
 Dependencies
 ------------
 
+* json-api-doc
 * Requests
 
 
