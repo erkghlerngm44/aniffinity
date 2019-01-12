@@ -14,7 +14,7 @@ from .exceptions import (
 )
 
 
-def _figure_out_service(user, service=None):
+def _resolve_service(user, service=None):
     """
     Resolve the `user` and `service` into "proper" values.
 
@@ -39,13 +39,13 @@ def _figure_out_service(user, service=None):
         username = user
         service = service.upper()
 
-        if service in services:
+        if service in _services:
             # Fastest option - service name fully specified so no
             # need to do any more work
             service_name_resolved = service
         else:
             # Check aliases to see which service is intended to be used
-            for service_name, service_data in services.items():
+            for service_name, service_data in _services.items():
                 if service in service_data["aliases"]:
                     service_name_resolved = service_name
                     break
@@ -55,7 +55,7 @@ def _figure_out_service(user, service=None):
     elif type(user) is str:
         # `user` should be a url regex then, we just need to figure out
         # which service the regex matches
-        for service_name, service_data in services.items():
+        for service_name, service_data in _services.items():
             match = re.search(service_data["url_regex"], user, re.I)
 
             if match:
@@ -81,7 +81,7 @@ def _figure_out_service(user, service=None):
     elif isinstance(user, tuple) and len(user) == 2:
         # Unpack the tuple and pass the values back to this function.
         # Can't see anything going wrong with this... [](#yuishrug)
-        return _figure_out_service(*user)
+        return _resolve_service(*user)
 
     # Incorrect usage
     else:
@@ -105,13 +105,13 @@ def _main(user, service=None):
     :rtype: list
     """
     # Should be fine doing this.
-    # If we've already passed the data to `figure_out_service` and passed
+    # If we've already passed the data to `_resolve_service` and passed
     # the result back in, it'll just throw the info back to us
-    username, service = _figure_out_service(user, service)
+    username, service = _resolve_service(user, service)
 
     # We don't need to worry about invalid services here, as
     # `figure_out_service` will raise the exception itself if it is invalid.
-    service_data = services.get(service)
+    service_data = _services.get(service)
     return service_data["endpoint"](username)
 
 
@@ -246,7 +246,7 @@ def kitsu(username):
 # We can't move this to `.const` as referencing the endpoints from there
 # will get pretty messy...
 # TODO: Move the `ENDPOINT_URLS here as well???
-services = {
+_services = {
     "ANILIST": {
         "aliases": {"AL", "A"},
         "url_regex": r"^https?://anilist\.co/user/([a-z0-9_-]+)(?:\/(?:animelist)?)?$",  # noqa: E501
