@@ -54,6 +54,8 @@ Available Services
 ------------------
 
 * `AniList <https://anilist.co>`__
+* `Kitsu <https://kitsu.io>`__
+* `MyAnimeList <https://myanimelist.net>`__
 
 
 Documentation
