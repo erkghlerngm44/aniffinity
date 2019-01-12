@@ -104,8 +104,8 @@ def _main(user, service=None):
         for this param, specify the service in the ``user`` param,
         either as part of a url regex, or in a tuple
     :type service: str or None
-    :return: `id`, `score` pairs
-    :rtype: list
+    :return: Mapping of `id` to `score`
+    :rtype: dict
     """
     # Should be fine doing this.
     # If we've already passed the data to `_resolve_service` and passed
@@ -126,8 +126,8 @@ def anilist(username):
     PTW entries are ignored, even if they are scored.
 
     :param str username: AniList username
-    :return: `id`, `score` pairs
-    :rtype: list
+    :return: Mapping of `id` to `score`
+    :rtype: dict
     """
     params = {
         "query": GRAPHQL_QUERY,
@@ -148,7 +148,7 @@ def anilist(username):
         # Is this the only reason for not having anything in the MLC?
         raise InvalidUserError("User `{}` does not exist".format(username))
 
-    scores = []
+    scores = {}
 
     for lst in mlc["lists"]:
         entries = lst["entries"]
@@ -158,7 +158,7 @@ def anilist(username):
             score = entry["score"]
 
             if score > 0:
-                scores.append({"id": id, "score": score})
+                scores[id] = score
 
     if not len(scores):
         raise NoAffinityError("User `{}` hasn't rated any anime"
@@ -175,8 +175,8 @@ def kitsu(username):
     PTW entries are ignored, even if they are scored.
 
     :param str username: Kitsu username
-    :return: `id`, `score` pairs
-    :rtype: list
+    :return: Mapping of `id` to `score`
+    :rtype: dict
     """
     # First we gotta get the id because the api is incapable of letting
     # us specify the username when calling `library-entries`
@@ -218,7 +218,7 @@ def kitsu(username):
         params = {}
         next_url = json["links"].get("next")
 
-    scores = []
+    scores = {}
     for entry in entries:
         # Our request returns mappings with various services, we need
         # to find the MAL one to get the MAL id to use.
@@ -237,7 +237,7 @@ def kitsu(username):
         # Why does this API do `score == None` when it's not rated?
         # Whatever happened to 0?
         if score is not None:
-            scores.append({"id": id, "score": score})
+            scores[id] = score
 
     if not len(scores):
         raise NoAffinityError("User `{}` hasn't rated any anime"

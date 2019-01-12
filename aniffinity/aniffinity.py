@@ -1,6 +1,7 @@
 """aniffinity class."""
 
 
+import collections
 import copy
 
 from . import calcs
@@ -114,14 +115,7 @@ class Aniffinity:
 
         self._base_username = base_username
         self._base_service = base_service
-
-        base_list = endpoints._main(base_username, base_service)
-
-        for anime in base_list:
-            id = anime["id"]
-            score = anime["score"]
-
-            self._base_scores[id] = [score]
+        self._base_scores = endpoints._main(base_username, base_service)
 
         return self
 
@@ -176,24 +170,19 @@ class Aniffinity:
             raise Exception("No base user has been specified. Call the `init` "
                             "function to retrieve a base users' scores")
 
-        # Create a local, deep-copy of the scores for modification
-        scores = copy.deepcopy(self._base_scores)
-
         user_list = endpoints._main(user, service)
 
-        for anime in user_list:
-            id = anime["id"]
-            score = anime["score"]
+        comparison_dict = collections.defaultdict(list)
 
-            if id in scores:
-                scores[id].append(score)
+        for lst in (self._base_scores, user_list):
+            for id, score in lst.items():
+                comparison_dict[id].append(score)
 
-        # Force to list so no errors when deleting keys.
-        for key in list(scores.keys()):
-            if not len(scores[key]) == 2:
-                del scores[key]
+        for id, scores in comparison_dict.copy().items():
+            if not len(scores) == 2:
+                del comparison_dict[id]
 
-        return scores
+        return comparison_dict
 
     def calculate_affinity(self, user, service=None):
         """
