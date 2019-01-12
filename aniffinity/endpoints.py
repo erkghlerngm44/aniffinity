@@ -14,6 +14,9 @@ from .exceptions import (
 )
 
 
+TOO_MANY_REQUESTS = requests.codes.TOO_MANY_REQUESTS
+
+
 def _resolve_service(user, service=None):
     """
     Resolve the `user` and `service` into "proper" values.
@@ -133,7 +136,7 @@ def anilist(username):
 
     resp = requests.request("POST", ENDPOINT_URLS.ANILIST, json=params)
 
-    if resp.status_code == 429:  # pragma: no cover
+    if resp.status_code == TOO_MANY_REQUESTS:  # pragma: no cover
         raise RateLimitExceededError("AniList rate limit exceeded")
 
     # TODO: Handling for stuff
@@ -204,7 +207,7 @@ def kitsu(username):
         resp = requests.request("GET", next_url, params=params)
 
         # TODO: Handle invalid username, other exceptions, etc
-        if resp.status_code == 429:  # pragma: no cover
+        if resp.status_code == TOO_MANY_REQUESTS:  # pragma: no cover
             raise RateLimitExceededError("Kitsu rate limit exceeded")
 
         json = resp.json()
