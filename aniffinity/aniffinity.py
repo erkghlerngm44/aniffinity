@@ -110,7 +110,7 @@ class Aniffinity:
         # `endpoints.main` (and letting it handle everything), as we want
         # to set `self._base_service`.
         base_username, base_service = \
-            endpoints._figure_out_service(base_user, base_service)
+            endpoints._resolve_service(base_user, base_service)
 
         self._base_username = base_username
         self._base_service = base_service
