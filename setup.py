@@ -49,7 +49,7 @@ settings = {
     "setup_requires": ["pytest-runner >=2.11, <3"],
 
     "install_requires": [
-        "json-api-doc >=0.4, <0.5"
+        "json-api-doc >=0.4, <0.5",
         "requests >=2.18, <3"
     ],
 
