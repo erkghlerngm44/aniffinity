@@ -40,7 +40,7 @@ Example Usage
 
     from aniffinity import Aniffinity
 
-    af = Aniffinity("YOUR_USERNAME", base_service="YOUR_SERVICE")
+    af = Aniffinity("YOUR_USERNAME", base_service="A_SERVICE")
 
     affinity, shared = ma.calculate_affinity("OTHER_USERNAME", service="OTHER_SERVICE")
 
