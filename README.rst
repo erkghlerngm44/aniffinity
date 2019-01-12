@@ -55,7 +55,7 @@ Available Services
 
 * `AniList <https://anilist.co>`__
 * `Kitsu <https://kitsu.io>`__
-* `MyAnimeList <https://myanimelist.net>`__
+* `MyAnimeList <https://myanimelist.net>`__ (unstable, see docs for more info)
 
 
 Documentation
