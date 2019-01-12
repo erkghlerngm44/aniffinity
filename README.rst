@@ -4,6 +4,8 @@
 aniffinity
 ==========
 
+|rtd|
+
 "An-knee-fin-knee-tea".
 
 Calculate affinity between anime list users.
@@ -12,9 +14,8 @@ Calculate affinity between anime list users.
 What is this?
 -------------
 
-Calculate the affinity (Pearson's Correlation \* 100) between a "base"
-user and another user on anime list services. Refer to the
-`docs <#documentation>`__ for more info.
+Calculate the affinity between a user and another user on anime list
+services. Refer to the `docs <#documentation>`__ for more info.
 
 
 Install
@@ -43,7 +44,7 @@ Example Usage
 
     af = Aniffinity("YOUR_USERNAME", base_service="A_SERVICE")
 
-    affinity, shared = ma.calculate_affinity("OTHER_USERNAME", service="OTHER_SERVICE")
+    affinity, shared = af.calculate_affinity("OTHER_USERNAME", service="OTHER_SERVICE")
 
     print(affinity)
     # 79.00545465639877
@@ -56,13 +57,13 @@ Available Services
 
 * `AniList <https://anilist.co>`__
 * `Kitsu <https://kitsu.io>`__
-* `MyAnimeList <https://myanimelist.net>`__ (somewhat unstable, see docs for more info)
+* `MyAnimeList <https://myanimelist.net>`__
+
+For more info, read the `docs <#documentation>`__.
 
 
 Documentation
 -------------
-
-When the documentation is written and deployed to RTD...,
 
 Documentation at https://aniffinity.readthedocs.io
 
@@ -86,3 +87,6 @@ Cat Gif
     :target: http://forthebadge.com
 ..  |forthebadge3| image:: http://forthebadge.com/images/badges/built-with-love.svg
     :target: http://forthebadge.com
+
+..  |rtd| image:: https://readthedocs.org/projects/aniffinity/badge/?version=latest
+    :target: https://aniffinity.readthedocs.io/en/latest/
