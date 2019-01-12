@@ -128,7 +128,7 @@ class Aniffinity:
         ..  code-block:: none
 
             {
-                ANIME_ID: [BASE_USER_SCORE, OTHER_USER_SCORE],
+                "ANIME_ID": [BASE_USER_SCORE, OTHER_USER_SCORE],
                 ...
             }
 
@@ -137,9 +137,9 @@ class Aniffinity:
         ..  code-block:: none
 
             {
-                30831: [3, 8],
-                31240: [4, 7],
-                32901: [1, 5],
+                "30831": [3, 8],
+                "31240": [4, 7],
+                "32901": [1, 5],
                 ...
             }
 
@@ -151,18 +151,13 @@ class Aniffinity:
             the service you specified, set the param
             ``<TO BE IMPLEMENTED>`` to ``<TO BE IMPLEMENTED>``.
 
-        ..  warning::
-            The JSON returned isn't valid JSON. The keys are stored as
-            integers instead of the JSON standard of strings. You'll want to
-            force the keys to strings if you'll be using the ids elsewhere.
-
         :param user: The user to compare the base users' scores to.
         :type user: str or tuple
         :param service: The service to use. If no value is specified
             for this param, specify the service in the ``user`` param,
             either as part of a url regex, or in a tuple
         :type service: str or None
-        :return: Key-value pairs as described above
+        :return: Mapping of `id` to `score`s as described above
         :rtype: dict
         """
         # Check if there's actually a base user to compare scores with.

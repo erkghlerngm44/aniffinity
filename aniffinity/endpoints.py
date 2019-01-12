@@ -154,7 +154,7 @@ def anilist(username):
         entries = lst["entries"]
 
         for entry in entries:
-            id = entry["media"]["idMal"]  # Use MAL ids becs AL's are diff
+            id = str(entry["media"]["idMal"])
             score = entry["score"]
 
             if score > 0:
@@ -225,7 +225,7 @@ def kitsu(username):
         mappings = entry["anime"]["mappings"]
         for mapping in mappings:
             if mapping["externalSite"] == "myanimelist/anime":
-                id = int(mapping["externalId"])
+                id = mapping["externalId"]
                 break
         else:
             # Eh, if there isn't a MAL mapping, then the entry probably
