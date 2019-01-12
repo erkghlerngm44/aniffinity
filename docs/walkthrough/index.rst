@@ -118,7 +118,7 @@ globals inside functions or classes or different files is a pain.
 
 ..  code-block:: python
 
-    af = MALAffinity()
+    af = Aniffinity()
 
     # This can be done anywhere, as long as it has access to ``af``,
     # but MUST be done before ``calculate_affinity`` or ``comparison``
@@ -202,16 +202,16 @@ Comparing scores with a user
     # Note: this won't be prettified for you. Run it
     # through a prettifier if you want it to look nice.
     # {
-    #     1: [10, 6],
-    #     5: [8, 6],
-    #     6: [10, 7],
-    #     15: [7, 9],
-    #     16: [8, 5],
+    #     "1": [10, 6],
+    #     "5": [8, 6],
+    #     "6": [10, 7],
+    #     "15": [7, 9],
+    #     "16": [8, 5],
     #     ...
     # }
 
 Note that a key-value pair returned here consist of:
-``MYANIMELIST_ID: [BASE_USER_SCORE, OTHER_USER_SCORE]``.
+``"MYANIMELIST_ID": [BASE_USER_SCORE, OTHER_USER_SCORE]``.
 
 ..  note::
     MyAnimeList IDs are used here as a cross-service-compatible identifier
@@ -289,10 +289,10 @@ and you're only interested in getting a comparison of scores with another user.
     # Note: this won't be prettified for you. Run it
     # through a prettifier if you want it to look nice.
     # {
-    #     1: [10, 6],
-    #     5: [8, 6],
-    #     6: [10, 7],
-    #     15: [7, 9],
-    #     16: [8, 5],
+    #     "1": [10, 6],
+    #     "5": [8, 6],
+    #     "6": [10, 7],
+    #     "15": [7, 9],
+    #     "16": [8, 5],
     #     ...
     # }
