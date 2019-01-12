@@ -2,5 +2,5 @@ API
 ===
 
 
-.. autoclass:: malaffinity.MALAffinity
-   :inherited-members:
+..  autoclass:: aniffinity.Aniffinity
+    :inherited-members:

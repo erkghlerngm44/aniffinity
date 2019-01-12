@@ -4,12 +4,13 @@ Contributing
 
 In the unlikely event that someone finds this package, and in the even unlikelier
 event that someone wants to contribute,
-send me a `pull request <https://github.com/erkghlerngm44/malaffinity/pulls>`__
-or create an `issue <https://github.com/erkghlerngm44/malaffinity/issues>`__.
+send me a `pull request <https://github.com/erkghlerngm44/aniffinity/pulls>`__
+or create an `issue <https://github.com/erkghlerngm44/aniffinity/issues>`__.
 
-.. note:: Please :doc:`contact` and notify me if you use the above, as this isn't my
-          main GitHub account, so I won't be checking it that much. I'll probably see
-          it weeks/months later if you don't.
+..  note::
+    Please :doc:`contact` and notify me if you use the above, as this isn't my
+    main GitHub account, so I won't be checking it that much. I'll probably see
+    it weeks/months later if you don't.
 
 Feel free to use those for anything regarding the package, they're there to be used,
 I guess.
@@ -18,14 +19,14 @@ I guess.
 How to Contribute
 -----------------
 
-* Fork the `repo <https://github.com/erkghlerngm44/malaffinity>`__.
-* ``git clone https://github.com/YOUR_USERNAME/malaffinity.git``
-* ``cd malaffinity``
+* Fork the `repo <https://github.com/erkghlerngm44/aniffinity>`__.
+* ``git clone https://github.com/YOUR_USERNAME/aniffinity.git``
+* ``cd aniffinity``
 * ``git checkout -b new_feature``
 * Make changes.
 * ``git commit -am "Commit message"``
 * ``git push origin new_feature``
-* Navigate to https://github.com/YOUR_USERNAME/malaffinity
+* Navigate to https://github.com/YOUR_USERNAME/aniffinity
 * Create a pull request.
 
 
@@ -51,13 +52,7 @@ I wrote for ``erkghlerngm44/r-anime-soulmate-finder``, and while I have tried to
 modify it for general uses (and tried to clean the bad code up a bit), there are
 still a few iffy bits around. I'd appreciate any PRs to fix this up.
 
-I think the package is mostly complete, so my main focus right now is making it
-as fast as can-be, as every fraction of a second counts when you're using this
-to calculate affinity with tens of thousands of people. PRs regarding this are
-especially welcome.
-
-
 That's it, I guess. :doc:`contact` me if you need help or anything.
 
-.. figure:: https://i.imgur.com/gEOKk0P.jpg
-   :alt:
+..  figure:: https://i.imgur.com/MF49NXZ.gif
+    :alt:

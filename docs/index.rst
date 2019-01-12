@@ -1,7 +1,7 @@
-malaffinity
-===========
+Aniffinity
+==========
 
-**Calculate affinity between MyAnimeList users**
+**Calculate affinity between anime list users**
 
 
 ----
@@ -20,41 +20,42 @@ Contents:
 ----
 
 
-.. _getting_started:
-.. toctree::
-   :maxdepth: 1
-   :caption: Getting Started
+..  _getting_started:
+..  toctree::
+    :maxdepth: 1
+    :caption: Getting Started
 
-   getting_started/introduction
-   getting_started/getting_started
+    getting_started/introduction
+    getting_started/getting_started
+    getting_started/services
 
-.. _walkthrough:
-.. toctree::
-   :maxdepth: 1
-   :caption: Walkthrough
+..  _walkthrough:
+..  toctree::
+    :maxdepth: 1
+    :caption: Walkthrough
 
-   walkthrough/index
+    walkthrough/index
 
-.. _api:
-.. toctree::
-   :maxdepth: 1
-   :caption: API
+..  _api:
+..  toctree::
+    :maxdepth: 1
+    :caption: API
 
-   api/index
+    api/index
 
-.. _handling_exceptions:
-.. toctree::
-   :maxdepth: 1
-   :caption: Handling exceptions
+..  _handling_exceptions:
+..  toctree::
+    :maxdepth: 1
+    :caption: Handling exceptions
 
-   handling_exceptions/index
+    handling_exceptions/index
 
-.. _package_info:
-.. toctree::
-   :maxdepth: 1
-   :caption: Package info
+..  _package_info:
+..  toctree::
+    :maxdepth: 1
+    :caption: Package info
 
-   package_info/changelog
-   package_info/contributing
-   package_info/contact
-   package_info/license
+    package_info/changelog
+    package_info/contributing
+    package_info/contact
+    package_info/license
