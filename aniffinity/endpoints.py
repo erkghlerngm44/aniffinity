@@ -4,6 +4,7 @@
 import re
 import warnings
 
+import json_api_doc
 import requests
 
 from .const import DEFAULT_SERVICE, ENDPOINT_URLS, GRAPHQL_QUERY
@@ -163,6 +164,85 @@ def anilist(username):
     return scores
 
 
+def kitsu(username):
+    """
+    Retrieve a users' animelist scores from Kitsu.
+
+    Only anime scored > 0 will be returned, and all
+    PTW entries are ignored, even if they are scored.
+
+    :param str username: Kitsu username
+    :return: `id`, `score` pairs
+    :rtype: list
+    """
+    # First we gotta get the id because the api is incapable of letting
+    # us specify the username when calling `library-entries`
+    # TODO: Tidy this up
+    user_id = requests.request(
+        "GET",
+        "https://kitsu.io/api/edge/users",
+        params={"filter[name]": username}
+    ).json()["data"]
+    if not user_id:
+        raise InvalidUserError("User `{}` does not exist".format(username))
+    user_id = user_id[0]["id"]  # assume it's the first one, idk
+
+    params = {
+        "fields[anime]": "id,mappings",
+        # TODO: Find a way to specify username instead of user_id.
+        "filter[user_id]": user_id,
+        "filter[kind]": "anime",
+        "filter[status]": "completed,current,dropped,on_hold",
+        "include": "anime,anime.mappings",
+        "page[offset]": "0",
+        "page[limit]": "500"
+    }
+
+    entries = []
+    next_url = ENDPOINT_URLS.KITSU
+    while next_url:
+        resp = requests.request("GET", next_url, params=params)
+
+        # TODO: Handle invalid username, other exceptions, etc
+        if resp.status_code == 429:  # pragma: no cover
+            raise RateLimitExceededError("Kitsu rate limit exceeded")
+
+        json = resp.json()
+        entries += json_api_doc.parse(json)
+
+        # HACKISH
+        # params built into future `next_url`s, bad idea to keep existing ones
+        params = {}
+        next_url = json["links"].get("next")
+
+    scores = []
+    for entry in entries:
+        # Our request returns mappings with various services, we need
+        # to find the MAL one to get the MAL id to use.
+        mappings = entry["anime"]["mappings"]
+        for mapping in mappings:
+            if mapping["externalSite"] == "myanimelist/anime":
+                id = int(mapping["externalId"])
+                break
+        else:
+            # Eh, if there isn't a MAL mapping, then the entry probably
+            # doesn't exist there. Not much we can do if that's the case...
+            continue
+
+        score = entry["ratingTwenty"]
+
+        # Why does this API do `score == None` when it's not rated?
+        # Whatever happened to 0?
+        if score is not None:
+            scores.append({"id": id, "score": score})
+
+    if not len(scores):
+        raise NoAffinityError("User `{}` hasn't rated any anime"
+                              .format(username))
+
+    return scores
+
+
 # We can't move this to `.const` as referencing the endpoints from there
 # will get pretty messy...
 # TODO: Move the `ENDPOINT_URLS here as well???
@@ -171,5 +251,10 @@ services = {
         "aliases": {"AL", "A"},
         "url_regex": r"^https?://anilist\.co/user/([a-z0-9_-]+)(?:\/(?:animelist)?)?$",  # noqa: E501
         "endpoint": anilist
+    },
+    "KITSU": {
+        "aliases": {"K"},
+        "url_regex": r"^https?://kitsu\.io/users/([a-z0-9_-]+)(?:/(?:library(?:\?media=anime)?)?)?$",  # noqa: E501
+        "endpoint": kitsu
     }
 }

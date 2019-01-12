@@ -6,6 +6,7 @@ DEFAULT_SERVICE = "ANILIST"
 
 class ENDPOINT_URLS:  # noqa: D101
     ANILIST = "https://graphql.anilist.co"
+    KITSU = "https://kitsu.io/api/edge/library-entries"
     MYANIMELIST = "https://myanimelist.net/malappinfo.php"
 
 
