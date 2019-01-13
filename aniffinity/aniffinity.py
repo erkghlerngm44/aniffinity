@@ -167,15 +167,10 @@ class Aniffinity:
 
         user_list = endpoints._main(user, service)
 
-        comparison_dict = collections.defaultdict(list)
+        comparison_dict = {}
 
-        for lst in (self._base_scores, user_list):
-            for id, score in lst.items():
-                comparison_dict[id].append(score)
-
-        for id, scores in comparison_dict.copy().items():
-            if not len(scores) == 2:
-                del comparison_dict[id]
+        for key in (self._base_scores.keys() & user_list.keys()):
+            comparison_dict[key] = [self._base_scores[key], user_list[key]]
 
         return comparison_dict
 
