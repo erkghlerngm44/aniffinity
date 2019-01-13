@@ -1,9 +1,6 @@
 """aniffinity class."""
 
 
-import collections
-import copy
-
 from . import calcs
 from . import endpoints
 from . import models

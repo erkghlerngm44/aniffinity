@@ -88,8 +88,8 @@ def _resolve_service(user, service=None):
 
     # Incorrect usage
     else:
-        raise InvalidUserError("Invalid usage - check your `user`"
-                                   "and `service` values")
+        raise InvalidUserError("Invalid usage - check your `user` "
+                               "and `service` values")
 
     return username, service_name_resolved
 
