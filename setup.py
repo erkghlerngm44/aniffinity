@@ -42,7 +42,7 @@ settings = {
         "Programming Language :: Python :: 3.7"
     ],
 
-    "keywords": "anilist affinity pearson",
+    "keywords": "anilist affinity kitsu myanimelist scores pearson",
 
     "packages": ["aniffinity"],
 
