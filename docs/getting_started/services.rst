@@ -13,11 +13,11 @@ The following anime list services can be used with Aniffinity:
 
   * **Aliases**: ``AL``, ``A``
 
-* `Kitsu <https://kitsu.io>`__
+* `Kitsu <https://kitsu.io>`__ [1]_
 
   * **Aliases**: ``K``
 
-* `MyAnimeList <https://myanimelist.net>`__ [#]_
+* `MyAnimeList <https://myanimelist.net>`__ [2]_
 
   * **Aliases**: ``MAL``, ``M``
 
@@ -33,7 +33,11 @@ The following anime list services can be used with Aniffinity:
 ----
 
 
-..  [#]
+..  [1]
+    Incredibly slow, due to constraints by the service API itself
+    and not this package. Nothing I can do about it, sorry.
+
+..  [2]
     The MyAnimeList API being used is undocumented by them (probably
     because it's only meant to be used internally) and may change at
     any time without warning. Not much I can do about that, if MAL
