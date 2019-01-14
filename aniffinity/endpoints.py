@@ -146,7 +146,8 @@ def anilist(username):
 
     if not mlc:
         # Is this the only reason for not having anything in the MLC?
-        raise InvalidUserError("User `{}` does not exist".format(username))
+        raise InvalidUserError("User `{}` does not exist on AniList"
+                               .format(username))
 
     scores = {}
 
@@ -161,7 +162,7 @@ def anilist(username):
                 scores[id] = score
 
     if not len(scores):
-        raise NoAffinityError("User `{}` hasn't rated any anime"
+        raise NoAffinityError("User `{}` hasn't rated any anime on AniList"
                               .format(username))
 
     return scores
@@ -189,7 +190,7 @@ def kitsu(user_slug_or_id):
             params={"filter[slug]": user_slug_or_id}
         ).json()["data"]
         if not user_id:
-            raise InvalidUserError("User `{}` does not exist"
+            raise InvalidUserError("User `{}` does not exist on Kitsu"
                                    .format(user_slug_or_id))
         user_id = user_id[0]["id"]  # assume it's the first one, idk
     else:
@@ -222,7 +223,7 @@ def kitsu(user_slug_or_id):
         # The API silently fails if the user id is invalid,
         # which is a PITA, but hey...
         if not json["data"]:
-            raise InvalidUserError("User `{}` does not exist"
+            raise InvalidUserError("User `{}` does not exist on Kitsu"
                                    .format(user_slug_or_id))
 
         entries += json_api_doc.parse(json)
@@ -254,7 +255,7 @@ def kitsu(user_slug_or_id):
             scores[id] = score
 
     if not len(scores):
-        raise NoAffinityError("User `{}` hasn't rated any anime"
+        raise NoAffinityError("User `{}` hasn't rated any anime on Kitsu"
                               .format(user_slug_or_id))
 
     return scores
@@ -293,7 +294,8 @@ def myanimelist(username):
         json = resp.json()
         if "errors" in json:
             # TODO: Better error handling
-            raise InvalidUserError("User `{}` does not exist".format(username))
+            raise InvalidUserError("User `{}` does not exist on MyAnimeList"
+                                   .format(username))
 
         for entry in json:
             if entry["status"] == 6:
@@ -310,7 +312,7 @@ def myanimelist(username):
         params["offset"] += 300
 
     if not len(scores):
-        raise NoAffinityError("User `{}` hasn't rated any anime"
+        raise NoAffinityError("User `{}` hasn't rated any anime on MyAnimeList"
                               .format(username))
 
     return scores
