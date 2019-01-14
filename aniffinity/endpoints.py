@@ -217,6 +217,12 @@ def kitsu(username):
             raise RateLimitExceededError("Kitsu rate limit exceeded")
 
         json = resp.json()
+
+        # The API silently fails if the user id is invalid,
+        # which is a PITA, but hey...
+        if not json["data"]:
+            raise InvalidUserError("User `{}` does not exist".format(username))
+
         entries += json_api_doc.parse(json)
 
         # HACKISH
