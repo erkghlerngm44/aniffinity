@@ -184,7 +184,7 @@ def kitsu(username):
     user_id = requests.request(
         "GET",
         "https://kitsu.io/api/edge/users",
-        params={"filter[name]": username}
+        params={"filter[slug]": username}
     ).json()["data"]
     if not user_id:
         raise InvalidUserError("User `{}` does not exist".format(username))
