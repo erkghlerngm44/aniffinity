@@ -174,21 +174,27 @@ def kitsu(username):
     Only anime scored > 0 will be returned, and all
     PTW entries are ignored, even if they are scored.
 
-    :param str username: Kitsu username
+    :param str username: Kitsu username or user id
     :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
-    # First we gotta get the id because the api is incapable of letting
-    # us specify the username when calling `library-entries`
-    # TODO: Tidy this up
-    user_id = requests.request(
-        "GET",
-        "https://kitsu.io/api/edge/users",
-        params={"filter[slug]": username}
-    ).json()["data"]
-    if not user_id:
-        raise InvalidUserError("User `{}` does not exist".format(username))
-    user_id = user_id[0]["id"]  # assume it's the first one, idk
+    if not username.isdigit():
+        # Username is the "slug". The API is incapable of letting us pass
+        # a slug filter to the `library-entries` endpoint, so we need to
+        # get the user id first...
+        # TODO: Tidy this up
+        user_id = requests.request(
+            "GET",
+            "https://kitsu.io/api/edge/users",
+            params={"filter[slug]": username}
+        ).json()["data"]
+        if not user_id:
+            raise InvalidUserError("User `{}` does not exist".format(username))
+        user_id = user_id[0]["id"]  # assume it's the first one, idk
+    else:
+        # Assume that if the username is all digits, then the user id is
+        # passed so we can just send this straight into `library-entries`
+        user_id = username
 
     params = {
         "fields[anime]": "id,mappings",
@@ -211,6 +217,12 @@ def kitsu(username):
             raise RateLimitExceededError("Kitsu rate limit exceeded")
 
         json = resp.json()
+
+        # The API silently fails if the user id is invalid,
+        # which is a PITA, but hey...
+        if not json["data"]:
+            raise InvalidUserError("User `{}` does not exist".format(username))
+
         entries += json_api_doc.parse(json)
 
         # HACKISH
