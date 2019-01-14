@@ -104,7 +104,7 @@ def _main(user, service=None):
         for this param, specify the service in the ``user`` param,
         either as part of a url regex, or in a tuple
     :type service: str or None
-    :return: Mapping of `id` to `score`
+    :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
     # Should be fine doing this.
@@ -126,7 +126,7 @@ def anilist(username):
     PTW entries are ignored, even if they are scored.
 
     :param str username: AniList username
-    :return: Mapping of `id` to `score`
+    :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
     params = {
@@ -175,7 +175,7 @@ def kitsu(username):
     PTW entries are ignored, even if they are scored.
 
     :param str username: Kitsu username
-    :return: Mapping of `id` to `score`
+    :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
     # First we gotta get the id because the api is incapable of letting
@@ -254,7 +254,7 @@ def myanimelist(username):
     PTW entries are ignored, even if they are scored.
 
     :param str username: MyAnimeList username
-    :return: Mapping of `id` to `score`
+    :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
     params = {

@@ -154,7 +154,7 @@ class Aniffinity:
             for this param, specify the service in the ``user`` param,
             either as part of a url regex, or in a tuple
         :type service: str or None
-        :return: Mapping of `id` to `score`s as described above
+        :return: Mapping of ``id`` to ``score`` as described above
         :rtype: dict
         """
         # Check if there's actually a base user to compare scores with.
