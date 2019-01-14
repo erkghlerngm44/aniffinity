@@ -167,18 +167,18 @@ def anilist(username):
     return scores
 
 
-def kitsu(username):
+def kitsu(user_slug_or_id):
     """
     Retrieve a users' animelist scores from Kitsu.
 
     Only anime scored > 0 will be returned, and all
     PTW entries are ignored, even if they are scored.
 
-    :param str username: Kitsu username or user id
+    :param str user_slug_or_id: Kitsu user slug or user id
     :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
-    if not username.isdigit():
+    if not user_slug_or_id.isdigit():
         # Username is the "slug". The API is incapable of letting us pass
         # a slug filter to the `library-entries` endpoint, so we need to
         # get the user id first...
@@ -186,15 +186,16 @@ def kitsu(username):
         user_id = requests.request(
             "GET",
             "https://kitsu.io/api/edge/users",
-            params={"filter[slug]": username}
+            params={"filter[slug]": user_slug_or_id}
         ).json()["data"]
         if not user_id:
-            raise InvalidUserError("User `{}` does not exist".format(username))
+            raise InvalidUserError("User `{}` does not exist"
+                                   .format(user_slug_or_id))
         user_id = user_id[0]["id"]  # assume it's the first one, idk
     else:
         # Assume that if the username is all digits, then the user id is
         # passed so we can just send this straight into `library-entries`
-        user_id = username
+        user_id = user_slug_or_id
 
     params = {
         "fields[anime]": "id,mappings",
@@ -221,7 +222,8 @@ def kitsu(username):
         # The API silently fails if the user id is invalid,
         # which is a PITA, but hey...
         if not json["data"]:
-            raise InvalidUserError("User `{}` does not exist".format(username))
+            raise InvalidUserError("User `{}` does not exist"
+                                   .format(user_slug_or_id))
 
         entries += json_api_doc.parse(json)
 
@@ -253,7 +255,7 @@ def kitsu(username):
 
     if not len(scores):
         raise NoAffinityError("User `{}` hasn't rated any anime"
-                              .format(username))
+                              .format(user_slug_or_id))
 
     return scores
 
