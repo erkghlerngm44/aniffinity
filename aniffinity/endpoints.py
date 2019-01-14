@@ -72,11 +72,11 @@ def _resolve_service(user, service=None):
                 raise InvalidUserError("Invalid service URL")
 
             # `user` may just be the username, so let's assume that and
-            # use the default service. We really shouldn't, but hey...
+            # use the default service.
             warnings.warn("No service has been specified, so assuming the "
                           "default '{}'. To stop this warning from appearing "
                           "again, please specify a service to use."
-                          .format(DEFAULT_SERVICE), Warning)
+                          .format(DEFAULT_SERVICE), Warning, stacklevel=3)
             username = user
             service_name_resolved = DEFAULT_SERVICE
 
