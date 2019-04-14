@@ -2,8 +2,15 @@ Changelog
 =========
 
 
-v0.1.1. (2019-04-15)
---------------------
+v0.1.2 (2019-04-15)
+-------------------
+
+* No code changes have been made. This release is to confirm that Travis has
+  been fixed. (third time lucky, hopefully)
+
+
+v0.1.1 (2019-04-15)
+-------------------
 
 * No code changes have been made. This release is to confirm that Travis has
   been fixed.
