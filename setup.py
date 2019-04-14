@@ -29,7 +29,7 @@ settings = {
     "license": about["__license__"],
 
     "classifiers": [
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 4 - Beta",
         # "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Topic :: Software Development",
