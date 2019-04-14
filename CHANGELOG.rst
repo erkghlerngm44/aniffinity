@@ -5,6 +5,7 @@ Changelog
 v0.1.0 (2019-04-15)
 -------------------
 
+* Discontinue Python 2 support.
 * Rename this package to ``Aniffinity`` and replace all occurances with this.
 * Add AniList and Kitsu endpoints and support.
 * Rename exception ``MALRateLimitExceededError`` to ``RateLimitExceededError``.
