@@ -96,7 +96,7 @@ def _resolve_service(user, service=None):
     return username, service_name_resolved
 
 
-def _main(user, service=None):
+def _main(user, service=None, **kws):
     """
     Determine which endpoint to use and return a users' scores from that.
 
@@ -106,6 +106,8 @@ def _main(user, service=None):
         for this param, specify the service in the ``user`` param,
         either as part of a url regex, or in a tuple
     :type service: str or None
+    :param int wait_time: Wait time in seconds between paginated
+        requests
     :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
@@ -117,10 +119,10 @@ def _main(user, service=None):
     # We don't need to worry about invalid services here, as
     # `figure_out_service` will raise the exception itself if it is invalid.
     service_data = _services.get(service)
-    return service_data["endpoint"](username)
+    return service_data["endpoint"](username, **kws)
 
 
-def anilist(username):
+def anilist(username, **kws):
     """
     Retrieve a users' animelist scores from AniList.
 
@@ -170,7 +172,7 @@ def anilist(username):
     return scores
 
 
-def kitsu(user_slug_or_id):
+def kitsu(user_slug_or_id, **kws):
     """
     Retrieve a users' animelist scores from Kitsu.
 
@@ -192,6 +194,9 @@ def kitsu(user_slug_or_id):
         # the first run.
         next_url = ENDPOINT_URLS.KITSU + "?" + urllib.parse.urlencode(params)
         while next_url:
+            # Kitsu's API doesn't really need the limiting, but just in case..
+            time.sleep(kws.get("wait_time", 0))
+
             resp = session.request("GET", next_url)
 
             # TODO: Handle other exceptions, etc
@@ -267,7 +272,7 @@ def kitsu(user_slug_or_id):
     return scores
 
 
-def myanimelist(username):
+def myanimelist(username, **kws):
     """
     Retrieve a users' animelist scores from MyAnimeList.
 
@@ -289,8 +294,7 @@ def myanimelist(username):
 
         list_entries = 1
         while list_entries > 0:
-            # desperate attempt at ratelimiting :/
-            time.sleep(2)
+            time.sleep(kws.get("wait_time", 0))
 
             resp = session.request("GET", url, params=params)
 
