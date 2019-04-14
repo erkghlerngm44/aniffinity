@@ -32,7 +32,7 @@ class Aniffinity:
     to perform operations on this data.
     """
 
-    def __init__(self, base_user=None, base_service=None, round=False):
+    def __init__(self, base_user=None, base_service=None, round=False, **kws):
         """
         Initialise an instance of ``Aniffinity``.
 
@@ -79,11 +79,14 @@ class Aniffinity:
         :param round: Decimal places to round affinity values to.
             Specify ``False`` for no rounding
         :type round: int or False
+        :param int wait_time: Wait time in seconds between paginated
+            requests (default: 2)
         """
         self._base_username = None
         self._base_service = None
         self._base_scores = {}
         self._round = round
+        self._wait_time = kws.get("wait_time", 2)
 
         if base_user:
             self.init(base_user, base_service)
@@ -112,7 +115,8 @@ class Aniffinity:
 
         self._base_username = base_username
         self._base_service = base_service
-        self._base_scores = endpoints._main(base_username, base_service)
+        self._base_scores = endpoints._main(base_username, base_service,
+                                            wait_time=self._wait_time)
 
         return self
 
@@ -162,7 +166,7 @@ class Aniffinity:
             raise Exception("No base user has been specified. Call the `init` "
                             "function to retrieve a base users' scores")
 
-        user_list = endpoints._main(user, service)
+        user_list = endpoints._main(user, service, wait_time=self._wait_time)
 
         comparison_dict = {}
 

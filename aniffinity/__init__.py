@@ -11,7 +11,7 @@ from .__about__ import (  # noqa: F401
 )
 
 
-def comparison(user1, user2):  # pragma: no cover
+def comparison(user1, user2, **kws):  # pragma: no cover
     """
     Quick one-off scores comparison between two users.
 
@@ -24,13 +24,15 @@ def comparison(user1, user2):  # pragma: no cover
 
     :param tuple user1: First user
     :param tuple user2: Second user
+    :param int wait_time: Wait time in seconds between paginated
+        requests (default: 2)
     :return: Key-value pairs as described in ``Aniffinity.comparison``
     :rtype: dict
     """
-    return Aniffinity(base_user=user1).comparison(user2)
+    return Aniffinity(base_user=user1, **kws).comparison(user2)
 
 
-def calculate_affinity(user1, user2, round=False):  # pragma: no cover
+def calculate_affinity(user1, user2, **kws):  # pragma: no cover
     """
     Quick one-off affinity calculations.
 
@@ -46,7 +48,9 @@ def calculate_affinity(user1, user2, round=False):  # pragma: no cover
     :param round: Decimal places to round affinity values to.
         Specify ``False`` for no rounding.
     :type round: int or False
+    :param int wait_time: Wait time in seconds between paginated
+        requests (default: 2)
     :return: (float affinity, int shared)
     :rtype: tuple
     """
-    return Aniffinity(base_user=user1, round=round).calculate_affinity(user2)
+    return Aniffinity(base_user=user1, **kws).calculate_affinity(user2)
