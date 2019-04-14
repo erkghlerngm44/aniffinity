@@ -11,7 +11,7 @@ __title__ = "aniffinity"
 __summary__ = "Calculate affinity between anime list users"
 __uri__ = "https://github.com/erkghlerngm44/aniffinity"
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __author__ = "erkghlerngm44"
 __email__ = "erkghlerngm44@protonmail.com"
