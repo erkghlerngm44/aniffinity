@@ -304,8 +304,8 @@ def myanimelist(username, **kws):
             json = resp.json()
             if "errors" in json:
                 # TODO: Better error handling
-                raise InvalidUserError("User `{}` does not exist on MyAnimeList"
-                                       .format(username))
+                raise InvalidUserError("User `{}` does not exist on "
+                                       "MyAnimeList".format(username))
 
             yield json
             list_entries = len(json)
