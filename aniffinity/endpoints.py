@@ -2,6 +2,8 @@
 
 
 import re
+import time
+import urllib.parse
 import warnings
 
 import json_api_doc
@@ -179,6 +181,34 @@ def kitsu(user_slug_or_id):
     :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
+    # TODO: Move this somewhere else?
+    def get_pages(params):
+        session = requests.Session()
+
+        # Convert params dict to url string and add it onto the URL,
+        # as the `next_url` pagination links include the updated params
+        # already, so we want to avoid either duplicating the params,
+        # updating the params ourselves, or clearing the params after
+        # the first run.
+        next_url = ENDPOINT_URLS.KITSU + "?" + urllib.parse.urlencode(params)
+        while next_url:
+            resp = session.request("GET", next_url)
+
+            # TODO: Handle other exceptions, etc
+            if resp.status_code == TOO_MANY_REQUESTS:  # pragma: no cover
+                raise RateLimitExceededError("Kitsu rate limit exceeded")
+
+            json = resp.json()
+
+            # The API silently fails if the user id is invalid,
+            # which is a PITA, but hey...
+            if not json["data"]:
+                raise InvalidUserError("User `{}` does not exist on Kitsu"
+                                       .format(user_slug_or_id))
+
+            yield json
+            next_url = json["links"].get("next")
+
     if not user_slug_or_id.isdigit():
         # Username is the "slug". The API is incapable of letting us pass
         # a slug filter to the `library-entries` endpoint, so we need to
@@ -209,50 +239,26 @@ def kitsu(user_slug_or_id):
         "page[limit]": "500"
     }
 
-    entries = []
-    next_url = ENDPOINT_URLS.KITSU
-    while next_url:
-        resp = requests.request("GET", next_url, params=params)
-
-        # TODO: Handle invalid username, other exceptions, etc
-        if resp.status_code == TOO_MANY_REQUESTS:  # pragma: no cover
-            raise RateLimitExceededError("Kitsu rate limit exceeded")
-
-        json = resp.json()
-
-        # The API silently fails if the user id is invalid,
-        # which is a PITA, but hey...
-        if not json["data"]:
-            raise InvalidUserError("User `{}` does not exist on Kitsu"
-                                   .format(user_slug_or_id))
-
-        entries += json_api_doc.parse(json)
-
-        # HACKISH
-        # params built into future `next_url`s, bad idea to keep existing ones
-        params = {}
-        next_url = json["links"].get("next")
-
     scores = {}
-    for entry in entries:
-        # Our request returns mappings with various services, we need
-        # to find the MAL one to get the MAL id to use.
-        mappings = entry["anime"]["mappings"]
-        for mapping in mappings:
-            if mapping["externalSite"] == "myanimelist/anime":
-                id = mapping["externalId"]
-                break
-        else:
-            # Eh, if there isn't a MAL mapping, then the entry probably
-            # doesn't exist there. Not much we can do if that's the case...
-            continue
+    for page in get_pages(params):
+        for entry in json_api_doc.parse(page):
+            # Our request returns mappings with various services, we need
+            # to find the MAL one to get the MAL id to use.
+            for mapping in entry["anime"]["mappings"]:
+                if mapping["externalSite"] == "myanimelist/anime":
+                    id = mapping["externalId"]
+                    break
+            else:
+                # Eh, if there isn't a MAL mapping, then the entry probably
+                # doesn't exist there. Not much we can do if that's the case..
+                continue
 
-        score = entry["ratingTwenty"]
+            score = entry["ratingTwenty"]
 
-        # Why does this API do `score == None` when it's not rated?
-        # Whatever happened to 0?
-        if score is not None:
-            scores[id] = score
+            # Why does this API do `score == None` when it's not rated?
+            # Whatever happened to 0?
+            if score is not None:
+                scores[id] = score
 
     if not len(scores):
         raise NoAffinityError("User `{}` hasn't rated any anime on Kitsu"
@@ -272,32 +278,39 @@ def myanimelist(username):
     :return: Mapping of ``id`` to ``score``
     :rtype: dict
     """
-    params = {
-        "status": "7",  # all entries
-        "offset": 0
-    }
+    def get_pages(url):
+        session = requests.Session()
+        params = {
+            "status": "7",  # all entries
+            "offset": 0
+        }
+        # This endpoint only returns 300 items at a time :(
+        offset_amount = 300
+
+        list_entries = 1
+        while list_entries > 0:
+            # desperate attempt at ratelimiting :/
+            time.sleep(2)
+
+            resp = session.request("GET", url, params=params)
+
+            if resp.status_code == TOO_MANY_REQUESTS:  # pragma: no cover
+                raise RateLimitExceededError("MyAnimeList rate limit exceeded")
+
+            json = resp.json()
+            if "errors" in json:
+                # TODO: Better error handling
+                raise InvalidUserError("User `{}` does not exist on MyAnimeList"
+                                       .format(username))
+
+            yield json
+            list_entries = len(json)
+            params["offset"] += offset_amount
 
     scores = {}
-
-    # This endpoint only returns 300 items at a time :( #BringBackMalAppInfo
-    list_entries = 1
-    while list_entries > 0:
-        resp = requests.request(
-            "GET",
-            ENDPOINT_URLS.MYANIMELIST.format(username=username),
-            params=params
-        )
-
-        if resp.status_code == TOO_MANY_REQUESTS:  # pragma: no cover
-            raise RateLimitExceededError("MyAnimeList rate limit exceeded")
-
-        json = resp.json()
-        if "errors" in json:
-            # TODO: Better error handling
-            raise InvalidUserError("User `{}` does not exist on MyAnimeList"
-                                   .format(username))
-
-        for entry in json:
+    url = ENDPOINT_URLS.MYANIMELIST.format(username=username)
+    for page in get_pages(url):
+        for entry in page:
             if entry["status"] == 6:
                 # Entry in PTW, skip
                 continue
@@ -307,9 +320,6 @@ def myanimelist(username):
 
             if score > 0:
                 scores[id] = score
-
-        list_entries = len(json)
-        params["offset"] += 300
 
     if not len(scores):
         raise NoAffinityError("User `{}` hasn't rated any anime on MyAnimeList"
