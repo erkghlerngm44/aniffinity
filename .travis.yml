@@ -3,20 +3,16 @@ cache: pip
 sudo: false
 
 python:
-  - 2.7
   - 3.6
 
 install:
   - pip install --upgrade pip
-  - pip install --upgrade . .[conventions,docs,tests,travis]
+  - pip install --upgrade . .[conventions,docs,tests]
 
 script:
   - flake8
-  - pydocstyle malaffinity
+  - pydocstyle aniffinity
   - sphinx-build -W docs/ /tmp/build
-  - coverage run --source malaffinity setup.py test
-
-after_success: codecov
 
 deploy:
   provider: pypi
