@@ -224,7 +224,13 @@ class Aniffinity:
         values = scores.values()
         scores1, scores2 = list(zip(*values))
 
-        pearson = calcs.pearson(scores1, scores2)
+        try:
+            pearson = calcs.pearson(scores1, scores2)
+        except ZeroDivisionError:
+            # denominator is zero. catch this and raise our own exception.
+            raise NoAffinityError("Standard deviation of either users' "
+                                  "scores is zero")
+
         pearson *= 100
 
         if self._round is not False:
