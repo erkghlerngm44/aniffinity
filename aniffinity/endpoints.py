@@ -70,7 +70,7 @@ def _resolve_service(user, service=None):
         else:
             # Maybe it's just a URL and we don't have an endpoint for that
             # particular service. Check this before assuming anything else.
-            if user.startswith("http"):
+            if re.match(r"https?://", user):
                 raise InvalidUserError("Invalid service URL")
 
             # `user` may just be the username, so let's assume that and
