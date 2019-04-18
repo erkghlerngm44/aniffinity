@@ -4,8 +4,6 @@
 from decimal import Decimal
 from statistics import mean
 
-from .exceptions import NoAffinityError
-
 
 # Original code:
 # https://github.com/scipy/scipy/blob/v0.19.1/scipy/stats/stats.py#L2975-L3021
