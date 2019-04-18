@@ -1,12 +1,12 @@
-|forthebadge1| |forthebadge2| |forthebadge3|
+|ftb1| |ftb2| |ftb3|
 
 
 aniffinity
 ==========
 
-|rtd|
+|pypi| |travis| |rtd|
 
-"An-knee-fin-knee-tea".
+*"An-knee-fin-knee-tea"*.
 
 Calculate affinity between anime list users.
 
@@ -14,14 +14,12 @@ Calculate affinity between anime list users.
 What is this?
 -------------
 
-Calculate the affinity between a user and another user on anime list
+Calculate affinity between a user and another user on anime list
 services. Refer to the `docs <#documentation>`__ for more info.
 
 
 Install
 -------
-
-When the package is deployed to PyPI...,
 
 ..  code-block:: bash
 
@@ -32,7 +30,7 @@ Dependencies
 ------------
 
 * json-api-doc
-* Requests
+* requests
 
 
 Example Usage
@@ -42,14 +40,14 @@ Example Usage
 
     from aniffinity import Aniffinity
 
-    af = Aniffinity("YOUR_USERNAME", base_service="A_SERVICE")
+    af = Aniffinity("Xinil", base_service="MyAnimeList")
 
-    affinity, shared = af.calculate_affinity("OTHER_USERNAME", service="OTHER_SERVICE")
+    affinity, shared = af.calculate_affinity("Josh", service="AniList")
 
     print(affinity)
-    # 79.00545465639877
+    # 32.15230953451651
     print(shared)
-    # 82
+    # 31
 
 
 Available Services
@@ -81,12 +79,16 @@ Cat Gif
     :alt:
 
 
-..  |forthebadge1| image:: http://forthebadge.com/images/badges/fuck-it-ship-it.svg
+..  |ftb1| image:: http://forthebadge.com/images/badges/made-with-python.svg
     :target: http://forthebadge.com
-..  |forthebadge2| image:: http://forthebadge.com/images/badges/contains-cat-gifs.svg
+..  |ftb2| image:: http://forthebadge.com/images/badges/contains-cat-gifs.svg
     :target: http://forthebadge.com
-..  |forthebadge3| image:: http://forthebadge.com/images/badges/built-with-love.svg
+..  |ftb3| image:: http://forthebadge.com/images/badges/built-with-love.svg
     :target: http://forthebadge.com
 
+..  |pypi| image:: https://img.shields.io/pypi/v/aniffinity.svg
+    :target: https://pypi.org/project/aniffinity/
+..  |travis| image:: https://travis-ci.org/erkghlerngm44/aniffinity.svg?branch=master
+    :target: https://travis-ci.org/erkghlerngm44/aniffinity?branch=master
 ..  |rtd| image:: https://readthedocs.org/projects/aniffinity/badge/?version=latest
     :target: https://aniffinity.readthedocs.io/en/latest/
