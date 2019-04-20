@@ -92,7 +92,7 @@ class Aniffinity:
             self.init(base_user, base_service)
 
     def __repr__(self):  # noqa: D105  # pragma: no cover
-        return "{}(base_username={!r}, base_service={!r}, round={!r})" \
+        return "{}(base_user={!r}, base_service={!r}, round={!r})" \
             .format(self.__class__.__name__, self._base_username,
                     self._base_service, self._round)
 
