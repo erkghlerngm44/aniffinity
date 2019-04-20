@@ -2,8 +2,8 @@
 
 
 from . import calcs
-from . import endpoints
 from . import models
+from . import resolver
 from .exceptions import NoAffinityError
 
 
@@ -108,15 +108,17 @@ class Aniffinity:
         :type base_service: str or None
         """
         # Figure out the service ourselves, instead of just passing this to
-        # `endpoints.main` (and letting it handle everything), as we want
-        # to set `self._base_service`.
+        # `resolver.resolve_and_call` (and letting it handle everything),
+        # as we want to set `self._base_service`.
         base_username, base_service = \
-            endpoints._resolve_service(base_user, base_service)
+            resolver.resolve_user(base_user, base_service)
+
+        base_scores = resolver.resolve_and_call(base_username, base_service,
+                                                wait_time=self._wait_time)
 
         self._base_username = base_username
         self._base_service = base_service
-        self._base_scores = endpoints._main(base_username, base_service,
-                                            wait_time=self._wait_time)
+        self._base_scores = base_scores
 
         return self
 
@@ -166,7 +168,8 @@ class Aniffinity:
             raise Exception("No base user has been specified. Call the `init` "
                             "function to retrieve a base users' scores")
 
-        user_list = endpoints._main(user, service, wait_time=self._wait_time)
+        user_list = resolver.resolve_and_call(user, service,
+                                              wait_time=self._wait_time)
 
         comparison_dict = {}
 
