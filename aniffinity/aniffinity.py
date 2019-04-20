@@ -74,7 +74,7 @@ class Aniffinity:
         :type base_user: str or tuple
         :param base_service: The service to use. If no value is specified
             for this param, specify the service in the ``base_user`` param,
-            either as part of a url regex, or in a tuple
+            either as part of a url, or in a tuple
         :type base_service: str or None
         :param round: Decimal places to round affinity values to.
             Specify ``False`` for no rounding
@@ -104,7 +104,7 @@ class Aniffinity:
         :type base_user: str or tuple
         :param base_service: The service to use. If no value is specified
             for this param, specify the service in the ``base_user`` param,
-            either as part of a url regex, or in a tuple
+            either as part of a url, or in a tuple
         :type base_service: str or None
         """
         # Figure out the service ourselves, instead of just passing this to
@@ -158,7 +158,7 @@ class Aniffinity:
         :type user: str or tuple
         :param service: The service to use. If no value is specified
             for this param, specify the service in the ``user`` param,
-            either as part of a url regex, or in a tuple
+            either as part of a url, or in a tuple
         :type service: str or None
         :return: Mapping of ``id`` to ``score`` as described above
         :rtype: dict
@@ -208,7 +208,7 @@ class Aniffinity:
         :type user: str or tuple
         :param service: The service to use. If no value is specified
             for this param, specify the service in the ``user`` param,
-            either as part of a url regex, or in a tuple
+            either as part of a url, or in a tuple
         :type service: str or None
         :return: (float affinity, int shared)
         :rtype: tuple
