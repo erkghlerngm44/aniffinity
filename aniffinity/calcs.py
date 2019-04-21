@@ -17,16 +17,19 @@ def pearson(x, y):
     :return: Population pearson correlation coefficient
     :rtype: float
     """
-    mx = Decimal(mean(x))
-    my = Decimal(mean(y))
+    x = [Decimal(str(i)) for i in x]
+    y = [Decimal(str(j)) for j in y]
 
-    xm = [Decimal(i) - mx for i in x]
-    ym = [Decimal(j) - my for j in y]
+    mx = mean(x)
+    my = mean(y)
+
+    xm = [i - mx for i in x]
+    ym = [j - my for j in y]
 
     sx = [i ** 2 for i in xm]
     sy = [j ** 2 for j in ym]
 
-    num = sum([a * b for a, b in zip(xm, ym)])
-    den = Decimal(sum(sx) * sum(sy)).sqrt()
+    num = sum(a * b for a, b in zip(xm, ym))
+    den = (sum(sx) * sum(sy)).sqrt()
 
     return float(num / den)
