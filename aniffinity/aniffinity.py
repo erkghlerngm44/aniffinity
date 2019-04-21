@@ -32,7 +32,7 @@ class Aniffinity:
     to perform operations on this data.
     """
 
-    def __init__(self, base_user=None, base_service=None, round=False, **kws):
+    def __init__(self, base_user=None, base_service=None, round=10, **kws):
         """
         Initialise an instance of ``Aniffinity``.
 
