@@ -1,7 +1,7 @@
 """aniffinity calcs."""
 
 
-from decimal import Decimal
+from decimal import Decimal, DivisionByZero, InvalidOperation
 from statistics import mean
 
 
@@ -32,4 +32,14 @@ def pearson(x, y):
     num = sum(a * b for a, b in zip(xm, ym))
     den = (sum(sx) * sum(sy)).sqrt()
 
-    return float(num / den)
+    # `decimal` module handles division by zero weirdly, raising different
+    # exceptions if either the denominator is zero, or if the numerator and
+    # denominator are zero. As `decimal` is only used internally within
+    # this function, with normal floats going in and out, we should treat
+    # this to behave the same way if one were to do `n/0` (n >= 0) in normal
+    # python. The best way to accomplish this is to catch the
+    # `decimal`-specific exceptions and throw the generic `ZeroDivisionError`.
+    try:
+        return float(num / den)
+    except (DivisionByZero, InvalidOperation):
+        raise ZeroDivisionError("division by zero")
