@@ -224,8 +224,7 @@ class Aniffinity:
 
         # Sort multiple rows of scores into two arrays for calculations.
         # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
-        values = scores.values()
-        scores1, scores2 = list(zip(*values))
+        scores1, scores2 = zip(*scores.values())
 
         try:
             pearson = calcs.pearson(scores1, scores2)
