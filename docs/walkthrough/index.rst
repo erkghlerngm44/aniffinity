@@ -69,7 +69,25 @@ Method 3: Passing a URL
     # profile, or their anime list will work.
     af.calculate_affinity("https://kitsu.io/users/baz")
 
-Method 4: Passing a username only
+Method 4: Passing a string
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If a string is passed that is not a URL, it should take one of the following forms:
+
+* ``SERVICE:USERNAME``
+* ``SERVICE/USERNAME``
+
+..  note::
+    Note the lack of a space between the ``:`` and ``/``. This will not work if
+    there are any spaces between these characters.
+
+..  code-block:: python
+
+    af.calculate_affinity("Kitsu:baz")
+    # or
+    af.calculate_affinity("Kitsu/baz")
+
+Method 5: Passing a username only
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  warning::
@@ -86,9 +104,9 @@ service which, at the time of writing, is `AniList <https://anilist.co>`__.
 Aliases
 ~~~~~~~
 
-For methods 1 and 2, there exist aliases for the service names, which
-can be used if needed. For a list of aliases and services, see
-:ref:`available-services`.
+For methods 1, 2 and 4, there exist aliases for the service names, which
+can be used in place of the full service name. For a list of aliases and
+services, see :ref:`available-services`.
 
 
 ----

@@ -48,8 +48,8 @@ def resolve_user(user, service=None):
                 raise InvalidUserError("Invalid service name")
 
     elif type(user) is str:
-        # `user` should be a url regex then, we just need to figure out
-        # which service the regex matches
+        # `user` may be a url, we need to figure out which
+        # service the regex matches
         for service_name, service_data in endpoints.SERVICES.items():
             match = re.search(service_data["url_regex"], user, re.I)
 
@@ -63,6 +63,14 @@ def resolve_user(user, service=None):
             if re.match(r"https?://", user):
                 raise InvalidUserError("Invalid service URL")
 
+            # Maybe it's a username/service in the form `SERVICE:username`
+            # or `SERVICE/username`...
+            match = re.match(r"(?P<service>\w+)[:/](?P<user>[a-z0-9_-]+)$",
+                             user, flags=re.I)
+            if match:
+                return resolve_user(**match.groupdict())
+
+            # There aren't any more supported resolving techniques.
             # `user` may just be the username, so let's assume that and
             # use the default service.
             warnings.warn("No service has been specified, so assuming the "
