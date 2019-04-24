@@ -20,10 +20,13 @@ def comparison(user1, user2, **kws):  # pragma: no cover
 
     As there are no params to specify which service to use for each user,
     specify this information for both ``user1`` and ``user2`` by passing
-    a tuple for each of these, containing (username, service).
+    a tuple for each of these, containing (username, service), or by
+    passing a string in the format ``SERVICE:username``.
 
-    :param tuple user1: First user
-    :param tuple user2: Second user
+    :param user1: First user
+    :type user1: str or tuple
+    :param user2: Second user
+    :type user2: str or tuple
     :param int wait_time: Wait time in seconds between paginated
         requests (default: 2)
     :return: Key-value pairs as described in ``Aniffinity.comparison``
@@ -41,10 +44,13 @@ def calculate_affinity(user1, user2, **kws):  # pragma: no cover
 
     As there are no params to specify which service to use for each user,
     specify this information for both ``user1`` and ``user2`` by passing
-    a tuple for each of these, containing (username, service).
+    a tuple for each of these, containing (username, service), or by
+    passing a string in the format ``SERVICE:username``.
 
-    :param tuple user1: First user
-    :param tuple user2: Second user
+    :param user1: First user
+    :type user1: str or tuple
+    :param user2: Second user
+    :type user2: str or tuple
     :param round: Decimal places to round affinity values to.
         Specify ``False`` for no rounding.
     :type round: int or False
