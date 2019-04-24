@@ -36,3 +36,7 @@ v0.1.0 (2019-04-15)
 * Add the service name to all service-specific exceptions.
 * Add the ``wait_time`` arg to the ``Aniffinity`` class to slow down paginated
   requests.
+
+
+For older changes, read the `changelog <https://github.com/erkghlerngm44/malaffinity/blob/master/CHANGELOG.rst>`__
+at `erkghlerngm44/malaffinity <https://github.com/erkghlerngm44/malaffinity>`__.
