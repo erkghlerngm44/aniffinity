@@ -218,9 +218,16 @@ class Aniffinity:
         # Handle cases where the shared scores are <= 10 so
         # affinity can not be accurately calculated.
         if len(scores) <= 10:
-            raise NoAffinityError("Shared rated anime count between "
-                                  "`{}` and `{}` is less than eleven"
-                                  .format(self._base_username, user))
+            # FIXME: Ok I can't think of a clean way of doing this, so this
+            # will have to do until I find a good implementation...
+            res_username, res_service = \
+                resolver.resolve_user(user, service)
+            raise NoAffinityError(
+                "Shared rated anime count between `{}:{}` and `{}:{}` is "
+                "less than eleven"
+                .format(self._base_service, self._base_username,
+                        res_service, res_username)
+            )
 
         # Sort multiple rows of scores into two arrays for calculations.
         # E.G. [1,2], [3,4], [5,6] to [1,3,5], [2,4,6]
@@ -230,8 +237,14 @@ class Aniffinity:
             pearson = calcs.pearson(scores1, scores2)
         except ZeroDivisionError:
             # denominator is zero. catch this and raise our own exception.
-            raise NoAffinityError("Standard deviation of either users' "
-                                  "scores is zero")
+            # FIXME: Ditto
+            res_username, res_service = \
+                resolver.resolve_user(user, service)
+            raise NoAffinityError(
+                "Standard deviation of `{}:{}` or `{}:{}` scores is zero"
+                .format(self._base_service, self._base_username,
+                        res_service, res_username)
+            )
 
         pearson *= 100
 
