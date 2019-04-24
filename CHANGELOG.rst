@@ -2,6 +2,39 @@ Changelog
 =========
 
 
+v0.2.0 (2019-04-24)
+-------------------
+
+* Make ``.calcs.pearson`` raise a ``ZeroDivisionError`` when the standard
+  deviation of one/both sets of data is zero. This will be caught by
+  ``Aniffinity.calculate_affinity`` and will then raise the usual
+  ``NoAffinityError``, so scripts using this package will not need to
+  be modified.
+* Fix the faulty URL resolving in the resolving function. Valid usernames
+  starting with "http" will now be handled correctly, instead of having an
+  exception raised when no accompanying service is specified.
+* Move the user/service resolving functions to ``resolver.py``, and rename
+  these functions to more meaningful names. Additionally, make these functions
+  non-protected, adding in official support for them.
+* Change the repr of the ``Aniffinity`` class to make it more accurate.
+* Update various docstrings to make more sense and be more accurate.
+* Bump the version for the dependency ``json-api-doc`` to ``v0.7.x``.
+* Handle the ``Decimal`` handling in ``.calcs.pearson`` better, by converting
+  all of the values in each list to strings before passing them to
+  ``decimal.Decimal``.
+* Round affinity values by default to 10dp, so floating-point issues no longer
+  need to be accounted for. This can be bypassed by the user, should they wish
+  to do so.
+* Don't convert the scores lists to ``list``-s to make them non-lazy, as this
+  is already done.
+* Allow the username & service to be specified as a string, in the
+  form ``service:username``.
+* Resolve the ``user`` before raising exceptions, allowing the exception
+  messages to include the service as well as the username.
+* Include the relevant usernames in the "standard deviation is zero"
+  exception message in ``NoAffinityError``.
+
+
 v0.1.2 (2019-04-15)
 -------------------
 
