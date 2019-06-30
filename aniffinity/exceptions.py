@@ -16,8 +16,9 @@ class AniffinityException(Exception):  # noqa: D204
 
 class InvalidUserError(AniffinityException):  # noqa: D204, D205, D400
     """
-    Raised when username specified does not exist in the service,
-    or the service does not exist.
+    Raised when the username specified does not exist in the service,
+    the user's profile visibility is set to private, or the service
+    does not exist in Aniffinity.
     """
     pass
 
