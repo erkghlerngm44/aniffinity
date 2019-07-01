@@ -25,7 +25,7 @@ def resolve_user(user, service=None):
         either as part of a url regex, or in a tuple
     :type service: str or None
     :return: (username, service)
-    :rtype: tuple
+    :rtype: .models.User
     """
     username = None
     service_name_resolved = None
