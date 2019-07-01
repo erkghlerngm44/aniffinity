@@ -5,6 +5,7 @@ import re
 import warnings
 
 from . import endpoints
+from . import models
 from .const import DEFAULT_SERVICE
 from .exceptions import InvalidUserError
 
@@ -91,7 +92,7 @@ def resolve_user(user, service=None):
         raise InvalidUserError("Invalid usage - check your `user` "
                                "and `service` values")
 
-    return username, service_name_resolved
+    return models.User(username=username, service=service_name_resolved)
 
 
 def resolve_and_call(user, service=None, **kws):
