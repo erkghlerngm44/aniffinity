@@ -1,4 +1,4 @@
-"""malaffinity test suite"""
+"""aniffinity test suite"""
 
 
 import os
