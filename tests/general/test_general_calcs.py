@@ -1,3 +1,8 @@
+"""
+aniffinity .calcs tests.
+"""
+
+
 import random
 
 import numpy
