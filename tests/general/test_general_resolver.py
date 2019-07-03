@@ -1,9 +1,10 @@
 """
-aniffinity general resolving tests.
+aniffinity .resolver tests.
 
 Tests the ``resolver`` functions generally, without service-specific testing
 (for example service aliases, individual service urls, etc).
 """
+
 
 import pytest
 
@@ -14,7 +15,7 @@ USERNAME = "foo"
 FULL_SERVICE_NAME = "ANILIST"
 
 
-def test_resolver_general__username_and_full_service():
+def test_general_resolver__username_and_full_service():
     """
     Test `resolver.resolve_user` when specifying the full username/service.
     """
@@ -25,7 +26,7 @@ def test_resolver_general__username_and_full_service():
     assert res_svc == FULL_SERVICE_NAME
 
 
-def test_resolver_general__service_colon_username():
+def test_general_resolver__service_colon_username():
     """
     Test `resolver.resolve_user` when specifying `service:username`.
     """
@@ -36,7 +37,7 @@ def test_resolver_general__service_colon_username():
     assert res_svc == FULL_SERVICE_NAME
 
 
-def test_resolver_general__service_slash_username():
+def test_general_resolver__service_slash_username():
     """
     Test `resolver.resolve_user` when specifying `service/username`.
     """
@@ -47,7 +48,7 @@ def test_resolver_general__service_slash_username():
     assert res_svc == FULL_SERVICE_NAME
 
 
-def test_resolver_general__tuple():
+def test_general_resolver__tuple():
     """
     Test `resolver.resolve_user` when specifying username/service as tuple.
     """
@@ -60,7 +61,7 @@ def test_resolver_general__tuple():
     assert res_svc == FULL_SERVICE_NAME
 
 
-def test_resolver__resolve_and_call():
+def test_general_resolver__resolve_and_call():
     """
     Test `resolver.resolve_and_call` calls the relevant endpoint.
     """
@@ -85,7 +86,7 @@ def test_resolver__resolve_and_call():
     del aniffinity.endpoints.SERVICES[fake_service_name]
 
 
-def test_resolver_general__exception_invalid_service_name():
+def test_general_resolver__exception_invalid_service_name():
     """
     Test `resolver.resolve_user` when specifying an invalid service name.
     """
@@ -95,7 +96,7 @@ def test_resolver_general__exception_invalid_service_name():
     assert "invalid service name" in str(excinfo.value).lower()
 
 
-def test_resolver_general__exception_invalid_service_url():
+def test_general_resolver__exception_invalid_service_url():
     """
     Test `resolver.resolve_user` when specifying an invalid service URL.
     """
@@ -105,7 +106,7 @@ def test_resolver_general__exception_invalid_service_url():
     assert "invalid service url" in str(excinfo.value).lower()
 
 
-def test_resolver_general__assume_default_service():
+def test_general_resolver__assume_default_service():
     """
     Test `resolver.resolve_user` when only a username specified.
 
